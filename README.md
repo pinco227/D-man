@@ -27,13 +27,39 @@ This project represents an artist's page featuring a music player. The main goal
 ## UX
 
 - ### Business Goals
-  
+  - Create online presence;
+  - Gather followers on artist's other social media pages;
+  - Promote artist for potential collaborations, concerts and other events;
+  - Present artist's work in an organised and interactive manner;
+  - Keep users up to date with new releases and upcoming events;
+  - Offer users with a music player and provide control.
 - ### Users Goals
-  
+  - Learn about the artist by exploring his work;
+  - Stay up to date with artist's work and events;
+  - Check up and follow artist's social media pages;
+  - Contact the artist's team for an eventual collaboration, event;
+  - Control the music player in order to have a better exploring experience of artist's work;
+  - Have detailed information about each song.
 - ### User Scenarios
   - #### As a user I need:
+    - to easily navigate throughout the content.
+    - to easily understand how to control the music player.
+    - to be able to find artist's other social media profiles.
+    - to find details about artist and his work.
+    - to enjoy artist's work while navigating through the website.
+  - #### As an artist I need:
+    - to be able to contact the artist's team for potential collaborations.
+  - #### As an event organiser I need:
+    - to find contact information.
+    - to research artist's work and previous performances.
 - ### Structure
-
+  The website is designed to be consistent, intuitive and learnable.
+  - Interaction design
+    - For predictability, the interface interacts with user actions as the user expetcs. The scroll/swipe actions respond with the normal behaviour and buttons acts instantly on press.
+    - For consistency, the interface offers a subtle visual feedback to the user (on hover, focus and press of buttons and fields) which is similar throughout the application and helps the user to quickly learn the functionality.
+  - Information architecture
+    - The content is organised and prioritised by importance from top to bottom and left to right.
+    - The information is structured in nested lists.
 - ### Skeleton
   - ### Initial wireframes
     - Music Player:
@@ -69,9 +95,19 @@ This project represents an artist's page featuring a music player. The main goal
 ## Features
 Website's features are presented in an importance order.
 - ### Navigation bar
-    Allows users to navigate through the page. As the website is mainly a single landing page, the navigation will be visible all the time.
+    Allows users to navigate through the page. The navigation bar will be fixed to top and always visible.
+- ### A music player
+    The player's controls will always be visible as well as current playing song. The playlist and current playing song details will be collapsed (but expandable) on mobile and small screens and always visible on bigger screens.
+- ### Music Library
+    A library of song well organised in collections as albums.
+- ### Video Library
+    A list of videos from artist's YouTube channel.
 - ### A photo gallery
-- ### Contact section
+    A gallery of photos from events and behind the scene shots.
+- ### About page
+    A page presenting the artist's biography.
+- ### Contact page
+    A page featuring all the contact details, link to social media pages and a contact form.
 - ### Accessibility
     Images are provided with descriptive text. The website is optimised for screen readers and allows users with impaired vision to zoom at any point.
 - ### Features left to implement
