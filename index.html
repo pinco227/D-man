@@ -26,19 +26,19 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mb-2 mb-md-0">
                     <li class="nav-item active">
-                        <a class="nav-link" aria-current="page" href="#">Music Library</a>
+                        <a class="nav-link" aria-current="page" href="music.html">Music Library</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Videos</a>
+                        <a class="nav-link" href="videos.html">Videos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Gallery</a>
+                        <a class="nav-link" href="gallery.html">Gallery</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About Me</a>
+                        <a class="nav-link" href="about.html">About Me</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link" href="contact.html">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -67,9 +67,7 @@
                                         data-amplitude-song-index="0"></span></span>
                             </div>
 
-                            <span class="song-duration">
-                                3:30
-                                <span>
+                            <span class="amplitude-duration-time song-duration" data-amplitude-song-index="0"></span>
                         </div>
                         <div class="song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="1">
                             <span class="song-number-now-playing">
@@ -86,9 +84,7 @@
                                         data-amplitude-song-index="1"></span></span>
                             </div>
 
-                            <span class="song-duration">
-                                3:16
-                                <span>
+                            <span class="amplitude-duration-time song-duration" data-amplitude-song-index="1"></span>
                         </div>
                         <div class="song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="2">
                             <span class="song-number-now-playing">
@@ -265,13 +261,14 @@
                 </div>
             </div>
             <div class="col-md-6 col-lg-7">
-                <!-- Small CTA -->
-                <div class="bg-secondary p-3 rounded mt-3">
-                    <h1>CTA</h1>
-                    <p class="lead">This example is a quick exercise to illustrate how the bottom navbar works.</p>
-                    <a class="btn btn-lg btn-primary" href="/docs/5.0/components/navbar/" role="button">Contact</a>
+                <div id="content">
+                    <!-- Small CTA -->
+                    <div class="bg-secondary p-3 rounded mt-3">
+                        <h1>CTA</h1>
+                        <p class="lead">This example is a quick exercise to illustrate how the bottom navbar works.</p>
+                        <a class="btn btn-lg btn-primary" href="/docs/5.0/components/navbar/" role="button">Contact</a>
+                    </div>
                 </div>
-                content
             </div>
         </div>
     </main>
@@ -316,6 +313,7 @@
         integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
         crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/amplitudejs@5.2.0/dist/amplitude.js"></script>
+    <script src="assets/js/player.js"></script>
     <script src="assets/js/script.js"></script>
 </body>
 
