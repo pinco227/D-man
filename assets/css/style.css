@@ -1,0 +1,335 @@
+div#player-screen {
+    overflow-y: scroll;
+    max-height: 80vh;
+}
+
+div#list div.song {
+    padding: 15px;
+    background-color: #242b33;
+    margin-bottom: 1px;
+    cursor: pointer;
+    line-height: 24px;
+}
+
+div#list div.song span.song-number-now-playing {
+    display: inline-block;
+    width: 24px;
+    text-align: center;
+}
+
+div#list div.song span.song-number-now-playing span.number {
+    opacity: 0.5;
+    font-family: "Lato", sans-serif;
+    font-size: 14px;
+    color: #fff;
+    letter-spacing: 0.5px;
+}
+
+div#list div.song span.song-number-now-playing img.now-playing {
+    display: none;
+}
+
+div#list div.song.amplitude-active-song-container {
+    background-color: #30363e;
+}
+
+div#list div.song.amplitude-active-song-container span.song-number-now-playing img.now-playing {
+    display: inline-block;
+}
+
+div#list div.song.amplitude-active-song-container span.song-number-now-playing span.number {
+    display: none;
+}
+
+div#list div.song div.song-meta-container {
+    display: inline-block;
+    margin-left: 8px;
+    vertical-align: middle;
+    width: calc(100% - 80px);
+}
+
+div#list div.song div.song-meta-container span.song-name {
+    font-family: "Lato", sans-serif;
+    font-size: 14px;
+    line-height: 16px;
+    color: #55b560;
+    letter-spacing: 0.47px;
+    display: block;
+}
+
+div#list div.song div.song-meta-container span.song-artist-album {
+    font-family: "Lato", sans-serif;
+    font-size: 12px;
+    line-height: 14px;
+    color: #fff;
+    letter-spacing: 0.47px;
+    display: block;
+}
+
+div#list div.song span.song-duration {
+    display: inline-block;
+    opacity: 0.5;
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+    color: #fff;
+    letter-spacing: 0.5px;
+    width: 35px;
+    text-align: center;
+}
+
+div#list div.song span.song-artist-album {
+    color: #5277b0;
+}
+
+div#player-top {
+    position: relative;
+    text-align: center;
+}
+
+div#player-top img[data-amplitude-song-info="cover_art_url"] {
+    width: 50%;
+}
+
+div#player-progress-bar-container {
+    width: 100%;
+    height: 4px;
+    background-color: #000;
+    position: relative;
+    margin-top: -6px;
+}
+
+div#player-progress-bar-container progress#song-played-progress {
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    height: 4px;
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 9;
+    border: none;
+    cursor: pointer;
+    background: transparent;
+}
+
+div#player-progress-bar-container progress#song-played-progress[value]::-webkit-progress-bar {
+    background: none;
+}
+
+div#player-progress-bar-container progress#song-played-progress[value]::-webkit-progress-value {
+    background: white;
+}
+
+div#player-progress-bar-container progress#song-played-progress[value]::-moz-progress-bar {
+    background: white;
+}
+
+div#player-progress-bar-container progress#song-buffered-progress {
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    height: 4px;
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 2;
+    border: none;
+    background: transparent;
+}
+
+div#player-progress-bar-container progress#song-buffered-progress[value]::-webkit-progress-bar {
+    background: none;
+}
+
+div#player-progress-bar-container progress#song-buffered-progress[value]::-webkit-progress-value {
+    background-color: rgba(255, 255, 255, 0.5);
+    transition: width 0.1s ease;
+}
+
+div#player-progress-bar-container progress#song-buffered-progress[value]::-moz-progress-bar {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+div#player-middle {
+    background-color: #000;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+    position: relative;
+}
+
+div#player-middle div#time-container {
+    color: white;
+    width: 100%;
+    background-color: #000;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+div#player-middle div#time-container span.amplitude-duration-time {
+    position: absolute;
+    top: 0px;
+    right: 5px;
+}
+
+div#player-middle div#time-container span.amplitude-current-time {
+    position: absolute;
+    top: 0px;
+    left: 5px;
+}
+
+div#player-middle span.song-name {
+    font-family: Lato, sans-serif;
+    font-size: 16px;
+    color: #fff;
+    letter-spacing: 0.5px;
+    line-height: 24px;
+    display: block;
+}
+
+div#player-middle div.song-artist-album {
+    opacity: 0.5;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    color: #fff;
+    letter-spacing: 0.5px;
+    line-height: 16px;
+}
+
+footer div#shuffle-container {
+    float: left;
+    width: 20%;
+    height: 60px;
+    padding-top: 21px;
+}
+
+footer div#shuffle-container div#shuffle {
+    width: 16px;
+    height: 17px;
+    cursor: pointer;
+    margin: auto;
+    opacity: 0.7;
+}
+
+footer div#shuffle-container div#shuffle.amplitude-shuffle-off {
+    background: url("https://521dimensions.com/img/open-source/amplitudejs/examples/flat-black/shuffle.svg");
+}
+
+footer div#shuffle-container div#shuffle.amplitude-shuffle-off:hover {
+    background: url("https://521dimensions.com/img/open-source/amplitudejs/examples/flat-black/shuffle-on.svg");
+    opacity: 0.8;
+}
+
+footer div#shuffle-container div#shuffle.amplitude-shuffle-on {
+    background: url("https://521dimensions.com/img/open-source/amplitudejs/examples/flat-black/shuffle-on.svg");
+    opacity: 1;
+}
+
+footer div#shuffle-container div#shuffle.amplitude-shuffle-on:hover {
+    opacity: 1;
+}
+
+footer div#prev-container {
+    width: 20%;
+    float: left;
+    height: 60px;
+    padding-top: 18px;
+}
+
+footer div#prev-container div#previous {
+    background: url("https://521dimensions.com/img/open-source/amplitudejs/examples/flat-black/previous.svg");
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    margin: auto;
+}
+
+footer div#prev-container div#previous:hover {
+    background: url("https://521dimensions.com/img/open-source/amplitudejs/examples/flat-black/previous-hover.svg");
+}
+
+footer div#play-pause-container {
+    width: 20%;
+    float: left;
+    height: 60px;
+}
+
+footer div#play-pause-container div#play-pause {
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    margin: auto;
+}
+
+footer div#play-pause-container div#play-pause.amplitude-playing {
+    background: url("https://521dimensions.com/img/open-source/amplitudejs/examples/flat-black/pause.svg");
+}
+
+footer div#play-pause-container div#play-pause.amplitude-paused {
+    background: url("https://521dimensions.com/img/open-source/amplitudejs/examples/flat-black/play.svg");
+}
+
+footer div#next-container {
+    width: 20%;
+    float: left;
+    height: 60px;
+    padding-top: 18px;
+}
+
+footer div#next-container div#next {
+    background: url("https://521dimensions.com/img/open-source/amplitudejs/examples/flat-black/next.svg");
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    margin: auto;
+}
+
+footer div#next-container div#next:hover {
+    background: url("https://521dimensions.com/img/open-source/amplitudejs/examples/flat-black/next-hover.svg");
+}
+
+footer div#repeat-container {
+    float: left;
+    width: 20%;
+    height: 60px;
+    padding-top: 20px;
+}
+
+footer div#repeat-container div#repeat {
+    background: url("https://521dimensions.com/img/open-source/amplitudejs/examples/flat-black/repeat.svg");
+    width: 18px;
+    height: 20px;
+    cursor: pointer;
+    margin: auto;
+    opacity: 0.7;
+}
+
+footer div#repeat-container div#repeat:hover {
+    background: url("https://521dimensions.com/img/open-source/amplitudejs/examples/flat-black/repeat-on.svg");
+    opacity: 0.8;
+}
+
+footer div#repeat-container div#repeat.amplitude-repeat-on {
+    background: url("https://521dimensions.com/img/open-source/amplitudejs/examples/flat-black/repeat-on.svg");
+    opacity: 1;
+}
+
+footer div#repeat-container div#repeat.amplitude-repeat-on:hover {
+    opacity: 1;
+}
+
+footer::after {
+    content: "";
+    display: table;
+    clear: both;
+}
