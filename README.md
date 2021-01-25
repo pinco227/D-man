@@ -131,6 +131,9 @@ Website's features are presented in an importance order.
 - Other
 
 ## Testing
+  - ## Encountered Issues
+    - ### Issues found during the building process:
+      - Dynamic content navigation working properly while user lands on index.html but it doesn't work if user access website by passing different page url's on the address bar or if user refreshes the page.
 
 ## Deployment
 - ### GitHub Pages
