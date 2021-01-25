@@ -48,11 +48,11 @@ async function loadPage(page) {
  */
 async function loadAllPages() {
     home = await loadPage('home.html');
-    music = await loadPage('music.html');
-    videos = await loadPage('videos.html');
-    gallery = await loadPage('gallery.html');
-    about = await loadPage('about.html');
-    contact = await loadPage('contact.html');
+    music = await loadPage('music-library.html');
+    videos = await loadPage('video-library.html');
+    gallery = await loadPage('photo-gallery.html');
+    about = await loadPage('about-me.html');
+    contact = await loadPage('contact-page.html');
 };
 
 /**
@@ -63,7 +63,6 @@ async function main() {
     await loadAllPages();
     routes = {
         '': home,
-        'home': home,
         'index.html': home,
         'music': music,
         'videos': videos,
