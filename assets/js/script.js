@@ -62,14 +62,14 @@ async function loadAllPages() {
 async function main() {
     await loadAllPages();
     routes = {
-        '/': home,
-        '/home': home,
-        '/index.html': home,
-        '/music': music,
-        '/videos': videos,
-        '/gallery': gallery,
-        '/about': about,
-        '/contact': contact,
+        '': home,
+        'home': home,
+        'index.html': home,
+        'music': music,
+        'videos': videos,
+        'gallery': gallery,
+        'about': about,
+        'contact': contact,
     };
     contentDiv.innerHTML = routes[window.location.pathname];
 };
@@ -88,9 +88,11 @@ window.onpopstate = () => {
 document.querySelectorAll('.nav-link').forEach(function (button) {
     button.addEventListener('click', function (e) {
         e.preventDefault();
-        var pathName = button.getAttribute('href');
-
-        window.history.pushState({}, pathName, window.location.origin + pathName);
-        contentDiv.innerHTML = routes[pathName];
+        var pathName = button.href;
+        var page = pathName.split('/').slice(-1)[0];
+        window.history.pushState({}, page, pathName);
+        contentDiv.innerHTML = routes[page];
     });
 });
+
+console.log(window.location.origin);
