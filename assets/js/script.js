@@ -70,7 +70,8 @@ async function main() {
         'about': about,
         'contact': contact,
     };
-    contentDiv.innerHTML = routes[window.location.pathname];
+    let page = window.location.pathname.split('/').slice(-1)[0];
+    contentDiv.innerHTML = routes[page];
 };
 
 // Invoke the Main function
@@ -87,8 +88,8 @@ window.onpopstate = () => {
 document.querySelectorAll('.nav-link').forEach(function (button) {
     button.addEventListener('click', function (e) {
         e.preventDefault();
-        var pathName = button.href;
-        var page = pathName.split('/').slice(-1)[0];
+        let pathName = button.href;
+        let page = pathName.split('/').slice(-1)[0];
         window.history.pushState({}, page, pathName);
         contentDiv.innerHTML = routes[page];
     });
