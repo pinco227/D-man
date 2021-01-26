@@ -133,7 +133,8 @@ Website's features are presented in an importance order.
 ## Testing
   - ## Encountered Issues
     - ### Issues found during the building process:
-      - Dynamic content navigation working properly while user lands on index.html but it doesn't work if user access website by passing different page url's on the address bar or if user refreshes the page.
+    > - Dynamic content navigation working properly while user lands on index.html but it doesn't work if user access website by passing different page url's on the address bar or if user refreshes the page.
+    > - **FIXED**: As this project is deployed to GitHub Pages (which doesn not accept server configuration), the only way to fix this issue was to make a redirect using custom error pages (404.html) as described by **Rafael Pedicini** on **[this repo](https://github.com/rafrex/spa-github-pages)**.
 
 ## Deployment
 - ### GitHub Pages

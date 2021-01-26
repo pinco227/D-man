@@ -94,5 +94,3 @@ document.querySelectorAll('.nav-link').forEach(function (button) {
         contentDiv.innerHTML = routes[page];
     });
 });
-
-console.log(window.location.origin);
