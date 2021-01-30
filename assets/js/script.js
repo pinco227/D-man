@@ -1,28 +1,7 @@
-// // Get html from url and insert into index.html
-// function fetchUrl(url) {
-//     // https://gomakethings.com/getting-html-with-fetch-in-vanilla-js/
-//     // Fetch the content of the destination page
-//     fetch(url).then(function (response) {
-//         return response.text();
-//     }).then(function (html) {
-//         // Parse the response text to html object
-//         var parser = new DOMParser();
-//         var doc = parser.parseFromString(html, 'text/html');
-//         var html = doc.querySelector('html').innerHTML;
-//         var title = doc.querySelector('title').innerHTML;
-//         var body = doc.querySelector('body').innerHTML;
-//         contentDiv.innerHTML = body;
-//         document.title = title;
-//         window.history.pushState({ "html": html, "pageTitle": title }, "", url);
-//     }).catch(function (err) {
-//         // There was an error
-//         console.warn('Something went wrong.', err);
-//     });
-// }
-
 // CREDIT: https://blog.skay.dev/custom-spa-router-vanillajs
+
 // Content Container
-let contentDiv = document.getElementById('content');
+const contentDiv = document.getElementById('content');
 
 //Declare the variables for home, about & contact html pages
 let home = '';
@@ -33,13 +12,13 @@ let about = '';
 let contact = '';
 
 // Declare Titles
-let mainTitle = 'D-Man';
-let homeTitle = 'Welcome';
-let musicTitle = 'Music Library';
-let videosTitle = 'Videos Library';
-let galleryTitle = 'Photo Gallery';
-let aboutTitle = 'About Me';
-let contactTitle = 'Contact';
+const mainTitle = 'D-Man';
+const homeTitle = 'Welcome';
+const musicTitle = 'Music Library';
+const videosTitle = 'Videos Library';
+const galleryTitle = 'Photo Gallery';
+const aboutTitle = 'About Me';
+const contactTitle = 'Contact';
 
 /** 
 * Loads the page content
@@ -89,18 +68,27 @@ async function main() {
         'contact': contactTitle,
     }
     let page = window.location.pathname.split('/').slice(-1)[0];
-    document.title = titles[page] + ' | ' + mainTitle;
-    contentDiv.innerHTML = routes[page];
+    setPage(page);
 };
 
-// Invoke the Main function
-main();
+/** 
+* Set the page's title and content by overwriting current title and innerHtml
+* @param {string} p - Page relative url
+*/
+function setPage(p) {
+    if (p === 'videos') {
+        writeToDoc('yt-content');
+        // getData(youtubePlaylistApiUrl);
+    }
+    document.title = titles[p] + ' | ' + mainTitle;
+    contentDiv.innerHTML = routes[p];
+}
 
 /**
  * The Function is invoked when the window.history changes
  */
 window.onpopstate = () => {
-    contentDiv.innerHTML = routes[window.location.pathname];
+    setPage(window.location.pathname);
 };
 
 // Navigation links event listeners for dynamic page load
@@ -110,7 +98,9 @@ document.querySelectorAll('.nav-link').forEach(function (button) {
         let pathName = button.href;
         let page = pathName.split('/').slice(-1)[0];
         window.history.pushState({}, titles[page], pathName);
-        document.title = titles[page] + ' | ' + mainTitle;
-        contentDiv.innerHTML = routes[page];
+        setPage(page);
     });
 });
+
+// Invoke the Main function
+main();
