@@ -32,20 +32,29 @@ let gallery = '';
 let about = '';
 let contact = '';
 
-/**
- *
- * @param {String} page - Represents the page information that needs to be retrieved
- * @returns {String} resHtml - The Page's HTML is returned from the async invocation
- */
+// Declare Titles
+let mainTitle = 'D-Man';
+let homeTitle = 'Welcome';
+let musicTitle = 'Music Library';
+let videosTitle = 'Videos Library';
+let galleryTitle = 'Photo Gallery';
+let aboutTitle = 'About Me';
+let contactTitle = 'Contact';
+
+/** 
+* Loads the page content
+* @param {string} page - The relative url of the page
+* @return {string} Returns the content of the page in a string.
+*/
 async function loadPage(page) {
     const response = await fetch(page);
     const resHtml = await response.text();
     return resHtml;
 };
 
-/**
- * The Async function loads all HTML to the variables 'home', 'about' & 'contact'
- */
+/** 
+* The Async function loads all HTML to the variables 'home', 'about' & 'contact'
+*/
 async function loadAllPages() {
     home = await loadPage('home.html');
     music = await loadPage('music-library.html');
@@ -70,7 +79,17 @@ async function main() {
         'about': about,
         'contact': contact,
     };
+    titles = {
+        '': homeTitle,
+        'index.html': homeTitle,
+        'music': musicTitle,
+        'videos': videosTitle,
+        'gallery': galleryTitle,
+        'about': aboutTitle,
+        'contact': contactTitle,
+    }
     let page = window.location.pathname.split('/').slice(-1)[0];
+    document.title = titles[page] + ' | ' + mainTitle;
     contentDiv.innerHTML = routes[page];
 };
 
@@ -90,7 +109,8 @@ document.querySelectorAll('.nav-link').forEach(function (button) {
         e.preventDefault();
         let pathName = button.href;
         let page = pathName.split('/').slice(-1)[0];
-        window.history.pushState({}, page, pathName);
+        window.history.pushState({}, titles[page], pathName);
+        document.title = titles[page] + ' | ' + mainTitle;
         contentDiv.innerHTML = routes[page];
     });
 });
