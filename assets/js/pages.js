@@ -2,7 +2,7 @@
 const youtubePlaylistApiUrl = 'https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=UU-pMGW4z9PyJ8R8J19tBzsg&key=AIzaSyASZKSW8QjCJPjuRvlaSzEA67IYSxENYe0';
 
 // Declare photos Api url to call for GET
-const galleryApiUrl = '../../media/photos/list.json';
+const galleryApiUrl = 'https://pinco227.github.io/D-man/media/photos/list.json';
 
 /** 
 * Write the result of the Videos API call to the DOM
