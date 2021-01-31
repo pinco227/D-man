@@ -49,11 +49,13 @@ async function loadAllPages() {
 * @param {string} p - Page relative url
 */
 function setPage(p) {
-    if (p === 'videos') {
-        writeToDoc('yt-content');
-    }
     document.title = titles[p] + ' | ' + mainTitle;
     contentDiv.innerHTML = routes[p];
+    if (p === 'videos') {
+        writeVideosToDoc('yt-content');
+    } else if (p === 'gallery') {
+        writePhotosToDoc('gallery-content');
+    }
 }
 
 /**
@@ -114,7 +116,6 @@ function getData(url, cb) {
 
     xhr.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            // console.log(JSON.parse(this.responseText).items);
             cb(JSON.parse(this.responseText));
         }
     };
