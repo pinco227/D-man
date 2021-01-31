@@ -128,6 +128,7 @@ Website's features are presented in an importance order.
 - Wireframes
   * [Balsamiq](https://balsamiq.com/) for creating [wireframes](#wireframes).
 - Media
+  * [TinyJPG](https://tinyjpg.com/) for compressing images.
 - Other
 
 ## Testing
