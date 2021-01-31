@@ -1,3 +1,4 @@
+// --------------------------------------- Single Page App (SPA) Navigation System ----------
 // CREDIT: https://blog.skay.dev/custom-spa-router-vanillajs
 
 // Content Container
@@ -43,6 +44,18 @@ async function loadAllPages() {
     contact = await loadPage('contact-page.html');
 };
 
+/** 
+* Set the page's title and content by overwriting current title and innerHtml
+* @param {string} p - Page relative url
+*/
+function setPage(p) {
+    if (p === 'videos') {
+        writeToDoc('yt-content');
+    }
+    document.title = titles[p] + ' | ' + mainTitle;
+    contentDiv.innerHTML = routes[p];
+}
+
 /**
  * The Main Function is an async function that first loads All Page HTML to the variables
  * Once the variables are loaded with the contents, then they are assigned to the 'routes' variable
@@ -71,25 +84,12 @@ async function main() {
     setPage(page);
 };
 
-/** 
-* Set the page's title and content by overwriting current title and innerHtml
-* @param {string} p - Page relative url
-*/
-function setPage(p) {
-    if (p === 'videos') {
-        writeToDoc('yt-content');
-        // getData(youtubePlaylistApiUrl);
-    }
-    document.title = titles[p] + ' | ' + mainTitle;
-    contentDiv.innerHTML = routes[p];
-}
-
 /**
  * The Function is invoked when the window.history changes
  */
 window.onpopstate = () => {
     setPage(window.location.pathname);
-};
+}; ingle Page App(SPA) Navigation System
 
 // Navigation links event listeners for dynamic page load
 document.querySelectorAll('.nav-link').forEach(function (button) {
@@ -101,6 +101,27 @@ document.querySelectorAll('.nav-link').forEach(function (button) {
         setPage(page);
     });
 });
+// ---------------------------------------------------------------------- SPA END  ----------
+
+// -------------------------------------------------------------- GENERAL API GET  ----------
+/** 
+* API GET function. Gets the data from the url and sends it as a parameter to the callback function.
+* @param {string} url - Api url to be called
+* @param {function} cb - Callback function
+*/
+function getData(url, cb) {
+    var xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            // console.log(JSON.parse(this.responseText).items);
+            cb(JSON.parse(this.responseText));
+        }
+    };
+    xhr.open("GET", url);
+    xhr.send();
+}
+// ----------------------------------------------------------- GENERAL API GET END ----------
 
 // Invoke the Main function
 main();
