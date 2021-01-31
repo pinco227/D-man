@@ -39,7 +39,7 @@ function writePhotosToDoc(contentDiv) {
         data.forEach(function (item) {
             var listItem = document.createElement('li');
             listItem.innerHTML = `
-                <img src="media/photos/${item.file}" alt="${item.title} - ${item.description}" width="100" />
+                <img src="media/photos/${item.thumbnail}" alt="${item.title} - ${item.description}" />
             `;
             list.appendChild(listItem);
         });
