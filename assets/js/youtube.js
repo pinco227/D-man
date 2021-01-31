@@ -6,6 +6,7 @@ const youtubePlaylistApiUrl = 'https://youtube.googleapis.com/youtube/v3/playlis
 * @param {string} contentDiv - The id of the element to be written to
 */
 function writeToDoc(contentDiv) {
+    console.log('smth');
     getData(youtubePlaylistApiUrl, function (videos) {
         var writeTo = document.getElementById(contentDiv);
         videos = videos.items;

@@ -89,7 +89,7 @@ async function main() {
  */
 window.onpopstate = () => {
     setPage(window.location.pathname);
-}; ingle Page App(SPA) Navigation System
+};
 
 // Navigation links event listeners for dynamic page load
 document.querySelectorAll('.nav-link').forEach(function (button) {
@@ -121,7 +121,7 @@ function getData(url, cb) {
     xhr.open("GET", url);
     xhr.send();
 }
-// ----------------------------------------------------------- GENERAL API GET END ----------
+// ------------------------------------------------------------ GENERAL API GET END ----------
 
 // Invoke the Main function
 main();
