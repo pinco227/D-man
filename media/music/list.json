@@ -1,0 +1,368 @@
+{
+    "default_cover": "cover.jpg",
+    "albums": [
+        {
+            "cover": "cover.jpg",
+            "path": "1998 VINERI 13 - Ne doare la BassK",
+            "year": "1998",
+            "artist": "VINERI 13",
+            "name": "Ne doare la BassK",
+            "songs": [
+                {
+                    "name": "955",
+                    "artist": "VINERI 13",
+                    "url": "Vineri 13 - 955 (1998).mp3",
+                    "duration": "05:37"
+                },
+                {
+                    "name": "Fara tine",
+                    "artist": "VINERI 13",
+                    "url": "Vineri 13 - Fara tine (1999).mp3",
+                    "duration": "03:25"
+                },
+                {
+                    "name": "In ceatza",
+                    "artist": "VINERI 13",
+                    "url": "Vineri 13  - In ceatza (1998).mp3",
+                    "duration": "03:53"
+                },
+                {
+                    "name": "Joaca dupa reguli",
+                    "artist": "VINERI 13",
+                    "url": "Vineri 13  - Joaca dupa reguli (1998).mp3",
+                    "duration": "04:19"
+                },
+                {
+                    "name": "Las sa ploua",
+                    "artist": "VINERI 13",
+                    "url": "Vineri 13 - las_ sa ploua (1998).mp3",
+                    "duration": "04:20"
+                },
+                {
+                    "name": "Loc pentru ei",
+                    "artist": "VINERI 13",
+                    "url": "Vineri 13  - Loc ptr ei (1998).mp3",
+                    "duration": "04:11"
+                },
+                {
+                    "name": "Ne doare la bass k",
+                    "artist": "VINERI 13",
+                    "url": "Vineri 13 - Ne doare la bass k (1998).mp3",
+                    "duration": "02:42"
+                },
+                {
+                    "name": "Ridicati mainile",
+                    "artist": "VINERI 13",
+                    "url": "Vineri 13 - Ridicati mainile (1998).mp3",
+                    "duration": "04:30"
+                },
+                {
+                    "name": "T.O.Logique",
+                    "artist": "VINERI 13",
+                    "url": "Vineri 13  - T.O.Logique (1999).mp3",
+                    "duration": "04:07"
+                },
+                {
+                    "name": "Vineri seara",
+                    "artist": "VINERI 13",
+                    "url": "Vineri 13 - Vineri seara (1998).mp3",
+                    "duration": "03:46"
+                },
+                {
+                    "name": "Zimbru",
+                    "artist": "VINERI 13",
+                    "url": "Vineri 13  - Zimbru(1998).mp3",
+                    "duration": "04:04"
+                }
+            ]
+        },
+        {
+            "cover": "cover.jpg",
+            "path": "1999 VINERI 13 - Ingeri si Demoni",
+            "year": "1999",
+            "artist": "VINERI 13",
+            "name": "Ingeri si Demoni",
+            "songs": [
+                {
+                    "name": "Acelasi om aceiasi fata",
+                    "artist": "Vineri 13",
+                    "url": "Vineri 13 - Acelasi om aceiasi fata (1999).mp3",
+                    "duration": "04:58"
+                },
+                {
+                    "name": "Asta-i pentru voi",
+                    "artist": "Vineri 13",
+                    "url": "Vineri 13 - Asta-i pentru voi.mp3",
+                    "duration": "04:30"
+                },
+                {
+                    "name": "Astia sintem noi",
+                    "artist": "Vineri 13",
+                    "url": "Vineri 13  - Astia sintem noi (1999).mp3",
+                    "duration": "02:19"
+                },
+                {
+                    "name": "As vrea",
+                    "artist": "Vineri 13",
+                    "url": "Vineri 13  - As vrea (1999).mp3",
+                    "duration": "03:32"
+                },
+                {
+                    "name": "Mana la cer feat. Ovidiu",
+                    "artist": "Vineri 13",
+                    "url": "Vineri 13 cu Ovi GENIUS - Mana la cer.mp3",
+                    "duration": "03:39"
+                },
+                {
+                    "name": "Eclipsa",
+                    "artist": "Vineri 13",
+                    "url": "Vineri 13 - Eclipsa(1999).mp3",
+                    "duration": "03:38"
+                },
+                {
+                    "name": "Ingeri sau demoni",
+                    "artist": "Vineri 13",
+                    "url": "Vineri 13  - Ingeri sau demoni (2000).mp3",
+                    "duration": "04:11"
+                },
+                {
+                    "name": "Mahmuri",
+                    "artist": "Vineri 13",
+                    "url": "Vineri 13 - Mahmuri (1998).mp3",
+                    "duration": "03:03"
+                },
+                {
+                    "name": "Mana la cer (RMX)",
+                    "artist": "Vineri 13",
+                    "url": "Vineri 13 - Mana la cer (short RMX).mp3",
+                    "duration": "04:02"
+                },
+                {
+                    "name": "Pana la capat",
+                    "artist": "Vineri 13",
+                    "url": "Vineri 13  - Pana la capat (1998).mp3",
+                    "duration": "03:47"
+                },
+                {
+                    "name": "Piesa 4",
+                    "artist": "Vineri 13",
+                    "url": "Vineri 13 - Piesa 4 (1999).mp3",
+                    "duration": "04:31"
+                },
+                {
+                    "name": "Pt o clipa de Placere",
+                    "artist": "Vineri 13",
+                    "url": "Vineri 13 - Pt o clipa de Placere (1999).mp3",
+                    "duration": "04:32"
+                },
+                {
+                    "name": "Si-am sa beau",
+                    "artist": "Vineri 13",
+                    "url": "Vineri 13 - Si-am sa beau (1999).mp3",
+                    "duration": "02:25"
+                },
+                {
+                    "name": "Si ingerii plang",
+                    "artist": "Vineri 13",
+                    "url": "Vineri 13 - Si ingerii plang.mp3",
+                    "duration": "04:30"
+                },
+                {
+                    "name": "Spune-mi",
+                    "artist": "Vineri 13",
+                    "url": "Vineri 13 - Spune-mi (2000).mp3",
+                    "duration": "04:21"
+                },
+            ]
+        },
+        {
+            "cover": "cover.jpg",
+            "path": "2001 DOMINO project",
+            "year": "2001",
+            "artist": "DMAN & SEBA",
+            "name": "DOMINO project",
+            "songs": [
+                {
+                    "name": "Luna",
+                    "artist": "DMAN & SEBA",
+                    "url": "DMAN ft SEBA -Luna.mp3",
+                    "duration": "03:41"
+                },
+                {
+                    "name": "diliMan",
+                    "artist": "DMAN & SEBA",
+                    "url": "DMAN ft SEBA - diliMan.mp3",
+                    "duration": "03:33"
+                },
+                {
+                    "name": "Noi 2",
+                    "artist": "DMAN & SEBA",
+                    "url": "DMAN ft SEBA -Noi 2.mp3",
+                    "duration": "02:46"
+                },
+                {
+                    "name": "Lacrimi in ploaie",
+                    "artist": "DMAN & SEBA",
+                    "url": "DMAN ft SEBA -Lacrimi in ploaie.mp3",
+                    "duration": "03:45"
+                },
+            ]
+        },
+        {
+            "cover": "morphine.jpg",
+            "path": "2008 MORPHINE project",
+            "year": "2008",
+            "artist": "DMAN",
+            "name": "MORPHINE project",
+            "songs": [
+                {
+                    "name": "O viata",
+                    "artist": "DMAN",
+                    "url": "01. Morphine - O viata.mp3",
+                    "duration": "03:35"
+                },
+                {
+                    "name": "Singuri",
+                    "artist": "DMAN",
+                    "url": "02. Morphine - Singuri.mp3",
+                    "duration": "03:52"
+                },
+                {
+                    "name": "Hai",
+                    "artist": "DMAN",
+                    "url": "03. Morphine - Hai.mp3",
+                    "duration": "03:29"
+                },
+                {
+                    "name": "O Clipa",
+                    "artist": "DMAN",
+                    "url": "04. Morphine - O Clipa.mp3",
+                    "duration": "04:36"
+                },
+                {
+                    "name": "Ramai",
+                    "artist": "DMAN",
+                    "url": "05. Morphine - Ramai.mp3",
+                    "duration": "03:54"
+                },
+                {
+                    "name": "Noi",
+                    "artist": "DMAN",
+                    "url": "06. Morphine - Noi.mp3",
+                    "duration": "04:07"
+                },
+            ]
+        },
+        {
+            "cover": "cover.jpg",
+            "path": "Singles",
+            "year": "2000-2020",
+            "artist": "DMAN",
+            "name": "Singles",
+            "songs": [
+                {
+                    "name": "1, 2 si 3 de 4 ft. PDV",
+                    "artist": "DMAN, DAHEY, JONNY, MIHAI",
+                    "url": "2000 DMAN, DAHEY, JONNY, MIHAI ft PDV- 1 2  si 3 de 4 .mp3",
+                    "duration": "03:52"
+                },
+                {
+                    "name": "Nevasta",
+                    "artist": "DMAN, DAHEY, JONNY",
+                    "url": "2000 DMAN, DAHEY, JONNY- Nevasta.mp3",
+                    "duration": "03:54"
+                },
+                {
+                    "name": "Balans Beton",
+                    "artist": "DMAN",
+                    "url": "2002 DiliMANU - balans Beton .mp3",
+                    "duration": "02:49"
+                },
+                {
+                    "name": "Amintirea Ta",
+                    "artist": "DMAN & Andrei",
+                    "url": "2002 DILIMANU ft ANDREI - Amintirea Ta.mp3",
+                    "duration": "04:17"
+                },
+                {
+                    "name": "Departe",
+                    "artist": "DMAN & Dahey",
+                    "url": "2005 DMAN ft DAHEY - Departe.mp3",
+                    "duration": "04:04"
+                },
+                {
+                    "name": "Fak Ya Yo!",
+                    "artist": "DMAN & Dahey",
+                    "url": "2005 DMAN ft DAHEY- Fak Ya Yo !.mp3",
+                    "duration": "04:15"
+                },
+                {
+                    "name": "La Noapte",
+                    "artist": "DMAN & Dahey",
+                    "url": "2005 DMAN ft DAHEY - La Noapte.mp3",
+                    "duration": "04:00"
+                },
+                {
+                    "name": "Liniste si atat",
+                    "artist": "DMAN & Dahey",
+                    "url": "2005 DMAN ft DAHEY - Liniste si atat.mp3",
+                    "duration": "04:20"
+                },
+                {
+                    "name": "Scrisoare de pe front",
+                    "artist": "LORE & DMAN",
+                    "url": "2014 LORE ft DMAN - Scrisoare de pe front .mp3",
+                    "duration": "04:00"
+                },
+                {
+                    "name": "Alone with my shadow",
+                    "artist": "DMAN, Dahey & Paul",
+                    "url": "2015 D MAN _ DAHEYvs PAUL - Alone with my shadow .mp3",
+                    "duration": "03:48"
+                },
+                {
+                    "name": "Believe",
+                    "artist": "DMAN & Narcis",
+                    "url": "2015 D-MAN _ NARCIS - Believe  .mp3",
+                    "duration": "04:04"
+                },
+                {
+                    "name": "Inger si Demon",
+                    "artist": "ROSU si NEGRU & DMAN",
+                    "url": "2015 ROSUsi NEGRU cu DMAN - Inger si Demonn .mp3",
+                    "duration": "04:37"
+                },
+                {
+                    "name": "O Poveste",
+                    "artist": "ROSU si NEGRU & DMAN",
+                    "url": "2015 ROSUsi NEGRU cu DMAN - O Poveste .mp3",
+                    "duration": "03:05"
+                },
+                {
+                    "name": "Las ca-i bine",
+                    "artist": "DMAN",
+                    "url": "2018 DMAN - Las ca-i bine.mp3",
+                    "duration": "02:56"
+                },
+                {
+                    "name": "Omul Din Oglinda",
+                    "artist": "DMAN",
+                    "url": "2019 DMAN  Omul Din Oglinda .mp3",
+                    "duration": "03:26"
+                },
+                {
+                    "name": "Nu Ne Pasă",
+                    "artist": "DMAN, Canaf & Zeni",
+                    "url": "2020 DMAN CANAF ZENI - Nu Ne Pasă.mp3",
+                    "duration": "04:06"
+                },
+                {
+                    "name": "Nimic a Spune",
+                    "artist": "DMAN",
+                    "url": "2020 DMAN - Nimic a Spune .mp3",
+                    "duration": "03:46"
+                },
+            ]
+        }
+    ]
+}
