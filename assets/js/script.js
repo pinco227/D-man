@@ -52,11 +52,11 @@ function setPage(p) {
     document.title = titles[p] + ' | ' + mainTitle;
     contentDiv.innerHTML = routes[p];
     if (p === 'videos') {
-        writeVideosToDoc('yt-content');
+        writeVideosToDoc();
     } else if (p === 'gallery') {
-        writePhotosToDoc('gallery-content');
+        writePhotosToDoc();
     } else if (p === 'music') {
-        writeMusicToDoc('music-library');
+        writeMusicToDoc();
     }
 }
 
@@ -107,7 +107,15 @@ document.querySelectorAll('.nav-link').forEach(function (button) {
 });
 // ---------------------------------------------------------------------- SPA END  ----------
 
-// -------------------------------------------------------------- GENERAL API GET  ----------
+// ------------------------------------------------------------------- PAGES APIs  ----------
+// Declare API urls to call for GET
+// Youtube
+const youtubePlaylistApiUrl = 'https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=UU-pMGW4z9PyJ8R8J19tBzsg&key=AIzaSyASZKSW8QjCJPjuRvlaSzEA67IYSxENYe0';
+// Gallery
+const galleryApiUrl = 'https://pinco227.github.io/D-man/media/photos/list.json';
+// Music
+const musicApiUrl = 'https://pinco227.github.io/D-man/media/music/list.json';
+
 /** 
 * API GET function. Gets the data from the url and sends it as a parameter to the callback function.
 * @param {string} url - Api url to be called
@@ -124,7 +132,112 @@ function getData(url, cb) {
     xhr.open("GET", url);
     xhr.send();
 }
-// ------------------------------------------------------------ GENERAL API GET END ----------
+
+/**
+* Write the result of the Videos API call to the DOM
+* @param {string} contentDiv - The id of the element to be written to
+*/
+function writeVideosToDoc() {
+    getData(youtubePlaylistApiUrl, function (data) {
+        var writeTo = document.getElementById('yt-content');
+        data = data.items;
+        var list = document.createElement('ul');
+
+        data.forEach(function (item) {
+            var listItem = document.createElement('li');
+            listItem.innerHTML = `
+                <img src="${item.snippet.thumbnails.medium.url}" />
+            `;
+            list.appendChild(listItem);
+        });
+
+        writeTo.appendChild(list);
+    });
+}
+
+/** 
+* Write the result of the Photos API call to the DOM
+* @param {string} contentDiv - The id of the element to be written to
+*/
+function writePhotosToDoc() {
+    getData(galleryApiUrl, function (data) {
+        var writeTo = document.getElementById('gallery-content');
+        data = data.files;
+        var list = document.createElement('ul');
+
+        data.forEach(function (item) {
+            var listItem = document.createElement('li');
+            listItem.innerHTML = `
+                <img src="media/photos/${item.thumbnail}" alt="${item.title} - ${item.description}" />
+            `;
+            list.appendChild(listItem);
+        });
+
+        writeTo.appendChild(list);
+    });
+}
+/** 
+* Write the result of the Music API call to the DOM
+* @param {number} album - album index. If is set the function writes the songs of album. If is not set it writes the album list
+*/
+function writeMusicToDoc(album) {
+    getData(musicApiUrl, function (data) {
+        globalPlaylist.songs = [];
+        var writeTo = document.getElementById('music-library');
+        writeTo.innerHTML = '';
+        data = data.albums;
+
+        // Write the songs list of album
+        if (typeof album == "number") {
+            writeTo.innerHTML = `<button onClick="writeMusicToDoc()">Back</button>`;
+            var list = document.createElement('ul');
+            data[album].songs.forEach(function (item) {
+                var listItem = document.createElement('li');
+                listItem.innerHTML = `
+                    ${item.artist} - ${item.name}
+                `;
+                list.appendChild(listItem);
+
+                var song = {
+                    "name": item.name,
+                    "artist": item.artist,
+                    "album": data[album].name,
+                    "url": "/media/music/" + data[album].path + "/" + item.url,
+                    "cover_art_url": "/media/music/" + data[album].path + "/" + data[album].cover,
+                    "duration": item.duration
+                };
+                globalPlaylist.songs.push(song);
+            });
+            writeTo.appendChild(list);
+
+        } else { // writes the album list
+            var list = document.createElement('ul');
+            data.forEach(function (item, i) {
+                var listItem = document.createElement('li');
+                listItem.innerHTML = `
+                    <img src="media/music/${item.path}/${item.cover}" alt="${item.artist} - ${item.name}" width="100" onClick="writeMusicToDoc(${i});" />
+                `;
+                list.appendChild(listItem);
+
+                item.songs.forEach(function (sg) {
+                    var song = {
+                        "name": sg.name,
+                        "artist": sg.artist,
+                        "album": item.name,
+                        "url": "/media/music/" + item.path + "/" + sg.url,
+                        "cover_art_url": "/media/music/" + item.path + "/" + item.cover,
+                        "duration": sg.duration
+                    };
+                    globalPlaylist.songs.push(song);
+                });
+            });
+            writeTo.appendChild(list);
+        }
+        writeTo.innerHTML += `<button onClick="loadPlaylist()">Play</button>`;
+    });
+}
+
+// ---------------------------------------------------------------- PAGES APIs END ----------
 
 // Invoke the Main function
 main();
