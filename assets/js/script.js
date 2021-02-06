@@ -202,8 +202,8 @@ function writeMusicToDoc(album) {
                     "name": item.name,
                     "artist": item.artist,
                     "album": data[album].name,
-                    "url": "/media/music/" + data[album].path + "/" + item.url,
-                    "cover_art_url": "/media/music/" + data[album].path + "/" + data[album].cover,
+                    "url": "media/music/" + data[album].path + "/" + item.url,
+                    "cover_art_url": "media/music/" + data[album].path + "/" + data[album].cover,
                     "duration": item.duration
                 };
                 globalPlaylist.songs.push(song);
@@ -224,8 +224,8 @@ function writeMusicToDoc(album) {
                         "name": sg.name,
                         "artist": sg.artist,
                         "album": item.name,
-                        "url": "/media/music/" + item.path + "/" + sg.url,
-                        "cover_art_url": "/media/music/" + item.path + "/" + item.cover,
+                        "url": "media/music/" + item.path + "/" + sg.url,
+                        "cover_art_url": "media/music/" + item.path + "/" + item.cover,
                         "duration": sg.duration
                     };
                     globalPlaylist.songs.push(song);
