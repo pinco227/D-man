@@ -121,11 +121,19 @@ function updatePlayList() {
 }
 
 function loadPlaylist(again) {
+    updatePlayList();
     if (typeof again == "undefined") {
         Amplitude.stop();
+        // Promise
+        var initPlayer = new Promise(
+            function () {
+                Amplitude.init(globalPlaylist);
+            }
+        );
+        initPlayer.then(Amplitude.play());
+    } else {
+        Amplitude.init(globalPlaylist);
     }
-    updatePlayList();
-    Amplitude.init(globalPlaylist);
 }
 
 window.onkeydown = function (e) {
