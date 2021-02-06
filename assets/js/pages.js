@@ -4,6 +4,9 @@ const youtubePlaylistApiUrl = 'https://youtube.googleapis.com/youtube/v3/playlis
 // Declare photos Api url to call for GET
 const galleryApiUrl = 'https://pinco227.github.io/D-man/media/photos/list.json';
 
+// Declare music Api url to call for GET
+const musicApiUrl = 'https://pinco227.github.io/D-man/media/music/list.json';
+
 /** 
 * Write the result of the Videos API call to the DOM
 * @param {string} contentDiv - The id of the element to be written to
@@ -40,6 +43,28 @@ function writePhotosToDoc(contentDiv) {
             var listItem = document.createElement('li');
             listItem.innerHTML = `
                 <img src="media/photos/${item.thumbnail}" alt="${item.title} - ${item.description}" />
+            `;
+            list.appendChild(listItem);
+        });
+
+        writeTo.appendChild(list);
+    });
+}
+
+/** 
+* Write the result of the Music API call to the DOM
+* @param {string} contentDiv - The id of the element to be written to
+*/
+function writeMusicToDoc(contentDiv) {
+    getData(musicApiUrl, function (data) {
+        var writeTo = document.getElementById(contentDiv);
+        data = data.albums;
+        var list = document.createElement('ul');
+
+        data.forEach(function (item) {
+            var listItem = document.createElement('li');
+            listItem.innerHTML = `
+                <img src="media/music/${item.path}/${item.cover}" alt="${item.artist} - ${item.name}" width="100" />
             `;
             list.appendChild(listItem);
         });

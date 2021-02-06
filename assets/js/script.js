@@ -55,6 +55,8 @@ function setPage(p) {
         writeVideosToDoc('yt-content');
     } else if (p === 'gallery') {
         writePhotosToDoc('gallery-content');
+    } else if (p === 'music') {
+        writeMusicToDoc('music-library');
     }
 }
 
