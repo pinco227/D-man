@@ -139,7 +139,9 @@ function getData(url, cb) {
     xhr.send();
 }
 
+// ###################################### Video Library Page
 
+// Declare global youtube Modal and Player variables
 let ytModalEl;
 let ytModal;
 let ytPlayer;
@@ -185,28 +187,42 @@ function writeVideosToDoc() {
         });
     });
 }
+// ###################################### Video Library Page END
 
+// ###################################### Photo Gallery Page
 /** 
 * Write the result of the Photos API call to the DOM
 * @param {string} contentDiv - The id of the element to be written to
 */
 function writePhotosToDoc() {
     getData(galleryApiUrl, function (data) {
-        var writeTo = document.getElementById('gallery-content');
+        const galleryContent = document.getElementById('gallery-content');
+        const galleryCarouselInner = document.getElementById('galleryCarousel').firstElementChild;
         data = data.files;
-        var list = document.createElement('ul');
 
-        data.forEach(function (item) {
-            var listItem = document.createElement('li');
-            listItem.innerHTML = `
-                <img src="media/photos/${item.thumbnail}" alt="${item.title} - ${item.description}" />
+        galleryContent.innerHTML = data.map(function (item, i) {
+            return `
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <img class="w-100" src="media/photos/${item.thumbnail}" alt="${item.title} - ${item.description}" data-bs-target="#galleryCarousel" data-bs-slide-to="${i}">
+                </div>
             `;
-            list.appendChild(listItem);
-        });
-
-        writeTo.appendChild(list);
+        }).join("");
+        galleryCarouselInner.innerHTML = data.map(function (item, i) {
+            return `
+                <div class="carousel-item ${i == 0 ? 'active' : ''}">
+                    <img class="d-block w-100" src="media/photos/${item.file}" alt="${item.title} - ${item.description}">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>${item.title}</h5>
+                        <p>${item.description}</p>
+                    </div>
+                </div>
+            `;
+        }).join("");
     });
 }
+// ###################################### Photo Gallery Page END
+
+// ###################################### Music Library Page
 /** 
 * Write the result of the Music API call to the DOM
 * @param {number} album - album index. If is set the function writes the songs of album. If is not set it writes the album list
@@ -267,8 +283,8 @@ function writeMusicToDoc(album) {
         writeTo.innerHTML += `<button onClick="loadPlaylist()">Play</button>`;
     });
 }
-
+// ###################################### Music Library Page END
 // ---------------------------------------------------------------- PAGES APIs END ----------
 
-// Invoke the Main function
+// Invoke the Main function which loads all pages into variables, create routes and set the current page
 main();
