@@ -131,13 +131,11 @@ function getCookie(name) {
 */
 function updatePlayList() {
     var listDiv = document.getElementById('list');
-    listDiv.innerHTML = "";
-    var j = 1;
-    globalPlaylist.songs.forEach(function (song, i) {
-        listDiv.innerHTML += `
+    listDiv.innerHTML = globalPlaylist.songs.map(function (_, i) {
+        return `
         <div class="song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="${i}">
             <span class="song-number-now-playing">
-                <span class="number">${j}</span>
+                <span class="number">${i + 1}</span>
                 <img class="now-playing" src="https://521dimensions.com/img/open-source/amplitudejs/examples/flat-black/now-playing.svg" />
             </span>
 
@@ -148,8 +146,7 @@ function updatePlayList() {
             <span class="song-duration duration" data-amplitude-song-info="duration" data-amplitude-song-index="${i}"></span>
         </div>
         `;
-        j++;
-    });
+    }).join("");
 }
 /** 
 * Loads the global playlist into player after it has been changed
