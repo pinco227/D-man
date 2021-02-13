@@ -1,3 +1,4 @@
+// Global object to store songs for player
 var globalPlaylist = {
     "bindings": {
         37: 'prev',
@@ -97,6 +98,37 @@ var globalPlaylist = {
     ]
 };
 
+function setCookie() {
+    document.cookie = "player=" + JSON.stringify(Amplitude.getConfig());
+}
+
+/** 
+* Get cookie CREDIT: https://stackoverflow.com/a/5968306
+* @return {string} cookie value
+*/
+function getCookie(name) {
+    var dc = document.cookie;
+    var prefix = name + "=";
+    var begin = dc.indexOf("; " + prefix);
+    if (begin == -1) {
+        begin = dc.indexOf(prefix);
+        if (begin != 0) return null;
+    }
+    else {
+        begin += 2;
+        var end = document.cookie.indexOf(";", begin);
+        if (end == -1) {
+            end = dc.length;
+        }
+    }
+    // because unescape has been deprecated, replaced with decodeURI
+    //return unescape(dc.substring(begin + prefix.length, end));
+    return decodeURI(dc.substring(begin + prefix.length, end));
+}
+
+/** 
+* Updates the dom with playlist from global object
+*/
 function updatePlayList() {
     var listDiv = document.getElementById('list');
     listDiv.innerHTML = "";
@@ -119,11 +151,15 @@ function updatePlayList() {
         j++;
     });
 }
-
+/** 
+* Loads the global playlist into player after it has been changed
+* @param {optional} again - Optional parameter to detect if function was called initialy or from the library
+* @return {ReturnValueDataTypeHere} Brief description of the returning value here.
+*/
 function loadPlaylist(again) {
     updatePlayList();
-    if (typeof again == "undefined") {
-        Amplitude.stop();
+    if (typeof again == "undefined") { // Load playlist from library
+        Amplitude.stop();   // Stop player in order to avoid overlaping songs
         // Promise
         var initPlayer = new Promise(
             function () {
@@ -131,11 +167,12 @@ function loadPlaylist(again) {
             }
         );
         initPlayer.then(Amplitude.play());
-    } else {
+    } else { // Load playlist initialy
         Amplitude.init(globalPlaylist);
     }
 }
 
+// Amplitude key detection
 window.onkeydown = function (e) {
     return !(e.keyCode == 32);
 };
@@ -150,6 +187,5 @@ document.getElementById('song-played-progress').addEventListener('click', functi
     Amplitude.setSongPlayedPercentage((parseFloat(x) / parseFloat(this.offsetWidth)) * 100);
 });
 
-// document.querySelector('img[data-amplitude-song-info="cover_art_url"]').style.height = document.querySelector('img[data-amplitude-song-info="cover_art_url"]').offsetWidth + 'px';
-
+// Initial load
 loadPlaylist(1);

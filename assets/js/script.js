@@ -52,6 +52,12 @@ function setPage(p) {
     document.title = titles[p] + ' | ' + mainTitle;
     contentDiv.innerHTML = routes[p];
     if (p === 'videos') {
+        // Inserts youtube api script before first <script> in HTML
+        const tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        const firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
         writeVideosToDoc();
     } else if (p === 'gallery') {
         writePhotosToDoc();
@@ -133,25 +139,50 @@ function getData(url, cb) {
     xhr.send();
 }
 
+
+let ytModalEl;
+let ytModal;
+let ytPlayer;
+function onYouTubeIframeAPIReady() {
+    ytPlayer = new YT.Player('player');
+}
+
 /**
 * Write the result of the Videos API call to the DOM
 * @param {string} contentDiv - The id of the element to be written to
 */
 function writeVideosToDoc() {
     getData(youtubePlaylistApiUrl, function (data) {
-        var writeTo = document.getElementById('yt-content');
+        const writeTo = document.getElementById('yt-content');
         data = data.items;
-        var list = document.createElement('ul');
+        const list = document.createElement('ul');
+        ytModalEl = document.getElementById('yt-modal');
+        ytModal = new bootstrap.Modal(ytModalEl);
 
         data.forEach(function (item) {
-            var listItem = document.createElement('li');
+            let listItem = document.createElement('li');
             listItem.innerHTML = `
-                <img src="${item.snippet.thumbnails.medium.url}" />
+                <img src="${item.snippet.thumbnails.medium.url}" class="yt-item" data-yt-id="${item.snippet.resourceId.videoId}" />
             `;
             list.appendChild(listItem);
         });
 
         writeTo.appendChild(list);
+
+        ytModalEl.addEventListener('hide.bs.modal', function (event) {
+            ytPlayer.stopVideo();
+            Amplitude.play();
+        })
+
+        // Navigation links event listeners for dynamic page load
+        document.querySelectorAll('.yt-item').forEach(function (button) {
+            button.addEventListener('click', function () {
+                ytPlayer.loadVideoById(this.getAttribute("data-yt-id"));
+                ytModal.show();
+                Amplitude.pause();
+                ytPlayer.playVideo();
+            });
+        });
     });
 }
 
