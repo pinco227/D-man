@@ -90,7 +90,7 @@ async function main() {
         'about': aboutTitle,
         'contact': contactTitle,
     }
-    let page = window.location.pathname.split('/').slice(-1)[0];
+    let page = window.location.pathname.split('/').slice(-1)[0].split('#')[0];
     setPage(page);
 };
 
@@ -98,7 +98,8 @@ async function main() {
  * The Function is invoked when the window.history changes
  */
 window.onpopstate = () => {
-    setPage(window.location.pathname);
+    let page = window.location.pathname.split('/').slice(-1)[0].split('#')[0];
+    setPage(page);
 };
 
 // Navigation links event listeners for dynamic page load
@@ -142,8 +143,8 @@ function getData(url, cb) {
 // ###################################### Video Library Page
 
 // Declare global youtube Modal and Player variables
-let ytModalEl;
-let ytModal;
+// let ytModalEl;
+// let ytModal;
 let ytPlayer;
 function onYouTubeIframeAPIReady() {
     ytPlayer = new YT.Player('player');
@@ -159,16 +160,15 @@ function writeVideosToDoc() {
         data = data.items;
         const list = document.createElement('ul');
         ytModalEl = document.getElementById('yt-modal');
-        ytModal = new bootstrap.Modal(ytModalEl);
+        // ytModal = new bootstrap.Modal(ytModalEl);
 
         data.forEach(function (item) {
             let listItem = document.createElement('li');
             listItem.innerHTML = `
-                <img src="${item.snippet.thumbnails.medium.url}" class="yt-item" data-yt-id="${item.snippet.resourceId.videoId}" />
+                <img src="${item.snippet.thumbnails.medium.url}" class="yt-item" data-bs-toggle="modal" data-bs-target="#yt-modal" data-yt-id="${item.snippet.resourceId.videoId}" />
             `;
             list.appendChild(listItem);
         });
-
         writeTo.appendChild(list);
 
         ytModalEl.addEventListener('hide.bs.modal', function (event) {
@@ -180,7 +180,7 @@ function writeVideosToDoc() {
         document.querySelectorAll('.yt-item').forEach(function (button) {
             button.addEventListener('click', function () {
                 ytPlayer.loadVideoById(this.getAttribute("data-yt-id"));
-                ytModal.show();
+                // ytModal.show();
                 Amplitude.pause();
                 ytPlayer.playVideo();
             });
@@ -285,6 +285,24 @@ function writeMusicToDoc(album) {
 }
 // ###################################### Music Library Page END
 // ---------------------------------------------------------------- PAGES APIs END ----------
+
+// Close modals on browser back button trick
+// CREDIT: https://gist.github.com/mcoira/919644b9efc26d00ce10
+document.querySelectorAll('div.modal').forEach(function (el) {
+    el.addEventListener('show.bs.modal', function () {
+        var modal = this;
+        var hash = modal.id;
+        window.location.hash = hash;
+    });
+});
+window.onhashchange = function () {
+    if (!window.location.hash) {
+        document.querySelectorAll('div.modal').forEach(function (el) {
+            let modal = bootstrap.Modal.getInstance(el);
+            modal ? modal.hide() : '';
+        });
+    }
+}
 
 // Invoke the Main function which loads all pages into variables, create routes and set the current page
 main();
