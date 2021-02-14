@@ -107,15 +107,15 @@
     </footer>
 
     <div class="modal fade" tabindex="-1" id="yt-modal" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
             <div class="modal-content">
-                <div id="player"></div>
+                <div id="yt-player"></div>
             </div>
         </div>
     </div>
 
     <div class="modal fade" id="galleryModal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div id="galleryCarousel" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
@@ -131,6 +131,22 @@
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
                     </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" tabindex="-1" id="playback-dialog" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="dialog-no">No</button>
+                    <button type="button" class="btn btn-primary" id="dialog-yes">Yes</button>
                 </div>
             </div>
         </div>

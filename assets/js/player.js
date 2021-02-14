@@ -95,36 +95,22 @@ var globalPlaylist = {
             "cover_art_url": "https://pinco227.github.io/D-man/media/music/Singles/cover.jpg",
             "duration": "02:56"
         }
-    ]
-};
-
-function setCookie() {
-    document.cookie = "player=" + JSON.stringify(Amplitude.getConfig());
-}
-
-/** 
-* Get cookie CREDIT: https://stackoverflow.com/a/5968306
-* @return {string} cookie value
-*/
-function getCookie(name) {
-    var dc = document.cookie;
-    var prefix = name + "=";
-    var begin = dc.indexOf("; " + prefix);
-    if (begin == -1) {
-        begin = dc.indexOf(prefix);
-        if (begin != 0) return null;
-    }
-    else {
-        begin += 2;
-        var end = document.cookie.indexOf(";", begin);
-        if (end == -1) {
-            end = dc.length;
+    ],
+    callbacks: {
+        initialized: function () {
+            const playlist = globalPlaylist.songs;
+            localStorage.setItem('playlist', JSON.stringify(playlist));
+        },
+        play: function () {
+            const songIndex = Amplitude.getActiveIndex();
+            localStorage.setItem('activeSongIndex', songIndex);
+        },
+        timeupdate: function () {
+            const songPercentage = Amplitude.getSongPlayedPercentage();
+            localStorage.setItem('songPercentage', songPercentage);
         }
     }
-    // because unescape has been deprecated, replaced with decodeURI
-    //return unescape(dc.substring(begin + prefix.length, end));
-    return decodeURI(dc.substring(begin + prefix.length, end));
-}
+};
 
 /** 
 * Updates the dom with playlist from global object
@@ -154,19 +140,59 @@ function updatePlayList() {
 * @return {ReturnValueDataTypeHere} Brief description of the returning value here.
 */
 function loadPlaylist(again) {
-    updatePlayList();
     if (typeof again == "undefined") { // Load playlist from library
+        updatePlayList();
         Amplitude.stop();   // Stop player in order to avoid overlaping songs
+
         // Promise
-        var initPlayer = new Promise(
+        let initPlayer = new Promise(
             function () {
                 Amplitude.init(globalPlaylist);
             }
         );
+
         initPlayer.then(Amplitude.play());
     } else { // Load playlist initialy
+        let activeIndex = 0;
+        let songPlayedPercentage = 0;
+        if (localStorage.getItem("playlist")) {
+            var retrievedPlayList = localStorage.getItem('playlist');
+            globalPlaylist.songs = JSON.parse(retrievedPlayList);
+        }
+        if (localStorage.getItem("activeSongIndex")) {
+            activeIndex = parseInt(localStorage.getItem('activeSongIndex'));
+            if (localStorage.getItem("activeSongIndex")) {
+                songPlayedPercentage = parseInt(localStorage.getItem('songPercentage'));
+            }
+        }
+
+        updatePlayList();
         Amplitude.init(globalPlaylist);
+
+        if (localStorage.getItem("activeSongIndex")) {
+            dialog('Resume playback ?',
+                function () {
+                    Amplitude.playSongAtIndex(activeIndex);
+                    Amplitude.setSongPlayedPercentage(songPlayedPercentage);
+                }, function () { }
+            );
+        }
     }
+}
+
+function dialog(message, yesCallback, noCallback) {
+    document.querySelector('#playback-dialog .modal-title').textContent = message;
+    let dialogModal = new bootstrap.Modal(document.getElementById('playback-dialog'));
+    dialogModal.show();
+
+    document.getElementById('dialog-yes').addEventListener('click', function () {
+        dialogModal.hide();
+        yesCallback();
+    });
+    document.getElementById('dialog-no').addEventListener('click', function () {
+        dialogModal.hide();
+        noCallback();
+    });
 }
 
 // Amplitude key detection

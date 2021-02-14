@@ -117,7 +117,7 @@ document.querySelectorAll('.nav-link').forEach(function (button) {
 // ------------------------------------------------------------------- PAGES APIs  ----------
 // Declare API urls to call for GET
 // Youtube
-const youtubePlaylistApiUrl = 'https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=UU-pMGW4z9PyJ8R8J19tBzsg&key=AIzaSyASZKSW8QjCJPjuRvlaSzEA67IYSxENYe0';
+const youtubePlaylistApiUrl = 'https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=25&playlistId=UU-pMGW4z9PyJ8R8J19tBzsg&key=AIzaSyASZKSW8QjCJPjuRvlaSzEA67IYSxENYe0';
 // Gallery
 const galleryApiUrl = 'https://pinco227.github.io/D-man/media/photos/list.json';
 // Music
@@ -147,7 +147,7 @@ function getData(url, cb) {
 // let ytModal;
 let ytPlayer;
 function onYouTubeIframeAPIReady() {
-    ytPlayer = new YT.Player('player');
+    ytPlayer = new YT.Player('yt-player');
 }
 
 /**
@@ -287,7 +287,7 @@ function writeMusicToDoc(album) {
 // ---------------------------------------------------------------- PAGES APIs END ----------
 
 // Close modals on browser back button trick
-// CREDIT: https://gist.github.com/mcoira/919644b9efc26d00ce10
+// CREDIT: https://stackoverflow.com/a/40033565
 document.querySelectorAll('div.modal').forEach(function (el) {
     el.addEventListener('show.bs.modal', function () {
         var modal = this;
