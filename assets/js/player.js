@@ -105,6 +105,15 @@ var globalPlaylist = {
         play: function () {
             const songIndex = Amplitude.getActiveIndex();
             localStorage.setItem('activeSongIndex', songIndex);
+
+            let playPauseButton = document.getElementById("play-pause");
+            playPauseButton.classList.remove("amplitude-paused");
+            playPauseButton.classList.add("amplitude-playing");
+        },
+        pause: function () {
+            let playPauseButton = document.getElementById("play-pause");
+            playPauseButton.classList.remove("amplitude-playing");
+            playPauseButton.classList.add("amplitude-paused");
         },
         timeupdate: function () {
             const songPercentage = Amplitude.getSongPlayedPercentage();
@@ -184,7 +193,12 @@ function loadPlaylist(again) {
         }
     }
 }
-
+/** 
+* Opens dialog modal
+* @param {string} message - The message to be shown to user
+* @param {function} yesCallback - Function to be called when user presses Yes
+* @param {function} noCallback - Function to be called when user presses No
+*/
 function dialog(message, yesCallback, noCallback) {
     document.querySelector('#playback-dialog .modal-title').textContent = message;
     let dialogModal = new bootstrap.Modal(document.getElementById('playback-dialog'));
