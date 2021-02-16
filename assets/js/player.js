@@ -1,4 +1,5 @@
 // Global object to store songs for player
+// Pre-filled with a selection of songs
 var globalPlaylist = {
     "bindings": {
         37: 'prev',
@@ -153,29 +154,33 @@ function loadPlaylist(again) {
 
         initPlayer.then(Amplitude.play());
     } else { // Load playlist initialy
-        let activeIndex = 0;
-        let songPlayedPercentage = 0;
-        if (localStorage.getItem("playlist")) {
-            var retrievedPlayList = localStorage.getItem('playlist');
-            globalPlaylist.songs = JSON.parse(retrievedPlayList);
-        }
-        if (localStorage.getItem("activeSongIndex")) {
-            activeIndex = parseInt(localStorage.getItem('activeSongIndex'));
-            if (localStorage.getItem("activeSongIndex")) {
-                songPlayedPercentage = parseInt(localStorage.getItem('songPercentage'));
-            }
-        }
-
-        updatePlayList();
-        Amplitude.init(globalPlaylist);
-
-        if (localStorage.getItem("activeSongIndex")) {
+        if (localStorage.getItem("activeSongIndex")) {  // Check if the play button was ever pressed
+            // Ask for playback to reload from the stored state
             dialog('Resume playback ?',
-                function () {
-                    Amplitude.playSongAtIndex(activeIndex);
-                    Amplitude.setSongPlayedPercentage(songPlayedPercentage);
-                }, function () { }
+                function () {   // Yes callback function
+                    if (localStorage.getItem("playlist")) { // Update songs list in the global variable
+                        globalPlaylist.songs = JSON.parse(localStorage.getItem('playlist'));
+                    }
+                    updatePlayList();
+                    Amplitude.init(globalPlaylist);
+                    Amplitude.playSongAtIndex(parseInt(localStorage.getItem('activeSongIndex')));
+
+                    if (localStorage.getItem("songPercentage")) {   // Get song percentage stored from previous session
+                        let songPercentageStored = localStorage.getItem('songPercentage')
+                        setTimeout(function () {
+                            Amplitude.setSongPlayedPercentage(parseFloat(songPercentageStored));
+                        }, 500);
+                    }
+                    // Amplitude.play();
+                }, function () {    // No callback function
+                    localStorage.clear();   //Clear localstorage
+                    updatePlayList();
+                    Amplitude.init(globalPlaylist);
+                }
             );
+        } else {
+            updatePlayList();
+            Amplitude.init(globalPlaylist);
         }
     }
 }

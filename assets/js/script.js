@@ -249,8 +249,8 @@ function writeMusicToDoc(album) {
                     "name": item.name,
                     "artist": item.artist,
                     "album": data[album].name,
-                    "url": "media/music/" + data[album].path + "/" + item.url,
-                    "cover_art_url": "media/music/" + data[album].path + "/" + data[album].cover,
+                    "url": "https://pinco227.github.io/D-man/media/music/" + data[album].path + "/" + item.url,
+                    "cover_art_url": "https://pinco227.github.io/D-man/media/music/" + data[album].path + "/" + data[album].cover,
                     "duration": item.duration
                 };
                 globalPlaylist.songs.push(song);
