@@ -90,7 +90,7 @@ async function main() {
         'about': aboutTitle,
         'contact': contactTitle,
     }
-    let page = window.location.pathname.split('/').slice(-1)[0].split('#')[0];
+    let page = window.location.pathname.split('/').pop().split('#')[0];
     setPage(page);
 };
 
@@ -98,7 +98,7 @@ async function main() {
  * The Function is invoked when the window.history changes
  */
 window.onpopstate = () => {
-    let page = window.location.pathname.split('/').slice(-1)[0].split('#')[0];
+    let page = window.location.pathname.split('/').pop().split('#')[0];
     setPage(page);
 };
 
@@ -107,7 +107,7 @@ document.querySelectorAll('.nav-link').forEach(function (button) {
     button.addEventListener('click', function (e) {
         e.preventDefault();
         let pathName = button.href;
-        let page = pathName.split('/').slice(-1)[0];
+        let page = pathName.split('/').pop();
         window.history.pushState({}, titles[page], pathName);
         setPage(page);
     });
@@ -293,6 +293,9 @@ document.querySelectorAll('div.modal').forEach(function (el) {
         var modal = this;
         var hash = modal.id;
         window.location.hash = hash;
+    });
+    el.addEventListener('hide.bs.modal', function () {
+        window.history.pushState("", document.title, window.location.pathname);
     });
 });
 window.onhashchange = function () {
