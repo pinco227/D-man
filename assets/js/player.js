@@ -101,6 +101,8 @@ const globalPlaylist = {
         initialized: function () {
             const playlist = globalPlaylist.songs;
             localStorage.setItem('playlist', JSON.stringify(playlist));
+
+            updateMetadata(); // Media Session API
         },
         play: function () {
             const songIndex = Amplitude.getActiveIndex();
@@ -120,8 +122,12 @@ const globalPlaylist = {
         timeupdate: function () {
             setSeekerDuration();
             setSeekerCurrentTime();
+            setSeekerBuffered();
+
             const songPercentage = Amplitude.getSongPlayedPercentage();
             localStorage.setItem('songPercentage', songPercentage);
+
+            updatePositionState(); // Media Session API, set the duration.
         }
     }
 };
@@ -197,26 +203,7 @@ function loadPlaylist(again) {
         }
     }
 }
-/** 
-* Opens dialog modal
-* @param {string} message - The message to be shown to user
-* @param {function} yesCallback - Function to be called when user presses Yes
-* @param {function} noCallback - Function to be called when user presses No
-*/
-function dialog(message, yesCallback, noCallback) {
-    document.querySelector('#playback-dialog .modal-title').textContent = message;
-    let dialogModal = new bootstrap.Modal(document.getElementById('playback-dialog'));
-    dialogModal.show();
 
-    document.getElementById('dialog-yes').addEventListener('click', function () {
-        dialogModal.hide();
-        yesCallback();
-    });
-    document.getElementById('dialog-no').addEventListener('click', function () {
-        dialogModal.hide();
-        noCallback();
-    });
-}
 /** 
 * Updates the Media Notification with current playing track information
 */
@@ -234,8 +221,6 @@ function updateMetadata() {
             }
         ]
     });
-    // Media is loaded, set the duration.
-    updatePositionState();
 }
 /**
 * Updates the Media Notification with current playing track position
@@ -306,18 +291,10 @@ window.onkeydown = function (e) {
     return !(e.keyCode == 32);
 };
 
-/*
-  Handles a click on the song played progress bar. Fallback for range input.
-*/
-document.getElementById('song-played-progress').addEventListener('click', function (e) {
-    var offset = this.getBoundingClientRect();
-    var x = e.pageX - offset.left;
-
-    Amplitude.setSongPlayedPercentage((parseFloat(x) / parseFloat(this.offsetWidth)) * 100);
-});
-
-// Declare the seeker range input variable
+// Declare the seeker variables
 const seeker = document.getElementById('seeker');
+const playedProgress = document.getElementById('song-played-progress');
+const bufferedProgress = document.getElementById('song-buffered-progress');
 /*
   Handles a change on the song seek range input.
 */
@@ -334,10 +311,38 @@ function setSeekerDuration() {
     seeker.max = Amplitude.getSongDuration();
 }
 /**
-* Set the seeker range input 'value' as the song currentTime
+* Set the seeker range input 'value' and the played progreess 'value' as the song currentTime
 */
 function setSeekerCurrentTime() {
     seeker.value = Amplitude.getSongPlayedSeconds();
+    playedProgress.value = Amplitude.getSongPlayedPercentage() / 100;
+}
+/**
+* Set the buffered progress 'value' 
+*/
+function setSeekerBuffered() {
+    bufferedProgress.value = Amplitude.getBuffered() / 100;
+}
+
+/** 
+* Opens dialog modal
+* @param {string} message - The message to be shown to user
+* @param {function} yesCallback - Function to be called when user presses Yes
+* @param {function} noCallback - Function to be called when user presses No
+*/
+function dialog(message, yesCallback, noCallback) {
+    document.querySelector('#playback-dialog .modal-title').textContent = message;
+    let dialogModal = new bootstrap.Modal(document.getElementById('playback-dialog'));
+    dialogModal.show();
+
+    document.getElementById('dialog-yes').addEventListener('click', function () {
+        dialogModal.hide();
+        yesCallback();
+    });
+    document.getElementById('dialog-no').addEventListener('click', function () {
+        dialogModal.hide();
+        noCallback();
+    });
 }
 
 // Initial load
