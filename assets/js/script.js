@@ -309,3 +309,15 @@ window.onhashchange = function () {
 
 // Invoke the Main function which loads all pages into variables, create routes and set the current page
 main();
+
+var img = document.getElementById('player-top').firstElementChild;
+// img.setAttribute('src', 'examples/octocat.png')
+
+img.addEventListener('load', function () {
+    Vibrant.from(img.src).getPalette()
+        .then((palette) => {
+            // console.log(palette);
+            document.body.style.backgroundColor = palette.DarkMuted.getHex();
+            document.body.style.color = palette.LightVibrant.getHex();
+        })
+});

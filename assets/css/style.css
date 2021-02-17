@@ -1,3 +1,7 @@
+body {
+    background-color: #242b33;
+}
+
 div#player-screen {
     overflow-y: scroll;
     max-height: 80vh;
