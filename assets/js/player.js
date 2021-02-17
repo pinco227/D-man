@@ -109,6 +109,8 @@ var globalPlaylist = {
             let playPauseButton = document.getElementById("play-pause");
             playPauseButton.classList.remove("amplitude-paused");
             playPauseButton.classList.add("amplitude-playing");
+
+            updateMetadata(); // Media Session API
         },
         pause: function () {
             let playPauseButton = document.getElementById("play-pause");
@@ -212,6 +214,89 @@ function dialog(message, yesCallback, noCallback) {
         dialogModal.hide();
         noCallback();
     });
+}
+/** 
+* Updates the Media Notification with current playing track information
+*/
+function updateMetadata() {
+    const track = Amplitude.getActiveSongMetadata();
+    navigator.mediaSession.metadata = new MediaMetadata({
+        title: track.name,
+        artist: track.artist,
+        album: track.album,
+        artwork: [
+            {
+                src: track.cover_art_url,
+                sizes: '512x512',
+                type: 'image/jpg'
+            }
+        ]
+    });
+    // Media is loaded, set the duration.
+    updatePositionState();
+}
+/**
+* Updates the Media Notification with current playing track position
+*/
+function updatePositionState() {
+    if ('setPositionState' in navigator.mediaSession) {
+        navigator.mediaSession.setPositionState({
+            duration: Amplitude.getSongDuration(),
+            playbackRate: Amplitude.getPlaybackSpeed(),
+            position: Amplitude.getSongPlayedSeconds()
+        });
+    }
+}
+
+// Action handlers for media notification controls
+navigator.mediaSession.setActionHandler('previoustrack', function () {
+    Amplitude.prev();
+});
+navigator.mediaSession.setActionHandler('nexttrack', function () {
+    Amplitude.next();
+});
+let defaultSkipTime = 10; /* Time to skip in seconds by default */
+navigator.mediaSession.setActionHandler('seekbackward', function (event) {
+    const skipTime = event.seekOffset || defaultSkipTime;
+    const setTime = Math.max(Amplitude.getSongPlayedSeconds() - skipTime, 0);
+    const setPercentage = (parseFloat(setTime) / parseFloat(Amplitude.getSongDuration())) * 100;
+    Amplitude.setSongPlayedPercentage(setPercentage);
+    updatePositionState();
+});
+navigator.mediaSession.setActionHandler('seekforward', function (event) {
+    const skipTime = event.seekOffset || defaultSkipTime;
+    const setTime = Math.min(Amplitude.getSongPlayedSeconds() + skipTime, Amplitude.getSongDuration());
+    const setPercentage = (parseFloat(setTime) / parseFloat(Amplitude.getSongDuration())) * 100;
+    Amplitude.setSongPlayedPercentage(setPercentage);
+    updatePositionState();
+});
+navigator.mediaSession.setActionHandler('play', async function () {
+    await Amplitude.play();
+    navigator.mediaSession.playbackState = "playing";
+    // Do something more than just playing audio...
+});
+navigator.mediaSession.setActionHandler('pause', function () {
+    Amplitude.pause();
+    navigator.mediaSession.playbackState = "paused";
+    // Do something more than just pausing audio...
+});
+try {
+    navigator.mediaSession.setActionHandler('stop', function () {
+        Amplitude.stop();
+        localStorage.clear();
+    });
+} catch (error) {
+    console.log('Warning! The "stop" media session action is not supported.');
+}
+try {
+    navigator.mediaSession.setActionHandler('seekto', function (event) {
+        const setTime = event.seekTime;
+        const setPercentage = (parseFloat(setTime) / parseFloat(Amplitude.getSongDuration())) * 100;
+        Amplitude.setSongPlayedPercentage(setPercentage);
+        updatePositionState();
+    });
+} catch (error) {
+    console.log('Warning! The "seekto" media session action is not supported.');
 }
 
 // Amplitude key detection
