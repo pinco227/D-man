@@ -1,6 +1,6 @@
 // Global object to store songs for player
 // Pre-filled with a selection of songs
-var globalPlaylist = {
+const globalPlaylist = {
     "bindings": {
         37: 'prev',
         39: 'next',
@@ -118,6 +118,8 @@ var globalPlaylist = {
             playPauseButton.classList.add("amplitude-paused");
         },
         timeupdate: function () {
+            setSeekerDuration();
+            setSeekerCurrentTime();
             const songPercentage = Amplitude.getSongPlayedPercentage();
             localStorage.setItem('songPercentage', songPercentage);
         }
@@ -305,7 +307,7 @@ window.onkeydown = function (e) {
 };
 
 /*
-  Handles a click on the song played progress bar.
+  Handles a click on the song played progress bar. Fallback for range input.
 */
 document.getElementById('song-played-progress').addEventListener('click', function (e) {
     var offset = this.getBoundingClientRect();
@@ -313,6 +315,30 @@ document.getElementById('song-played-progress').addEventListener('click', functi
 
     Amplitude.setSongPlayedPercentage((parseFloat(x) / parseFloat(this.offsetWidth)) * 100);
 });
+
+// Declare the seeker range input variable
+const seeker = document.getElementById('seeker');
+/*
+  Handles a change on the song seek range input.
+*/
+document.getElementById('seeker').addEventListener('input', function (e) {
+    const setTime = seeker.value;
+    const setPercentage = (parseFloat(setTime) / parseFloat(Amplitude.getSongDuration())) * 100;
+    Amplitude.setSongPlayedPercentage(setPercentage);
+    updatePositionState();
+});
+/**
+* Set the seeker range input 'max' as the song duration
+*/
+function setSeekerDuration() {
+    seeker.max = Amplitude.getSongDuration();
+}
+/**
+* Set the seeker range input 'value' as the song currentTime
+*/
+function setSeekerCurrentTime() {
+    seeker.value = Amplitude.getSongPlayedSeconds();
+}
 
 // Initial load
 loadPlaylist(1);
