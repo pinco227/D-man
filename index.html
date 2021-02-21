@@ -19,28 +19,25 @@
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container-xxl">
             <a class="navbar-brand" href="index.html">D-Man</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="fas fa-ellipsis-v"></i>
-            </button>
+            <div class="navbar-nav no-collapse">
+                <a class="nav-link" aria-current="page" href="music"><i class="fas fa-music"></i> <span
+                        class="d-none d-md-inline">Music
+                        Library</span></a>
+                <a class="nav-link" href="videos"><i class="fas fa-caret-square-right"></i> <span
+                        class="d-none d-md-inline">Videos</span></a>
+                <a class="nav-link" href="gallery"><i class="fas fa-image"></i> <span
+                        class="d-none d-md-inline">Gallery</span></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-ellipsis-v"></i>
+                </button>
+            </div>
             <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav mb-2 mb-md-0">
-                    <li class="nav-item active">
-                        <a class="nav-link" aria-current="page" href="music">Music Library</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="videos">Videos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="gallery">Gallery</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="about">About Me</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact">Contact</a>
-                    </li>
-                </ul>
+                <div class="navbar-nav">
+                    <a class="nav-link" href="events"><i class="fas fa-microphone-alt"></i> Events</a>
+                    <a class="nav-link" href="about"><i class="fas fa-caret-square-right"></i> About Me</a>
+                    <a class="nav-link" href="contact"><i class="fas fa-comments"></i> Contact</a>
+                </div>
             </div>
         </div>
     </nav>

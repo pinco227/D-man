@@ -101,21 +101,21 @@ const globalPlaylist = {
         initialized: function () {
             const playlist = globalPlaylist.songs;
             localStorage.setItem('playlist', JSON.stringify(playlist));
-            console.log('initialized');
         },
         play: function () {
             const songIndex = Amplitude.getActiveIndex();
             localStorage.setItem('activeSongIndex', songIndex);
 
             let playPauseButton = document.getElementById("play-pause");
+            let songArtDiv = document.getElementById("player-top");
             playPauseButton.classList.remove("amplitude-paused");
             playPauseButton.classList.add("amplitude-playing");
-            console.log('play');
+            songArtDiv.classList.add("rotate-art");
+            songArtDiv.style.webkitAnimationPlayState = "running";
         },
         song_change: function () {
             const songIndex = Amplitude.getActiveIndex();
             localStorage.setItem('activeSongIndex', songIndex);
-            console.log('song change');
         },
         loadedmetadata: function () {
             console.log('loaded metadata');
@@ -123,8 +123,10 @@ const globalPlaylist = {
         },
         pause: function () {
             let playPauseButton = document.getElementById("play-pause");
+            let songArtDiv = document.getElementById("player-top");
             playPauseButton.classList.remove("amplitude-playing");
             playPauseButton.classList.add("amplitude-paused");
+            songArtDiv.style.webkitAnimationPlayState = "paused";
         },
         timeupdate: function () {
             setSeekerDuration();
@@ -351,6 +353,8 @@ function dialog(message, yesCallback, noCallback) {
         noCallback();
     });
 }
+
+document.querySelector('#player-top').style.height = document.querySelector('#player-top').offsetWidth + 'px';
 
 // Initial load
 loadPlaylist(1);

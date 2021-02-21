@@ -72,6 +72,7 @@ h1, h2 {
 .nav-link {
     font-family: 'Baloo Da 2', cursive;
     font-weight: 600;
+    white-space: nowrap;
 }
 
 .navbar-toggler {
@@ -82,6 +83,15 @@ h1, h2 {
 .navbar-toggler:focus, .navbar-toggler:active {
     outline: none;
     box-shadow: none;
+}
+
+.no-collapse {
+    flex-direction: row;
+}
+
+.no-collapse .nav-link {
+    padding-right: .5rem;
+    padding-left: .5rem;
 }
 
 /*------------------------------------------ PLAYER */
@@ -173,11 +183,73 @@ div#list div.song span.song-artist-album {
 div#player-top {
     position: relative;
     text-align: center;
+    border-radius: 50%;
+    width: 50%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.rotate-art {
+    -webkit-animation: spin 6s linear infinite;
+    -moz-animation: spin 6s linear infinite;
+    animation: spin 6s linear infinite;
+    -webkit-animation-play-state: paused;
+    -moz-animation-play-state: paused;
+    -ms-animation-play-state: paused;
+    -o-animation-play-state: paused;
+    animation-play-state: paused;
 }
 
 div#player-top img[data-amplitude-song-info="cover_art_url"] {
-    width: 50%;
-    border-radius: 50%;
+    height: 100%;
+    width: auto;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(360deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(360deg);
+    }
+    100% {
+        -webkit-transform: rotate(0deg);
+    }
+}
+
+@-ms-keyframes spin {
+    0% {
+        -ms-transform: rotate(360deg);
+    }
+    100% {
+        -ms-transform: rotate(0deg);
+    }
+}
+
+@-moz-keyframes spin {
+    0% {
+        -moz-transform: rotate(360deg);
+    }
+    100% {
+        -moz-transform: rotate(0deg);
+    }
+}
+
+@-o-keyframes spin {
+    0% {
+        -o-transform: rotate(360deg);
+    }
+    100% {
+        -o-transform: rotate(0deg);
+    }
 }
 
 div#player-progress-bar-container {
@@ -544,7 +616,11 @@ input#seeker::-ms-track {
 
 /* Medium Screen */
 
-@media(max-width:767px) {}
+@media(max-width:767px) {
+    .collapse .navbar-nav {
+        text-align: right;
+    }
+}
 
 /* Large Screen */
 
