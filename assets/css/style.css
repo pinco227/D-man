@@ -7,35 +7,38 @@
 */
 
 @import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Text:wght@700;800&family=Baloo+Da+2:wght@400;500;600;700&family=Goldman:wght@400;700&family=VT323&display=swap');
-/* Icons Import */
+/*- Icons Import */
 
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css');
-/*  UX Color Palette
-Light shades:       
-Lighter shades:     
-Light accent:       
-Lighter accent:     
-Main accent:        
-Dark accent:        
-Dark shades:        
-Darker shades:      
-*/
+/*- Color dynamic variables */
+
+:root {
+    --main-bg-color: rgb(36, 43, 51);
+    /* --darker-bg-color: rgba(36, 43, 51, .75); */
+    --main-text-color: rgba(255, 255, 255, .75);
+    --main-link-color: rgba(255, 255, 255, .55);
+    --main-link-color-hover: rgb(255, 255, 255);
+    --headings-color: rgb(255, 255, 255);
+}
 
 /*------------------------------------------ DOCUMENT */
 
 html {
     scroll-behavior: smooth;
+    background-color: #000;
 }
 
 body {
     font-family: 'Baloo Da 2', cursive;
     font-weight: 400;
-    background-color: #242b33;
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
 }
 
 /*------------------------------------------ LINKS */
 
 a {
+    color: var(--main-link-color);
     font-weight: bold;
     text-decoration: none;
 }
@@ -43,12 +46,14 @@ a {
 a:hover, a:focus, a:active {
     text-decoration: none;
     outline: none;
+    color: var(--main-link-color-hover);
 }
 
 /*------------------------------------------ HEADINGS */
 
 h1, h2, h3, h4, h5, h5 {
     font-family: 'Goldman', cursive;
+    color: var(--headings-color);
 }
 
 h1, h2 {
@@ -67,6 +72,7 @@ h1, h2 {
     font-size: 1.7rem;
     margin: -0.5rem 0.5rem;
     padding: 0;
+    color: var(--headings-color);
 }
 
 .nav-link {
@@ -78,11 +84,16 @@ h1, h2 {
 .navbar-toggler {
     border: none;
     outline: none;
+    color: var(--main-link-color);
 }
 
 .navbar-toggler:focus, .navbar-toggler:active {
     outline: none;
     box-shadow: none;
+    color: var(--main-link-color-hover);
+    background-color: var(--main-bg-color);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
 .no-collapse {
@@ -617,8 +628,10 @@ input#seeker::-ms-track {
 /* Medium Screen */
 
 @media(max-width:767px) {
-    .collapse .navbar-nav {
+    .navbar-collapse .navbar-nav {
+        background-color: var(--main-bg-color);
         text-align: right;
+        padding-right: .75rem;
     }
 }
 

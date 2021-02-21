@@ -322,8 +322,16 @@ var img = document.getElementById('player-top').firstElementChild;
 img.addEventListener('load', function () {
     Vibrant.from(img.src).getPalette()
         .then((palette) => {
-            // console.log(palette);
-            document.body.style.backgroundColor = palette.DarkMuted.getHex();
-            document.body.style.color = palette.LightVibrant.getHex();
+            let root = document.querySelector(':root');
+            let bgColor = `rgba(${palette.DarkMuted.r},${palette.DarkMuted.g},${palette.DarkMuted.b},.6)`;
+            let textColor = `rgba(${palette.LightVibrant.r},${palette.LightVibrant.g},${palette.LightVibrant.b},.75)`;
+            let linkColor = `rgb(${palette.LightVibrant.getRgb()})`;
+            let linkHover = `rgb(${palette.LightMuted.getRgb()})`;
+            let headingsColor = `rgb(${palette.Vibrant.getRgb()})`;
+            root.style.setProperty('--main-bg-color', bgColor);
+            root.style.setProperty('--main-text-color', textColor);
+            root.style.setProperty('--main-link-color', linkColor);
+            root.style.setProperty('--main-link-color-hover', linkHover);
+            root.style.setProperty('--headings-color', headingsColor);
         })
 });

@@ -118,7 +118,6 @@ const globalPlaylist = {
             localStorage.setItem('activeSongIndex', songIndex);
         },
         loadedmetadata: function () {
-            console.log('loaded metadata');
             updateMetadata(); // Media Session API
         },
         pause: function () {
