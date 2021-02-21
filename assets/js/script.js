@@ -165,7 +165,7 @@ function writeVideosToDoc() {
         data.forEach(function (item) {
             let listItem = document.createElement('li');
             listItem.innerHTML = `
-                <img src="${item.snippet.thumbnails.medium.url}" class="yt-item" data-bs-toggle="modal" data-bs-target="#yt-modal" data-yt-id="${item.snippet.resourceId.videoId}" />
+                <article><img src="${item.snippet.thumbnails.medium.url}" class="yt-item" data-bs-toggle="modal" data-bs-target="#yt-modal" data-yt-id="${item.snippet.resourceId.videoId}" /></article>
             `;
             list.appendChild(listItem);
         });
@@ -203,7 +203,9 @@ function writePhotosToDoc() {
         galleryContent.innerHTML = data.map(function (item, i) {
             return `
                 <div class="col-12 col-sm-6 col-lg-3">
+                  <figure>
                     <img class="w-100" src="media/photos/${item.thumbnail}" alt="${item.title} - ${item.description}" data-bs-target="#galleryCarousel" data-bs-slide-to="${i}">
+                  </figure>
                 </div>
             `;
         }).join("");
@@ -237,15 +239,16 @@ function writeMusicToDoc(album) {
         // Write the songs list of album
         if (typeof album == "number") {
             writeTo.innerHTML = `<button onClick="writeMusicToDoc()">Back</button>`;
-            var list = document.createElement('ul');
+            const article = document.createElement('article');
+            const list = document.createElement('ul');
             data[album].songs.forEach(function (item) {
-                var listItem = document.createElement('li');
+                const listItem = document.createElement('li');
                 listItem.innerHTML = `
                     ${item.artist} - ${item.name}
                 `;
                 list.appendChild(listItem);
 
-                var song = {
+                const song = {
                     "name": item.name,
                     "artist": item.artist,
                     "album": data[album].name,
@@ -255,14 +258,17 @@ function writeMusicToDoc(album) {
                 };
                 globalPlaylist.songs.push(song);
             });
-            writeTo.appendChild(list);
+            article.appendChild(list);
+            writeTo.appendChild(article);
 
         } else { // writes the album list
             var list = document.createElement('ul');
             data.forEach(function (item, i) {
                 var listItem = document.createElement('li');
                 listItem.innerHTML = `
-                    <img src="media/music/${item.path}/${item.cover}" alt="${item.artist} - ${item.name}" width="100" onClick="writeMusicToDoc(${i});" />
+                    <article>
+                        <img src="media/music/${item.path}/${item.cover}" alt="${item.artist} - ${item.name}" width="100" onClick="writeMusicToDoc(${i});">
+                    </article>
                 `;
                 list.appendChild(listItem);
 
