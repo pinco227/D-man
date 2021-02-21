@@ -7,6 +7,9 @@
 */
 
 @import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Text:wght@700;800&family=Baloo+Da+2:wght@400;500;600;700&family=Goldman:wght@400;700&family=VT323&display=swap');
+/* Icons Import */
+
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css');
 /*  UX Color Palette
 Light shades:       
 Lighter shades:     
@@ -69,6 +72,16 @@ h1, h2 {
 .nav-link {
     font-family: 'Baloo Da 2', cursive;
     font-weight: 600;
+}
+
+.navbar-toggler {
+    border: none;
+    outline: none;
+}
+
+.navbar-toggler:focus, .navbar-toggler:active {
+    outline: none;
+    box-shadow: none;
 }
 
 /*------------------------------------------ PLAYER */

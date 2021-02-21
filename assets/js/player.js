@@ -101,8 +101,7 @@ const globalPlaylist = {
         initialized: function () {
             const playlist = globalPlaylist.songs;
             localStorage.setItem('playlist', JSON.stringify(playlist));
-
-            updateMetadata(); // Media Session API
+            console.log('initialized');
         },
         play: function () {
             const songIndex = Amplitude.getActiveIndex();
@@ -111,7 +110,15 @@ const globalPlaylist = {
             let playPauseButton = document.getElementById("play-pause");
             playPauseButton.classList.remove("amplitude-paused");
             playPauseButton.classList.add("amplitude-playing");
-
+            console.log('play');
+        },
+        song_change: function () {
+            const songIndex = Amplitude.getActiveIndex();
+            localStorage.setItem('activeSongIndex', songIndex);
+            console.log('song change');
+        },
+        loadedmetadata: function () {
+            console.log('loaded metadata');
             updateMetadata(); // Media Session API
         },
         pause: function () {
@@ -188,7 +195,7 @@ function loadPlaylist(again) {
                         let songPercentageStored = localStorage.getItem('songPercentage')
                         setTimeout(function () {
                             Amplitude.setSongPlayedPercentage(parseFloat(songPercentageStored));
-                        }, 500);
+                        }, 700);
                     }
                     // Amplitude.play();
                 }, function () {    // No callback function
