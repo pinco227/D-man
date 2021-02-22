@@ -316,9 +316,8 @@ window.onhashchange = function () {
 // Invoke the Main function which loads all pages into variables, create routes and set the current page
 main();
 
-var img = document.getElementById('player-top').firstElementChild;
-// img.setAttribute('src', 'examples/octocat.png')
-
+// Use Vibrant.js to theme the app based on the music art img
+const img = document.getElementById('player-top').firstElementChild;
 img.addEventListener('load', function () {
     Vibrant.from(img.src).getPalette()
         .then((palette) => {
@@ -333,5 +332,26 @@ img.addEventListener('load', function () {
             root.style.setProperty('--main-link-color', linkColor);
             root.style.setProperty('--main-link-color-hover', linkHover);
             root.style.setProperty('--headings-color', headingsColor);
-        })
+        });
+    document.getElementsByTagName('aside')[0].style.backgroundImage = `url('${img.src}')`;
 });
+
+/**
+* Set the height of the content and player area
+* CREDIT : https://www.w3schools.com/howto/howto_js_media_queries.asp
+*/
+function setDocHeight(x) {
+    if (x.matches) { // If media query matches
+        const navbarHeight = document.getElementsByClassName('navbar')[0].offsetHeight;
+        const footerHeight = document.getElementsByTagName('footer')[0].offsetHeight + 7;
+        const docHeight = window.innerHeight;
+        document.getElementById("player-screen").style.height = `${docHeight - (navbarHeight + footerHeight)}px`;
+        document.getElementById("content").style.height = `${docHeight - (navbarHeight + footerHeight)}px`;
+    } else {
+        document.getElementById("player-screen").style.height = '100vh';
+    }
+}
+
+const mediaQ = window.matchMedia("(min-width: 768px)");
+setDocHeight(mediaQ); // Call listener function at run time
+mediaQ.addListener(setDocHeight); // Attach listener function on state changes
