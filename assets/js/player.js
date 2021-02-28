@@ -150,7 +150,7 @@ function updatePlayList() {
         <div class="song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="${i}">
             <span class="song-number-now-playing">
                 <span class="number">${i + 1}</span>
-                <img class="now-playing" src="https://521dimensions.com/img/open-source/amplitudejs/examples/flat-black/now-playing.svg" />
+                <img class="now-playing" src="assets/images/music-note-beamed.svg" />
             </span>
 
             <div class="song-meta-container">

@@ -52,6 +52,16 @@
                         <div id="player-top">
                             <img data-amplitude-song-info="cover_art_url" />
                         </div>
+                        <div class="player-middle">
+                            <div id="meta-container">
+                                <span data-amplitude-song-info="name" class="song-name"></span>
+
+                                <div class="song-artist-album">
+                                    <span data-amplitude-song-info="artist"></span> - <span
+                                        data-amplitude-song-info="album"></span>
+                                </div>
+                            </div>
+                        </div>
                         <div id="list">
                         </div>
                     </div>
@@ -79,28 +89,33 @@
             </div>
             <div class="row">
                 <div class="col-12 col-md-6 col-lg-5">
-                    <div class="col" id="shuffle-container">
-                        <div class="amplitude-shuffle amplitude-shuffle-off" id="shuffle"></div>
-                    </div>
-                    <div class="col" id="prev-container">
-                        <div class="amplitude-prev" id="previous"></div>
-                    </div>
-                    <div class="col" id="play-pause-container">
-                        <div class="amplitude-play-pause" id="play-pause"></div>
-                    </div>
-                    <div class="col" id="next-container">
-                        <div class="amplitude-next" id="next"></div>
-                    </div>
-                    <div class="col" id="repeat-container">
-                        <div class="amplitude-repeat" id="repeat"></div>
+                    <div class="row justify-content-center">
+                        <div class="col" id="shuffle-container">
+                            <div class="amplitude-shuffle amplitude-shuffle-off" id="shuffle"></div>
+                        </div>
+                        <div class="col" id="prev-container">
+                            <div class="amplitude-prev" id="previous"></div>
+                        </div>
+                        <div class="col">
+                            <div id="play-pause-container" class="mx-auto">
+                                <div class="amplitude-play-pause" id="play-pause"></div>
+                            </div>
+                        </div>
+                        <div class="col" id="next-container">
+                            <div class="amplitude-next" id="next"></div>
+                        </div>
+                        <div class="col" id="repeat-container">
+                            <div class="amplitude-repeat" id="repeat"></div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-12 col-md-6 col-lg-7" id="player-middle">
+                <div class="col-12 col-md-6 col-lg-7" id="now-playing">
                     <div id="meta-container">
                         <span data-amplitude-song-info="name" class="song-name"></span>
 
                         <div class="song-artist-album">
-                            <span data-amplitude-song-info="artist"></span>
+                            <span data-amplitude-song-info="artist"></span> - <span
+                                data-amplitude-song-info="album"></span>
                         </div>
                     </div>
                 </div>

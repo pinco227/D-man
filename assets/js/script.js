@@ -328,9 +328,9 @@ img.addEventListener('load', function () {
             let linkHover = `rgb(${palette.LightMuted.getRgb()})`;
             let headingsColor = `rgb(${palette.Vibrant.getRgb()})`;
             root.style.setProperty('--main-bg-color', bgColor);
-            root.style.setProperty('--main-text-color', textColor);
+            // root.style.setProperty('--main-text-color', textColor);
             root.style.setProperty('--main-link-color', linkColor);
-            root.style.setProperty('--main-link-color-hover', linkHover);
+            // root.style.setProperty('--main-link-color-hover', linkHover);
             root.style.setProperty('--headings-color', headingsColor);
         });
     document.body.style.backgroundImage = `url('${img.src}')`;
