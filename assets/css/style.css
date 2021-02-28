@@ -31,8 +31,16 @@ html {
 body {
     font-family: 'Baloo Da 2', cursive;
     font-weight: 400;
-    background-color: var(--main-bg-color);
     color: var(--main-text-color);
+    padding-top: .5rem;
+    background-attachment: scroll;
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+}
+
+main {
+    backdrop-filter: blur(40px) brightness(0.2);
 }
 
 /*------------------------------------------ LINKS */
@@ -65,6 +73,10 @@ h1, h2 {
 /*------------------------------------------ COLORS */
 
 /*------------------------------------------ HEADER */
+
+.navbar {
+    backdrop-filter: blur(40px) brightness(0.2);
+}
 
 .navbar-brand {
     font-family: 'Big Shoulders Stencil Text', cursive;
@@ -107,18 +119,11 @@ h1, h2 {
 
 /*------------------------------------------ PLAYER */
 
-aside {
-    background-attachment: scroll;
-    background-position: center;
-    background-size: cover;
-}
-
 div#player-screen {
     overflow-x: hidden;
     overflow-y: auto;
     max-height: 100vh;
-    backdrop-filter: blur(6px);
-    background-color: rgba(0, 0, 0, .6);
+    padding-top: 1.5rem;
 }
 
 div#player-screen::-webkit-scrollbar {
@@ -223,15 +228,15 @@ div#player-top {
     position: relative;
     text-align: center;
     border-radius: 50%;
-    width: 50%;
+    width: 40%;
     margin: 0 auto;
     overflow: hidden;
 }
 
 .rotate-art {
-    -webkit-animation: spin 6s linear infinite;
-    -moz-animation: spin 6s linear infinite;
-    animation: spin 6s linear infinite;
+    -webkit-animation: spin 6s linear infinite reverse;
+    -moz-animation: spin 6s linear infinite reverse;
+    animation: spin 6s linear infinite reverse;
     -webkit-animation-play-state: paused;
     -moz-animation-play-state: paused;
     -ms-animation-play-state: paused;
@@ -294,9 +299,7 @@ div#player-top img[data-amplitude-song-info="cover_art_url"] {
 div#player-progress-bar-container {
     width: 100%;
     height: 8px;
-    background-color: #000;
     position: relative;
-    margin-top: -6px;
 }
 
 div#player-progress-bar-container progress#song-played-progress {
@@ -370,7 +373,6 @@ div#player-progress-bar-container progress#song-buffered-progress[value]::-moz-p
 }
 
 div#player-middle {
-    background-color: #000;
     padding-left: 15px;
     padding-right: 15px;
     padding-top: 20px;
@@ -379,7 +381,8 @@ div#player-middle {
     position: relative;
 }
 
-div#player-middle div#time-container {
+div#time-container {
+    position: relative;
     color: white;
     width: 100%;
     background-color: #000;
@@ -387,13 +390,13 @@ div#player-middle div#time-container {
     font-weight: bold;
 }
 
-div#player-middle div#time-container span.amplitude-duration-time {
+div#time-container span.amplitude-duration-time {
     position: absolute;
     top: 0px;
     right: 5px;
 }
 
-div#player-middle div#time-container span.amplitude-current-time {
+div#time-container span.amplitude-current-time {
     position: absolute;
     top: 0px;
     left: 5px;
@@ -417,7 +420,11 @@ div#player-middle div.song-artist-album {
     line-height: 16px;
 }
 
-/*------------------------------------------ PLAYER CONTROLS */
+/*--------------------------------- FOOTER / PLAYER CONTROLS */
+
+footer {
+    backdrop-filter: blur(40px) brightness(0.2);
+}
 
 footer div#shuffle-container {
     float: left;

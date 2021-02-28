@@ -14,7 +14,7 @@
     <script type="text/javascript">recieveRedirect()</script>
 </head>
 
-<body class="py-2">
+<body>
     <!-- Top Fixed Navigaon bar -->
     <nav class="navbar navbar-expand-md fixed-top">
         <div class="container-xxl">
@@ -66,40 +66,44 @@
             </div>
         </div>
     </main>
-    <footer class="fixed-bottom bg-dark">
+    <footer class="fixed-bottom">
         <div class="container-xxl">
             <div id="player-progress-bar-container">
                 <input id="seeker" type="range" name="seeker" min="0" step="0.05" value="0">
                 <progress id="song-played-progress" class=""></progress>
                 <progress id="song-buffered-progress" class="" value="0"></progress>
             </div>
-            <div id="player-middle">
-                <div id="time-container">
-                    <span class="amplitude-current-time time-container"></span>
-                    <span class="amplitude-duration-time time-container"></span>
-                </div>
-                <div id="meta-container">
-                    <span data-amplitude-song-info="name" class="song-name"></span>
-
-                    <div class="song-artist-album">
-                        <span data-amplitude-song-info="artist"></span>
+            <div id="time-container">
+                <span class="amplitude-current-time time-container"></span>
+                <span class="amplitude-duration-time time-container"></span>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-5">
+                    <div class="col" id="shuffle-container">
+                        <div class="amplitude-shuffle amplitude-shuffle-off" id="shuffle"></div>
+                    </div>
+                    <div class="col" id="prev-container">
+                        <div class="amplitude-prev" id="previous"></div>
+                    </div>
+                    <div class="col" id="play-pause-container">
+                        <div class="amplitude-play-pause" id="play-pause"></div>
+                    </div>
+                    <div class="col" id="next-container">
+                        <div class="amplitude-next" id="next"></div>
+                    </div>
+                    <div class="col" id="repeat-container">
+                        <div class="amplitude-repeat" id="repeat"></div>
                     </div>
                 </div>
-            </div>
-            <div class="col" id="shuffle-container">
-                <div class="amplitude-shuffle amplitude-shuffle-off" id="shuffle"></div>
-            </div>
-            <div class="col" id="prev-container">
-                <div class="amplitude-prev" id="previous"></div>
-            </div>
-            <div class="col" id="play-pause-container">
-                <div class="amplitude-play-pause" id="play-pause"></div>
-            </div>
-            <div class="col" id="next-container">
-                <div class="amplitude-next" id="next"></div>
-            </div>
-            <div class="col" id="repeat-container">
-                <div class="amplitude-repeat" id="repeat"></div>
+                <div class="col-12 col-md-6 col-lg-7" id="player-middle">
+                    <div id="meta-container">
+                        <span data-amplitude-song-info="name" class="song-name"></span>
+
+                        <div class="song-artist-album">
+                            <span data-amplitude-song-info="artist"></span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>

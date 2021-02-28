@@ -333,7 +333,7 @@ img.addEventListener('load', function () {
             root.style.setProperty('--main-link-color-hover', linkHover);
             root.style.setProperty('--headings-color', headingsColor);
         });
-    document.getElementsByTagName('aside')[0].style.backgroundImage = `url('${img.src}')`;
+    document.body.style.backgroundImage = `url('${img.src}')`;
 });
 
 /**
@@ -343,7 +343,7 @@ img.addEventListener('load', function () {
 function setDocHeight(x) {
     if (x.matches) { // If media query matches
         const navbarHeight = document.getElementsByClassName('navbar')[0].offsetHeight;
-        const footerHeight = document.getElementsByTagName('footer')[0].offsetHeight + 7;
+        const footerHeight = document.getElementsByTagName('footer')[0].offsetHeight;
         const docHeight = window.innerHeight;
         document.getElementById("player-screen").style.height = `${docHeight - (navbarHeight + footerHeight)}px`;
         document.getElementById("content").style.height = `${docHeight - (navbarHeight + footerHeight)}px`;
