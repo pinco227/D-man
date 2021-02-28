@@ -341,12 +341,12 @@ img.addEventListener('load', function () {
 * CREDIT : https://www.w3schools.com/howto/howto_js_media_queries.asp
 */
 function setDocHeight(x) {
+    const navbarHeight = document.getElementsByTagName('nav')[0].offsetHeight;
+    const footerHeight = document.getElementsByTagName('footer')[0].offsetHeight;
+    const docHeight = window.innerHeight;
+    document.getElementById("content").style.height = `${docHeight - (navbarHeight + footerHeight)}px`;
     if (x.matches) { // If media query matches
-        const navbarHeight = document.getElementsByClassName('navbar')[0].offsetHeight;
-        const footerHeight = document.getElementsByTagName('footer')[0].offsetHeight;
-        const docHeight = window.innerHeight;
         document.getElementById("player-screen").style.height = `${docHeight - (navbarHeight + footerHeight)}px`;
-        document.getElementById("content").style.height = `${docHeight - (navbarHeight + footerHeight)}px`;
     } else {
         document.getElementById("player-screen").style.height = '100vh';
     }

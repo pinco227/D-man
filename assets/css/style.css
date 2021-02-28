@@ -463,7 +463,7 @@ div#now-playing div.song-artist-album {
 
 footer div#shuffle-container {
     height: 60px;
-    padding-top: 21px;
+    padding: 20px 0 0 0;
 }
 
 footer div#shuffle-container div#shuffle {
@@ -499,7 +499,7 @@ footer div#shuffle-container div#shuffle.amplitude-shuffle-on:hover {
 
 footer div#prev-container {
     height: 60px;
-    padding-top: 10px;
+    padding: 10px 0 0 0;
 }
 
 footer div#prev-container div#previous {
@@ -524,6 +524,7 @@ footer div#play-pause-container {
     height: 60px;
     border-radius: 50%;
     background-color: var(--headings-color);
+    padding: 0;
 }
 
 footer div#play-pause-container div#play-pause {
@@ -546,7 +547,7 @@ footer div#play-pause-container div#play-pause.amplitude-paused {
 
 footer div#next-container {
     height: 60px;
-    padding-top: 10px;
+    padding: 10px 0 0 0;
 }
 
 footer div#next-container div#next {
@@ -568,15 +569,15 @@ footer div#next-container div#next:hover {
 
 footer div#repeat-container {
     height: 60px;
-    padding-top: 20px;
+    padding: 20px 0 0 0;
     filter: invert(1);
 }
 
 footer div#repeat-container div#repeat {
     background: url("../images/arrow-repeat.svg") no-repeat center;
     background-size: cover;
-    width: 18px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     cursor: pointer;
     margin: auto;
     opacity: 0.5;
@@ -596,6 +597,13 @@ footer div#repeat-container div#repeat.amplitude-repeat-on {
 
 footer div#repeat-container div#repeat.amplitude-repeat-on:hover {
     opacity: 1;
+}
+
+footer div#expand-player {
+    height: 60px;
+    padding: 18px 0 0 0;
+    font-size: 24px;
+    text-align: center;
 }
 
 footer::after {
@@ -697,7 +705,8 @@ input#seeker::-ms-track {
 #content {
     overflow-x: hidden;
     overflow-y: auto;
-    max-height: 80vh;
+    max-height: 100vh;
+    padding: 1.5rem 0;
 }
 
 #content::-webkit-scrollbar {
