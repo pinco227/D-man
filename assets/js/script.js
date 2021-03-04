@@ -232,7 +232,7 @@ function writePhotosToDoc() {
 function writeMusicToDoc(album) {
     getData(musicApiUrl, function (data) {
         globalPlaylist.songs = [];
-        var writeTo = document.getElementById('music-library');
+        const writeTo = document.getElementById('music-library');
         writeTo.innerHTML = '';
         data = data.albums;
 
@@ -262,15 +262,22 @@ function writeMusicToDoc(album) {
             writeTo.appendChild(article);
 
         } else { // writes the album list
-            var list = document.createElement('ul');
+            let html = '';
             data.forEach(function (item, i) {
-                var listItem = document.createElement('li');
-                listItem.innerHTML = `
-                    <article>
-                        <img src="media/music/${item.path}/${item.cover}" alt="${item.artist} - ${item.name}" width="100" onClick="writeMusicToDoc(${i});">
-                    </article>
+                html += `
+                    <div class="col-6 col-lg-3" onClick="clickHandler(writeMusicToDoc,${i},800);">
+                        <article>
+                        <div class="album-card">
+                            <div class="album-card-image" style="background-image:url('media/music/${item.path}/${item.cover}');"></div>
+                            <div class="album-card-label">
+                                <span class="album-card-name">${item.name}</span>
+                                <span class="album-card-artist">${item.artist}</span>
+                            </div>
+                        </div>
+                        </article>
+                    </div>
+                    
                 `;
-                list.appendChild(listItem);
 
                 item.songs.forEach(function (sg) {
                     var song = {
@@ -284,10 +291,24 @@ function writeMusicToDoc(album) {
                     globalPlaylist.songs.push(song);
                 });
             });
-            writeTo.appendChild(list);
+            writeTo.innerHTML += html;
         }
-        writeTo.innerHTML += `<button onClick="loadPlaylist()">Play</button>`;
+
+        writeTo.innerHTML += `
+        <div class="col-6 col-lg-3">
+            <div class="album-card">
+                <button class="btn btn-dmn btn-album-play" onClick="loadPlaylist()"><i class="fa fa-play" aria-hidden="true"></i> Play all</button>
+            </div>
+        </div>`;
     });
+}
+
+/**
+* Pass a function with parameters and delay to a onclick event
+* CREDIT : https://stackoverflow.com/a/386971
+*/
+function clickHandler(func, param, delay) {
+    setTimeout(function () { func(param); }, delay);
 }
 // ###################################### Music Library Page END
 // ---------------------------------------------------------------- PAGES APIs END ----------
@@ -322,10 +343,10 @@ img.addEventListener('load', function () {
     Vibrant.from(img.src).getPalette()
         .then((palette) => {
             let root = document.querySelector(':root');
-            let bgColor = `rgba(${palette.DarkMuted.r},${palette.DarkMuted.g},${palette.DarkMuted.b},.6)`;
-            let textColor = `rgba(${palette.LightVibrant.r},${palette.LightVibrant.g},${palette.LightVibrant.b},.75)`;
+            let bgColor = `rgb(${palette.DarkMuted.getRgb()})`;
+            // let textColor = `rgba(${palette.LightVibrant.r},${palette.LightVibrant.g},${palette.LightVibrant.b},.75)`;
             let linkColor = `rgb(${palette.LightVibrant.getRgb()})`;
-            let linkHover = `rgb(${palette.LightMuted.getRgb()})`;
+            // let linkHover = `rgb(${palette.LightMuted.getRgb()})`;
             let headingsColor = `rgb(${palette.Vibrant.getRgb()})`;
             root.style.setProperty('--main-bg-color', bgColor);
             // root.style.setProperty('--main-text-color', textColor);

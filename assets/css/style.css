@@ -39,8 +39,21 @@ body {
     height: 100vh;
 }
 
-main {
-    backdrop-filter: blur(40px) brightness(0.2);
+.backdrop {
+    backdrop-filter: blur(35px) brightness(0.3);
+}
+
+.btn-dmn {
+    color: rgba(255, 255, 255, .7);
+    background-color: var(--headings-color);
+    border-color: var(--main-bg-color);
+    padding: .5rem 1rem;
+    font-size: 1.25rem;
+    border-radius: 1rem;
+}
+
+.btn-dmn:hover {
+    color: #fff;
 }
 
 /*------------------------------------------ LINKS */
@@ -68,10 +81,6 @@ h1, h2 {
     text-transform: uppercase;
 }
 
-/*------------------------------------------ FORMS */
-
-/*------------------------------------------ COLORS */
-
 /*------------------------------------------ HEADER */
 
 .navbar {
@@ -85,6 +94,10 @@ h1, h2 {
     margin: -0.5rem 0.5rem;
     padding: 0;
     color: var(--headings-color);
+}
+
+.navbar-collapse {
+    width: auto;
 }
 
 .nav-link {
@@ -110,6 +123,7 @@ h1, h2 {
 
 .no-collapse {
     flex-direction: row;
+    margin-left: auto;
 }
 
 .no-collapse .nav-link {
@@ -127,7 +141,7 @@ div#player-screen {
 }
 
 div#player-screen::-webkit-scrollbar {
-    width: .8rem;
+    width: .6rem;
 }
 
 div#player-screen::-webkit-scrollbar-track {
@@ -136,8 +150,12 @@ div#player-screen::-webkit-scrollbar-track {
 }
 
 div#player-screen::-webkit-scrollbar-thumb {
-    background-color: var(--main-link-color);
+    background-color: var(--main-bg-color);
     border-radius: .3rem;
+}
+
+div#player-screen:hover::-webkit-scrollbar-thumb {
+    background-color: var(--headings-color);
 }
 
 div#player-top {
@@ -710,7 +728,7 @@ input#seeker::-ms-track {
 }
 
 #content::-webkit-scrollbar {
-    width: .8rem;
+    width: .6rem;
 }
 
 #content::-webkit-scrollbar-track {
@@ -719,8 +737,75 @@ input#seeker::-ms-track {
 }
 
 #content::-webkit-scrollbar-thumb {
-    background-color: var(--main-link-color);
+    background-color: var(--main-bg-color);
     border-radius: .3rem;
+}
+
+#content:hover::-webkit-scrollbar-thumb {
+    background-color: var(--headings-color);
+}
+
+/*------------------------------------- MUSIC LIBRARY PAGE */
+
+.album-card {
+    width: 100%;
+    padding-bottom: 100%;
+    background: none;
+    position: relative;
+    cursor: pointer;
+    margin: .7rem 0;
+}
+
+.album-card-image {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+}
+
+.album-card:hover .album-card-image {
+    animation: slide-rotate 1s forwards;
+}
+
+@keyframes slide-rotate {
+    0% {
+        top: 0;
+        left: 0;
+        transform: rotate(0deg);
+    }
+    100% {
+        top: -2rem;
+        left: -1rem;
+        transform: rotate(-30deg);
+    }
+}
+
+.album-card .album-card-label {
+    position: absolute;
+    bottom: 0;
+    overflow: hidden;
+    background-color: var(--main-bg-color);
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.album-card-name {
+    font-weight: 800;
+}
+
+.btn-album-play {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    position: absolute;
 }
 
 /*------------------------------------------ MEDIA QUERIES */
@@ -748,6 +833,9 @@ input#seeker::-ms-track {
         background-color: var(--main-bg-color);
         text-align: right;
         padding-right: .75rem;
+    }
+    .navbar-collapse {
+        width: 100%;
     }
 }
 
