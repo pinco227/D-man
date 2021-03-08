@@ -166,27 +166,34 @@ function onYouTubeIframeAPIReady() {
 function writeVideosToDoc() {
     getData(youtubePlaylistApiUrl, function (data) {
         const writeTo = document.getElementById('yt-content');
+        let html = '';
         data = data.items;
-        const list = document.createElement('ul');
         ytModalEl = document.getElementById('yt-modal');
         // ytModal = new bootstrap.Modal(ytModalEl);
 
         data.forEach(function (item) {
-            let listItem = document.createElement('li');
-            listItem.innerHTML = `
-                <article><img src="${item.snippet.thumbnails.medium.url}" class="yt-item" data-bs-toggle="modal" data-bs-target="#yt-modal" data-yt-id="${item.snippet.resourceId.videoId}" /></article>
+            html += `
+            <div class="col-6 col-md-4 col-lg-3 video-col" data-bs-toggle="modal" data-bs-target="#yt-modal" data-yt-id="${item.snippet.resourceId.videoId}">
+                <article>
+                <div class="video-thumb-container">
+                    <img src="${item.snippet.thumbnails.medium.url}" class="yt-item" />
+                    <i class="far fa-play-circle video-play-icon"></i>
+                </div>
+                <span class="video-title">${item.snippet.title}</span>
+                </article>
+            </div>
             `;
-            list.appendChild(listItem);
         });
-        writeTo.appendChild(list);
+
+        writeTo.innerHTML = html;
 
         ytModalEl.addEventListener('hide.bs.modal', function (event) {
             ytPlayer.stopVideo();
-            Amplitude.play();
+            // Amplitude.play();
         })
 
         // Navigation links event listeners for dynamic page load
-        document.querySelectorAll('.yt-item').forEach(function (button) {
+        document.querySelectorAll('.video-col').forEach(function (button) {
             button.addEventListener('click', function () {
                 ytPlayer.loadVideoById(this.getAttribute("data-yt-id"));
                 // ytModal.show();
