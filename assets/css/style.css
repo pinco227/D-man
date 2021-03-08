@@ -54,20 +54,6 @@ body {
     backdrop-filter: blur(35px) brightness(0.3);
 }
 
-.btn-dmn {
-    color: rgba(255, 255, 255, .7);
-    background-color: var(--headings-color);
-    border-color: var(--main-bg-color);
-    padding: .5rem 1rem;
-    font-size: 1.25rem;
-    border-radius: 1rem;
-}
-
-.btn-dmn:hover {
-    color: #fff;
-    background-color: var(--main-link-color);
-}
-
 /*----------------------------------------- MODALS */
 
 #playback-dialog .modal-content {
@@ -98,10 +84,41 @@ body {
 .btn {
     border: none;
     box-shadow: 0px 0px 2px rgba(0, 0, 0, .8);
+    border-radius: 0.5rem;
 }
 
 .btn:hover, .btn:active, .btn:focus {
     box-shadow: 0px 0px 6px rgba(0, 0, 0, .8);
+}
+
+.btn-dmn {
+    color: rgba(255, 255, 255, .7);
+    background-color: var(--headings-color);
+    border-color: var(--main-bg-color);
+}
+
+.btn-dmn:hover, .btn-dmn:active, .btn-dmn:focus {
+    color: #fff;
+    background-color: var(--main-link-color);
+}
+
+.btn-back {
+    color: var(--main-text-color);
+    background-color: var(--main-bg-color);
+}
+
+.btn-back:hover, .btn-back:active, .btn-back:focus {
+    color: var(--main-link-color-hover);
+    background-color: var(--main-link-color);
+}
+
+.btn-album-play {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    position: absolute;
+    padding: .5rem 1rem;
+    font-size: 1.25rem;
 }
 
 /*------------------------------------------ LINKS */
@@ -213,6 +230,7 @@ div#player-top {
     width: 40%;
     margin: 0 auto;
     overflow: hidden;
+    box-shadow: 0px 0px 2rem var(--main-bg-color);
 }
 
 .rotate-art {
@@ -848,11 +866,70 @@ input#seeker::-ms-track {
     font-weight: 800;
 }
 
-.btn-album-play {
-    width: 100%;
-    height: 100%;
+.album-details {
+    text-align: center;
+}
+
+.album-art-container {
+    position: relative;
+    text-align: center;
+    border: 1px solid var(--main-bg-color);
     border-radius: 50%;
+    width: 40%;
+    padding-top: 40%;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    box-shadow: 0px 0px 2rem var(--main-link-color);
+}
+
+.album-art {
     position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+.album-title {
+    font-size: 1.7rem;
+    color: #fff;
+    letter-spacing: 0.5px;
+    display: block;
+    padding-top: .5rem;
+}
+
+.album-artist {
+    opacity: 0.5;
+    font-size: 1rem;
+    color: #fff;
+    letter-spacing: 0.5px;
+    line-height: 1.5rem;
+    display: block;
+    padding-bottom: .5rem;
+}
+
+.album-songs {
+    margin-top: 1rem;
+}
+
+.album-song-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .5rem;
+}
+
+.album-song-index {
+    width: 2rem;
+}
+
+.album-song-name {
+    width: 50%;
+    color: var(--headings-color);
+    font-size: 1.2rem;
+    font-weight: 500;
 }
 
 /*------------------------------------------ MEDIA QUERIES */

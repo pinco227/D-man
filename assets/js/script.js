@@ -247,15 +247,30 @@ function writeMusicToDoc(album) {
 
         // Write the songs list of album
         if (typeof album == "number") {
-            writeTo.innerHTML = `<button onClick="writeMusicToDoc()">Back</button>`;
-            const article = document.createElement('article');
-            const list = document.createElement('ul');
-            data[album].songs.forEach(function (item) {
-                const listItem = document.createElement('li');
-                listItem.innerHTML = `
-                    ${item.artist} - ${item.name}
+            let html = `
+            <div class="col-12">
+                <button onClick="writeMusicToDoc()" class="btn btn-back"><i class="fas fa-angle-left"></i> Back</button>
+            </div>
+            <article>
+            <div class="col-12">
+                <div class="album-details">
+                    <div class="album-art-container">
+                        <img class="album-art" src="media/music/${data[album].path}/${data[album].cover}" alt="${data[album].artist} - ${data[album].name}" />
+                    </div>
+                    <span class="album-title">${data[album].name}</span>
+                    <span class="album-artist">${data[album].artist}</span>
+                    <button class="btn btn-dmn" onClick="loadPlaylist(); closeModals();"><i class="fa fa-play" aria-hidden="true"></i> Play this album</button>
+                </div>
+                <div class="album-songs">
                 `;
-                list.appendChild(listItem);
+            data[album].songs.forEach(function (item, i) {
+                html += `
+                <div class="album-song-container">
+                    <span class="album-song-index">${i + 1}</span>
+                    <span class="album-song-name">${item.name}</span>
+                    <span class="album-song-duration">${item.duration}</span>
+                </div>
+                `;
 
                 const song = {
                     "name": item.name,
@@ -267,11 +282,14 @@ function writeMusicToDoc(album) {
                 };
                 globalPlaylist.songs.push(song);
             });
-            article.appendChild(list);
-            writeTo.appendChild(article);
+            html += `
+                </div>
+            </div>
+            </article>`;
+            writeTo.innerHTML += html;
 
         } else { // writes the album list
-            let html = '';
+            let html = '<div class="row">';
             data.forEach(function (item, i) {
                 html += `
                     <div class="col-6 col-lg-3" onClick="clickHandler(writeMusicToDoc,${i},${isMobile ? '800' : '0'});">
@@ -300,15 +318,15 @@ function writeMusicToDoc(album) {
                     globalPlaylist.songs.push(song);
                 });
             });
+            html += `
+                <div class="col-6 col-lg-3">
+                    <div class="album-card">
+                        <button class="btn btn-dmn btn-album-play" onClick="loadPlaylist(); closeModals();"><i class="fa fa-play" aria-hidden="true"></i> Play all</button>
+                    </div>
+                </div>
+            </div>`;
             writeTo.innerHTML += html;
         }
-
-        writeTo.innerHTML += `
-        <div class="col-6 col-lg-3">
-            <div class="album-card">
-                <button class="btn btn-dmn btn-album-play" onClick="loadPlaylist(); closeModals();"><i class="fa fa-play" aria-hidden="true"></i> Play all</button>
-            </div>
-        </div>`;
     });
 }
 
