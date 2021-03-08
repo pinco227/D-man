@@ -24,11 +24,15 @@
 /*------------------------------------------ DOCUMENT */
 
 html {
-    scroll-behavior: smooth;
     background-color: #000;
+    background-attachment: scroll;
+    background-position: center;
+    background-size: cover;
+    overflow: hidden;
 }
 
 body {
+    scroll-behavior: smooth;
     font-family: 'Baloo Da 2', cursive;
     font-weight: 400;
     color: var(--main-text-color);
@@ -36,7 +40,14 @@ body {
     background-attachment: scroll;
     background-position: center;
     background-size: cover;
-    height: 100vh;
+    background: none;
+    /* Make address bar never dissapear on mobile */
+    /* CREDIT: https://greensock.com/forums/topic/24315-prevent-address-bar-from-hiding-on-mobile-scroll-trigger/ */
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .backdrop {
@@ -54,6 +65,7 @@ body {
 
 .btn-dmn:hover {
     color: #fff;
+    background-color: var(--main-link-color);
 }
 
 /*------------------------------------------ LINKS */
@@ -82,10 +94,6 @@ h1, h2 {
 }
 
 /*------------------------------------------ HEADER */
-
-.navbar {
-    backdrop-filter: blur(40px) brightness(0.2);
-}
 
 .navbar-brand {
     font-family: 'Big Shoulders Stencil Text', cursive;
@@ -349,10 +357,6 @@ div#list div.song span.song-artist-album {
 
 /*--------------------------------- FOOTER / PLAYER CONTROLS */
 
-footer {
-    backdrop-filter: blur(40px) brightness(0.2);
-}
-
 div#time-container {
     position: relative;
     color: white;
@@ -543,6 +547,10 @@ footer div#play-pause-container {
     border-radius: 50%;
     background-color: var(--headings-color);
     padding: 0;
+}
+
+footer div#play-pause-container:hover {
+    background-color: var(--main-link-color);
 }
 
 footer div#play-pause-container div#play-pause {

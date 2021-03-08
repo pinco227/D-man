@@ -143,7 +143,7 @@ const globalPlaylist = {
 /** 
 * Updates the dom with playlist from global object
 */
-function updatePlayList() {
+function writePlayList() {
     var listDiv = document.getElementById('list');
     listDiv.innerHTML = globalPlaylist.songs.map(function (_, i) {
         return `
@@ -169,7 +169,7 @@ function updatePlayList() {
 */
 function loadPlaylist(again) {
     if (typeof again == "undefined") { // Load playlist from library
-        updatePlayList();
+        writePlayList();
         Amplitude.stop();   // Stop player in order to avoid overlaping songs
 
         // Promise
@@ -181,6 +181,8 @@ function loadPlaylist(again) {
 
         initPlayer.then(Amplitude.play());
     } else { // Load playlist initialy
+        writePlayList();
+        Amplitude.init(globalPlaylist);
         if (localStorage.getItem("activeSongIndex")) {  // Check if the play button was ever pressed
             // Ask for playback to reload from the stored state
             dialog('Resume playback ?',
@@ -188,7 +190,7 @@ function loadPlaylist(again) {
                     if (localStorage.getItem("playlist")) { // Update songs list in the global variable
                         globalPlaylist.songs = JSON.parse(localStorage.getItem('playlist'));
                     }
-                    updatePlayList();
+                    writePlayList();
                     Amplitude.init(globalPlaylist);
                     Amplitude.playSongAtIndex(parseInt(localStorage.getItem('activeSongIndex')));
 
@@ -201,13 +203,10 @@ function loadPlaylist(again) {
                     // Amplitude.play();
                 }, function () {    // No callback function
                     localStorage.clear();   //Clear localstorage
-                    updatePlayList();
+                    writePlayList();
                     Amplitude.init(globalPlaylist);
                 }
             );
-        } else {
-            updatePlayList();
-            Amplitude.init(globalPlaylist);
         }
     }
 }
@@ -340,7 +339,10 @@ function setSeekerBuffered() {
 */
 function dialog(message, yesCallback, noCallback) {
     document.querySelector('#playback-dialog .modal-title').textContent = message;
-    let dialogModal = new bootstrap.Modal(document.getElementById('playback-dialog'));
+    let dialogModal = new bootstrap.Modal(document.getElementById('playback-dialog'), {
+        backdrop: 'static',
+        keyboard: false
+    });
     dialogModal.show();
 
     document.getElementById('dialog-yes').addEventListener('click', function () {
@@ -353,7 +355,38 @@ function dialog(message, yesCallback, noCallback) {
     });
 }
 
-document.querySelector('#player-top').style.height = document.querySelector('#player-top').offsetWidth + 'px';
+// Resume playback dialog event listener
+const playbackDialog = document.getElementById('playback-dialog');
+playbackDialog.addEventListener('show.bs.modal', function () {
+    const playerControlsPos = document.getElementsByTagName('footer')[0].getBoundingClientRect();
+    const pDialog = document.getElementById('playback-dialog');
+
+    // pDialog.style.width = playerPos.width + 'px';
+    pDialog.style.height = playerControlsPos.height + 'px';
+    pDialog.style.top = playerControlsPos.top + 'px';
+    // pDialog.style.left = playerPos.left + 'px';
+});
+playbackDialog.addEventListener('shown.bs.modal', function () {
+    const playerPos = document.getElementById('player-screen').getBoundingClientRect();
+    const playerControlsPos = document.getElementsByTagName('footer')[0].getBoundingClientRect();
+    const dBackDrop = document.getElementsByClassName('modal-backdrop')[0];
+    const cloneBackDrop = dBackDrop.cloneNode(true);
+
+    dBackDrop.style.height = playerControlsPos.height + 'px';
+    dBackDrop.style.top = playerControlsPos.top + 'px';
+
+    const cloneElement = document.body.appendChild(cloneBackDrop);
+
+    cloneElement.style.width = playerPos.width + 'px';
+    cloneElement.style.height = playerPos.height + 'px';
+    cloneElement.style.top = playerPos.top + 'px';
+    cloneElement.style.left = playerPos.left + 'px';
+});
+playbackDialog.addEventListener('hidden.bs.modal', function () {
+    document.querySelectorAll('.modal-backdrop').forEach(function (el) { el.remove(); });
+});
+
+document.querySelector('#player-top').style.height = document.querySelector('#player-top').offsetWidth + 'px'; // Make player image container square
 
 // Initial load
 loadPlaylist(1);
