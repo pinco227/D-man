@@ -141,6 +141,10 @@ Website's features are presented in an importance order.
       `Uncaught TypeError: Failed to set the 'currentTime' property on 'HTMLMediaElement': The provided double value is non-finite.`
     > - **FIXED**: by setting a timeOut function on the call in order to get the song playing before trying to seek the played time.
 
+    > - Some functionality limited on mobile devices (song played/buffered progress position, store data to local storage and other functions related to AmplitudeJS library).
+    > - This is an open [ISSUE](https://github.com/serversideup/amplitudejs/issues/433) on AmplitudeJS developer's github.
+    > - **FIXED** (temporary): by calling ```Amplitude.pause()``` after initializing the player as described in [this comment](https://github.com/serversideup/amplitudejs/issues/433#issuecomment-674497553).
+
 ## Deployment
 - ### GitHub Pages
   The project was deployed to GitHub Pages using the following steps:

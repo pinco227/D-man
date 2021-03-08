@@ -98,11 +98,10 @@ const globalPlaylist = {
         }
     ],
     callbacks: {
-        initialized: function () {
+        play: function () {
             const playlist = globalPlaylist.songs;
             localStorage.setItem('playlist', JSON.stringify(playlist));
-        },
-        play: function () {
+
             const songIndex = Amplitude.getActiveIndex();
             localStorage.setItem('activeSongIndex', songIndex);
 
@@ -136,6 +135,8 @@ const globalPlaylist = {
             localStorage.setItem('songPercentage', songPercentage);
 
             updatePositionState(); // Media Session API, set the duration.
+
+            document.getElementById('test').innerHTML = songPercentage;
         }
     }
 };
@@ -176,6 +177,7 @@ function loadPlaylist(again) {
         let initPlayer = new Promise(
             function () {
                 Amplitude.init(globalPlaylist);
+                Amplitude.pause();
             }
         );
 
@@ -183,6 +185,7 @@ function loadPlaylist(again) {
     } else { // Load playlist initialy
         writePlayList();
         Amplitude.init(globalPlaylist);
+        Amplitude.pause();
         if (localStorage.getItem("activeSongIndex")) {  // Check if the play button was ever pressed
             // Ask for playback to reload from the stored state
             dialog('Resume playback ?',
@@ -192,6 +195,7 @@ function loadPlaylist(again) {
                     }
                     writePlayList();
                     Amplitude.init(globalPlaylist);
+                    Amplitude.pause();
                     Amplitude.playSongAtIndex(parseInt(localStorage.getItem('activeSongIndex')));
 
                     if (localStorage.getItem("songPercentage")) {   // Get song percentage stored from previous session
@@ -205,6 +209,7 @@ function loadPlaylist(again) {
                     localStorage.clear();   //Clear localstorage
                     writePlayList();
                     Amplitude.init(globalPlaylist);
+                    Amplitude.pause();
                 }
             );
         }
