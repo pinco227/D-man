@@ -68,6 +68,42 @@ body {
     background-color: var(--main-link-color);
 }
 
+/*----------------------------------------- MODALS */
+
+#playback-dialog .modal-content {
+    background-color: #333;
+}
+
+#playback-dialog .modal-title {
+    color: var(--main-link-color-hover);
+    font-family: 'Baloo Da 2', cursive;
+}
+
+#dialog-yes {
+    color: #fff;
+    background-color: var(--headings-color);
+}
+
+#dialog-yes:hover, #dialog-yes:active, #dialog-yes:focus {
+    background-color: var(--main-link-color);
+}
+
+#dialog-no {
+    color: var(--main-text-color);
+    background-color: var(--main-bg-color);
+}
+
+/*---------------------------------------- BUTTONS */
+
+.btn {
+    border: none;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, .8);
+}
+
+.btn:hover, .btn:active, .btn:focus {
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, .8);
+}
+
 /*------------------------------------------ LINKS */
 
 a {
@@ -87,6 +123,7 @@ a:hover, a:focus, a:active {
 h1, h2, h3, h4, h5, h5 {
     font-family: 'Goldman', cursive;
     color: var(--headings-color);
+    text-shadow: 2px 2px 2px var(--main-bg-color);
 }
 
 h1, h2 {
@@ -102,6 +139,7 @@ h1, h2 {
     margin: -0.5rem 0.5rem;
     padding: 0;
     color: var(--headings-color);
+    text-shadow: 2px 2px 2px var(--main-bg-color);
 }
 
 .navbar-collapse {
@@ -112,6 +150,7 @@ h1, h2 {
     font-family: 'Baloo Da 2', cursive;
     font-weight: 600;
     white-space: nowrap;
+    text-shadow: 2px 2px 2px var(--main-bg-color);
 }
 
 .navbar-toggler {

@@ -135,8 +135,6 @@ const globalPlaylist = {
             localStorage.setItem('songPercentage', songPercentage);
 
             updatePositionState(); // Media Session API, set the duration.
-
-            document.getElementById('test').innerHTML = songPercentage;
         }
     }
 };
@@ -188,7 +186,7 @@ function loadPlaylist(again) {
         Amplitude.pause();
         if (localStorage.getItem("activeSongIndex")) {  // Check if the play button was ever pressed
             // Ask for playback to reload from the stored state
-            dialog('Resume playback ?',
+            dialog('<i class="far fa-laugh-beam"></i> Welcome back!',
                 function () {   // Yes callback function
                     if (localStorage.getItem("playlist")) { // Update songs list in the global variable
                         globalPlaylist.songs = JSON.parse(localStorage.getItem('playlist'));
@@ -343,7 +341,7 @@ function setSeekerBuffered() {
 * @param {function} noCallback - Function to be called when user presses No
 */
 function dialog(message, yesCallback, noCallback) {
-    document.querySelector('#playback-dialog .modal-title').textContent = message;
+    document.querySelector('#playback-dialog .modal-title').innerHTML = message;
     let dialogModal = new bootstrap.Modal(document.getElementById('playback-dialog'), {
         backdrop: 'static',
         keyboard: false
