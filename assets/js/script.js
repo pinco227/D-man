@@ -83,21 +83,23 @@ async function main() {
     await loadAllPages();
     routes = {
         '': home,
+        'home': home,
         'index.html': home,
         'music': music,
         'videos': videos,
         'gallery': gallery,
         'about': about,
-        'contact': contact,
+        'contact': contact
     };
     titles = {
         '': homeTitle,
+        'home': homeTitle,
         'index.html': homeTitle,
         'music': musicTitle,
         'videos': videosTitle,
         'gallery': galleryTitle,
         'about': aboutTitle,
-        'contact': contactTitle,
+        'contact': contactTitle
     }
     let page = window.location.pathname.split('/').pop().split('#')[0];
     setPage(page);
@@ -112,7 +114,7 @@ window.onpopstate = () => {
 };
 
 // Navigation links event listeners for dynamic page load
-document.querySelectorAll('.nav-link').forEach(function (button) {
+document.querySelectorAll('.spa-nav').forEach(function (button) {
     button.addEventListener('click', function (e) {
         e.preventDefault();
         let pathName = button.href;
@@ -417,6 +419,15 @@ function closeModals() {
 
 const mediaQ = window.matchMedia("(min-width: 768px)");
 mediaQ.addListener(setDocHeight); // Attach listener function on state changes
+
+/**
+ * On window resize/zoom event
+ * @param {*} event 
+ */
+window.onresize = function (event) {
+    setDocHeight(mediaQ);
+    console.log('resize');
+};
 
 setDocHeight(mediaQ); // Call listener function at run time
 main(); // Invoke the Main function which loads all pages into variables, create routes and set the current page

@@ -646,7 +646,7 @@ div#player-progress-bar-container progress#song-buffered-progress {
     bottom: 0;
     z-index: 2;
     border: none;
-    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, .6);
 }
 
 div#player-progress-bar-container:hover progress#song-buffered-progress {
