@@ -45,7 +45,7 @@ async function loadPage(page) {
 * The Async function loads all HTML to the variables 'home', 'about' & 'contact'
 */
 async function loadAllPages() {
-    home = await loadPage('home.html');
+    home = await loadPage('homepage.html');
     music = await loadPage('music-library.html');
     videos = await loadPage('video-library.html');
     gallery = await loadPage('photo-gallery.html');
