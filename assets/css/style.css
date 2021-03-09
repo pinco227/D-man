@@ -63,6 +63,10 @@ body {
     font-size: 3rem;
     color: var(--main-text-color);
     cursor: pointer;
+    z-index: 99999;
+    background: rgba(0, 0, 0, .5);
+    padding: 0 1rem;
+    border-bottom-left-radius: 2rem;
 }
 
 .close-modal:hover {
@@ -102,6 +106,50 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
+}
+
+#galleryModal .modal-dialog {
+    max-width: calc(100vw - 3.5rem);
+}
+
+#galleryModal .modal-content {
+    max-width: calc(100vw - 3.5rem);
+    max-height: calc(100vh - 3.5rem);
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    background: none;
+}
+
+#galleryModal #galleryCarousel .carousel-item {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: calc(100vh - 3.5rem);
+}
+
+#galleryCarousel .carousel-control-next, #galleryCarousel .carousel-control-prev {
+    width: 25%;
+    background: none;
+    border: none;
+}
+
+#galleryCarousel .carousel-control-next-icon, #galleryCarousel .carousel-control-prev-icon {
+    width: 5rem;
+    height: 5rem;
+}
+
+#galleryCarousel .carousel-caption {
+    background: rgba(0, 0, 0, .5);
+    border-radius: 1rem;
+}
+
+#galleryCarousel .carousel-caption h3 {
+    color: var(--main-link-color-hover);
+}
+
+#galleryCarousel .carousel-caption h5 {
+    color: var(--main-text-color);
 }
 
 /*---------------------------------------- BUTTONS */
@@ -1002,6 +1050,21 @@ input#seeker::-ms-track {
 
 .video-col:hover .video-play-icon, .video-col:hover .video-title {
     color: var(--main-link-color-hover);
+}
+
+/*------------------------------------- PHOTO GALLERY PAGE */
+
+.gallery-image {
+    width: 100%;
+    border-radius: .5rem;
+    cursor: pointer;
+    opacity: .7;
+    transition: opacity 0.2s;
+    -webkit-transition: opacity 0.2s;
+}
+
+.gallery-image:hover {
+    opacity: 1;
 }
 
 /*------------------------------------------ MEDIA QUERIES */

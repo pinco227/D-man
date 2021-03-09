@@ -216,23 +216,23 @@ function writePhotosToDoc() {
         const galleryCarouselInner = document.getElementById('galleryCarousel').firstElementChild;
         data = data.files;
 
-        galleryContent.innerHTML = data.map(function (item, i) {
+        galleryCarouselInner.innerHTML = data.map(function (item, i) {
             return `
-                <div class="col-12 col-sm-6 col-lg-3">
-                  <figure>
-                    <img class="w-100" src="media/photos/${item.thumbnail}" alt="${item.title} - ${item.description}" data-bs-target="#galleryCarousel" data-bs-slide-to="${i}">
-                  </figure>
+                <div class="carousel-item ${i == 0 ? 'active' : ''}" style="background-image:url('media/photos/${item.file}');">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3>${item.title}</h3>
+                        <h5>${item.description}</h5>
+                    </div>
                 </div>
             `;
         }).join("");
-        galleryCarouselInner.innerHTML = data.map(function (item, i) {
+
+        galleryContent.innerHTML = data.map(function (item, i) {
             return `
-                <div class="carousel-item ${i == 0 ? 'active' : ''}">
-                    <img class="d-block w-100" src="media/photos/${item.file}" alt="${item.title} - ${item.description}">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>${item.title}</h5>
-                        <p>${item.description}</p>
-                    </div>
+                <div class="col-6 col-sm-4 col-lg-3" data-bs-toggle="modal" data-bs-target="#galleryModal">
+                  <figure>
+                    <img class="gallery-image" src="media/photos/${item.thumbnail}" alt="${item.title} - ${item.description}" data-bs-target="#galleryCarousel" data-bs-slide-to="${i}">
+                  </figure>
                 </div>
             `;
         }).join("");
