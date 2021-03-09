@@ -113,14 +113,23 @@ window.onpopstate = () => {
     setPage(page);
 };
 
+function navigate(event, href) {
+    event.preventDefault();
+    let pathName = href;
+    let page = pathName.split('/').pop();
+    window.history.pushState({}, titles[page], pathName);
+    setPage(page);
+}
+
 // Navigation links event listeners for dynamic page load
 document.querySelectorAll('.spa-nav').forEach(function (button) {
     button.addEventListener('click', function (e) {
-        e.preventDefault();
-        let pathName = button.href;
-        let page = pathName.split('/').pop();
-        window.history.pushState({}, titles[page], pathName);
-        setPage(page);
+        navigate(e, button.href);
+        // e.preventDefault();
+        // let pathName = button.href;
+        // let page = pathName.split('/').pop();
+        // window.history.pushState({}, titles[page], pathName);
+        // setPage(page);
     });
 });
 // ---------------------------------------------------------------------- SPA END  ----------
@@ -175,7 +184,7 @@ function writeVideosToDoc() {
 
         data.forEach(function (item) {
             html += `
-            <div class="col-6 col-md-4 col-lg-3 video-col" data-bs-toggle="modal" data-bs-target="#yt-modal" data-yt-id="${item.snippet.resourceId.videoId}">
+            <div class="col-6 col-sm-4 col-md-6 col-lg-3 video-col" data-bs-toggle="modal" data-bs-target="#yt-modal" data-yt-id="${item.snippet.resourceId.videoId}">
                 <article>
                 <div class="video-thumb-container">
                     <img src="${item.snippet.thumbnails.medium.url}" class="yt-item" />
@@ -231,7 +240,7 @@ function writePhotosToDoc() {
 
         galleryContent.innerHTML = data.map(function (item, i) {
             return `
-                <div class="col-6 col-sm-4 col-lg-3" data-bs-toggle="modal" data-bs-target="#galleryModal">
+                <div class="col-6 col-sm-4 col-md-6 col-lg-3" data-bs-toggle="modal" data-bs-target="#galleryModal">
                   <figure>
                     <img class="gallery-image" src="media/photos/${item.thumbnail}" alt="${item.title} - ${item.description}" data-bs-target="#galleryCarousel" data-bs-slide-to="${i}">
                   </figure>
@@ -301,7 +310,7 @@ function writeMusicToDoc(album) {
             let html = '<div class="row">';
             data.forEach(function (item, i) {
                 html += `
-                    <div class="col-6 col-lg-3" onClick="clickHandler(writeMusicToDoc,${i},${isMobile ? '800' : '0'});">
+                    <div class="col-6 col-sm-4 col-md-6 col-lg-3" onClick="clickHandler(writeMusicToDoc,${i},${isMobile ? '800' : '0'});">
                         <article>
                         <div class="album-card">
                             <div class="album-card-image" style="background-image:url('media/music/${item.path}/${item.cover}');"></div>
@@ -328,7 +337,7 @@ function writeMusicToDoc(album) {
                 });
             });
             html += `
-                <div class="col-6 col-lg-3">
+                <div class="col-6 col-sm-4 col-md-6 col-lg-3">
                     <div class="album-card">
                         <button class="btn btn-dmn btn-album-play" onClick="loadPlaylist(); closeModals();"><i class="fa fa-play" aria-hidden="true"></i> Play all</button>
                     </div>
