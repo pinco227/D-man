@@ -9,6 +9,14 @@ const globalPlaylist = {
     "default_album_art": "https://pinco227.github.io/D-man/media/music/cover.jpg",
     "songs": [
         {
+            "name": "diliMan",
+            "artist": "DMAN ft. SEBA",
+            "album": "DOMINO Project",
+            "url": "https://pinco227.github.io/D-man/media/music/2001%20DOMINO%20project/DMAN%20ft%20SEBA%20-%20diliMan.mp3",
+            "cover_art_url": "https://pinco227.github.io/D-man/media/music/2001%20DOMINO%20project/cover.jpg",
+            "duration": "03:33"
+        },
+        {
             "name": "Si Ingerii Plang",
             "artist": "Vineri 13",
             "album": "Ingeri si Demoni",
@@ -39,14 +47,6 @@ const globalPlaylist = {
             "url": "https://pinco227.github.io/D-man/media/music/Singles/2000%20DMAN,%20DAHEY,%20JONNY,%20MIHAI%20ft%20PDV-%201%202%20%20si%203%20de%204%20.mp3",
             "cover_art_url": "https://pinco227.github.io/D-man/media/music/Singles/cover.jpg",
             "duration": "03:52"
-        },
-        {
-            "name": "diliMan",
-            "artist": "DMAN ft. SEBA",
-            "album": "DOMINO Project",
-            "url": "https://pinco227.github.io/D-man/media/music/2001%20DOMINO%20project/DMAN%20ft%20SEBA%20-%20diliMan.mp3",
-            "cover_art_url": "https://pinco227.github.io/D-man/media/music/2001%20DOMINO%20project/cover.jpg",
-            "duration": "03:33"
         },
         {
             "name": "Amintirea ta",
