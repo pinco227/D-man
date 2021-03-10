@@ -434,6 +434,7 @@ function setDocHeight(x) {
     const footerHeight = document.getElementsByTagName('footer')[0].offsetHeight;
     const docHeight = window.innerHeight;
     document.getElementById("content").style.height = `${docHeight - (navbarHeight + footerHeight)}px`;
+    document.querySelector('#player-top').style.height = document.querySelector('#player-top').offsetWidth + 'px'; // make Player Art square
     if (x.matches) { // If media query matches
         document.getElementById("player-screen").style.height = `${docHeight - (navbarHeight + footerHeight)}px`;
     } else {
@@ -455,16 +456,13 @@ const mediaQ = window.matchMedia("(min-width: 768px)");
 mediaQ.addListener(setDocHeight); // Attach listener function on state changes
 
 /**
- * On window resize/zoom event
+ * On window resize/rotate/zoom event
  * @param {*} event 
  */
 window.onresize = function (event) {
     setDocHeight(mediaQ);
     console.log('resize');
 };
-
-
-document.querySelector('#player-top').style.height = document.querySelector('#player-top').offsetWidth + 'px'; // make Player Art square
 
 setDocHeight(mediaQ); // Call listener function at run time
 main(); // Invoke the Main function which loads all pages into variables, create routes and set the current page
