@@ -387,9 +387,7 @@ playbackDialog.addEventListener('shown.bs.modal', function () {
 });
 playbackDialog.addEventListener('hidden.bs.modal', function () {
     document.querySelectorAll('.modal-backdrop').forEach(function (el) { el.remove(); });
-});
-
-document.querySelector('#player-top').style.height = document.querySelector('#player-top').offsetWidth + 'px'; // Make player image container square
+});// Make player image container square
 
 // Initial load
 loadPlaylist(1);

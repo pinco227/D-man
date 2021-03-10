@@ -105,14 +105,6 @@ async function main() {
     setPage(page);
 };
 
-/**
- * The Function is invoked when the window.history changes
- */
-window.onpopstate = () => {
-    let page = window.location.pathname.split('/').pop().split('#')[0];
-    setPage(page);
-};
-
 function navigate(event, href) {
     event.preventDefault();
     let pathName = href;
@@ -120,6 +112,15 @@ function navigate(event, href) {
     window.history.pushState({}, titles[page], pathName);
     setPage(page);
 }
+
+// ###################################### SPA EVENTS
+/**
+ * The Function is invoked when the window.history changes
+ */
+window.onpopstate = () => {
+    let page = window.location.pathname.split('/').pop().split('#')[0];
+    setPage(page);
+};
 
 // Navigation links event listeners for dynamic page load
 document.querySelectorAll('.spa-nav').forEach(function (button) {
@@ -358,27 +359,7 @@ function clickHandler(func, param, delay) {
 // ###################################### Music Library Page END
 // ---------------------------------------------------------------- PAGES APIs END ----------
 
-// Close modals on browser back button trick
-// CREDIT: https://stackoverflow.com/a/40033565
-document.querySelectorAll('div.modal').forEach(function (el) {
-    el.addEventListener('show.bs.modal', function () {
-        let modal = this;
-        let hash = modal.id;
-        window.location.hash = hash;
-    });
-    el.addEventListener('hide.bs.modal', function () {
-        window.history.pushState("", document.title, window.location.pathname);
-    });
-});
-window.onhashchange = function () {
-    if (!window.location.hash) {
-        document.querySelectorAll('div.modal').forEach(function (el) {
-            let modal = bootstrap.Modal.getInstance(el);
-            modal ? modal.hide() : '';
-        });
-    }
-}
-
+// ----------------------------------------------------------------- APP EVENTS -------------
 // Use Vibrant.js to theme the app based on the music art img
 const playImg = document.getElementById('player-top').firstElementChild;
 playImg.addEventListener('load', function () {
@@ -400,6 +381,50 @@ playImg.addEventListener('load', function () {
     document.documentElement.style.backgroundImage = `url('${playImg.src}')`;
 });
 
+// Player Expand event listener (mobile)
+document.getElementById('expand-player').addEventListener('click', function () {
+    const player = document.getElementById('player-collapse');
+    const collapseButton = document.getElementById('collapse-player');
+    this.style.visibility = 'hidden';
+    collapseButton.style.display = 'block';
+    player.style.visibility = 'visible';
+    player.style.top = '0';
+});
+
+// Player Collapse event listener (mobile)
+document.getElementById('collapse-player').addEventListener('click', function () {
+    const player = document.getElementById('player-collapse');
+    const expandButton = document.getElementById('expand-player');
+    this.style.display = 'none';
+    expandButton.style.visibility = 'visible';
+    player.style.visibility = 'hidden';
+    player.style.top = '100vh';
+});
+
+// Close modals on browser back button trick
+// CREDIT: https://stackoverflow.com/a/40033565
+document.querySelectorAll('div.modal').forEach(function (el) {
+    el.addEventListener('show.bs.modal', function () {
+        let modal = this;
+        let hash = modal.id;
+        window.location.hash = hash;
+    });
+    el.addEventListener('hide.bs.modal', function () {
+        window.history.pushState("", document.title, window.location.pathname);
+    });
+});
+window.onhashchange = function () {
+    if (!window.location.hash) {
+        document.querySelectorAll('div.modal').forEach(function (el) {
+            let modal = bootstrap.Modal.getInstance(el);
+            modal ? modal.hide() : '';
+        });
+    }
+}
+// --------------------------------------------------------------- APP EVENTS END -----------
+
+// ----------------------------------------------------------------- APP FUNCTIONS ----------
+
 /**
 * Set the height of the content and player area
 * CREDIT : https://www.w3schools.com/howto/howto_js_media_queries.asp
@@ -412,7 +437,7 @@ function setDocHeight(x) {
     if (x.matches) { // If media query matches
         document.getElementById("player-screen").style.height = `${docHeight - (navbarHeight + footerHeight)}px`;
     } else {
-        document.getElementById("player-screen").style.height = '100vh';
+        document.getElementById("player-screen").style.height = `${docHeight - footerHeight}px`;
     }
 }
 
@@ -437,6 +462,9 @@ window.onresize = function (event) {
     setDocHeight(mediaQ);
     console.log('resize');
 };
+
+
+document.querySelector('#player-top').style.height = document.querySelector('#player-top').offsetWidth + 'px'; // make Player Art square
 
 setDocHeight(mediaQ); // Call listener function at run time
 main(); // Invoke the Main function which loads all pages into variables, create routes and set the current page
