@@ -1124,6 +1124,100 @@ input#seeker::-ms-track {
     background-color: var(--main-link-color);
 }
 
+#hero-social {
+    background-color: rgba(255, 255, 255, .9);
+    /* Overwrites if supported */
+    background-color: var(--headings-color);
+}
+
+#hero-social .hero-img {
+    color: rgb(255, 255, 255);
+}
+
+#hero-social .hero-text {
+    color: rgba(255, 255, 255, .75);
+    /* Overwrites if supported */
+    color: var(--main-text-color);
+}
+
+#hero-social .hero-title {
+    color: rgb(255, 255, 255);
+}
+
+#hero-social .btn-hero {
+    background-color: rgba(255, 255, 255, .8);
+}
+
+.hero-social-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.hero-social-buttons a i {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    padding-top: 0.5rem;
+    text-align: center;
+    color: var(--main-bg-color);
+    background-color: var(--main-text-color);
+    -webkit-box-shadow: 0px 0px 3px var(--main-bg-color);
+    box-shadow: 0px 0px 3px var(--main-bg-color);
+    -webkit-transition: all 0.35s ease-in-out;
+    -o-transition: all 0.35s ease-in-out;
+    transition: all 0.35s ease-in-out;
+}
+
+.hero-social-buttons a i:hover {
+    background: var(--main-bg-color);
+    color: var(--main-text-color);
+    -webkit-box-shadow: 0px 0px 5px var(--main-bg-color);
+    box-shadow: 0px 0px 5px var(--main-bg-color);
+}
+
+.hero-social-buttons a i.fa-facebook {
+    color: rgba(255, 255, 255, .8);
+    background-color: rgb(59, 89, 152);
+}
+
+.hero-social-buttons a i.fa-facebook:hover {
+    color: rgb(59, 89, 152);
+    background-color: rgb(255, 255, 255);
+}
+
+.hero-social-buttons a i.fa-youtube {
+    color: rgba(255, 255, 255, .8);
+    background-color: rgb(255, 0, 0);
+}
+
+.hero-social-buttons a i.fa-youtube:hover {
+    color: rgb(255, 0, 0);
+    background-color: rgb(255, 255, 255);
+}
+
+.hero-social-buttons a i.fa-twitter {
+    color: rgba(255, 255, 255, .8);
+    background-color: rgb(0, 172, 238);
+}
+
+.hero-social-buttons a i.fa-twitter:hover {
+    color: rgb(0, 172, 238);
+    background-color: rgb(255, 255, 255);
+}
+
+.hero-social-buttons a i.fa-instagram {
+    color: rgba(255, 255, 255, .8);
+    background-color: rgb(138, 58, 185);
+}
+
+.hero-social-buttons a i.fa-instagram:hover {
+    color: rgb(138, 58, 185);
+    background-color: rgb(255, 255, 255);
+}
+
 #hero-contact .btn-hero:hover, #hero-music .btn-hero:hover, #hero-music .btn-hero-videos:hover, #hero-music .btn-hero-gallery:hover {
     color: rgb(36, 43, 51);
     background-color: rgb(255, 255, 255);
