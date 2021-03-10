@@ -1276,8 +1276,10 @@ input#seeker::-ms-track {
     justify-content: center;
     align-items: center;
     background-color: rgb(36, 43, 51);
+    border: 5px solid rgba(255, 255, 255, .75);
     /* Overwrites if supported */
     background-color: var(--main-bg-color);
+    border: 5px solid var(--main-link-color);
 }
 
 .album-card-name {
@@ -1340,6 +1342,24 @@ input#seeker::-ms-track {
     justify-content: center;
     align-items: center;
     padding: .5rem;
+    cursor: pointer;
+}
+
+.album-song-container:hover {
+    background-color: rgba(0, 0, 0, .4);
+    border-radius: 2rem;
+}
+
+.album-song-container:hover .album-song-name {
+    color: rgb(255, 255, 255);
+    /* Overwrites if supported */
+    color: var(--main-link-color-hover);
+}
+
+.album-song-container:hover .album-song-play {
+    background-color: rgb(255, 255, 255);
+    /* Overwrites if supported */
+    background-color: var(--main-link-color-hover);
 }
 
 .album-song-index {
@@ -1356,6 +1376,15 @@ input#seeker::-ms-track {
     color: rgb(255, 255, 255);
     /* Overwrites if supported */
     color: var(--headings-color);
+}
+
+.album-song-play {
+    border-radius: 1rem;
+    background-color: rgba(255, 255, 255, .75);
+    color: rgb(36, 43, 51);
+    /* Overwrites if supported */
+    color: var(--main-bg-color);
+    background-color: var(--main-text-color);
 }
 
 .album-song-duration {

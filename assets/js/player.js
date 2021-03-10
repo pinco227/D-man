@@ -166,8 +166,9 @@ function writePlayList() {
 * @param {optional} again - Optional parameter to detect if function was called initialy or from the library
 * @return {ReturnValueDataTypeHere} Brief description of the returning value here.
 */
-function loadPlaylist(again) {
-    if (typeof again == "undefined") { // Load playlist from library
+function loadPlaylist(again = "yes", songIndex = 0) {
+    if (again == "yes") { // Load playlist from library
+        console.log("playlist loaded from library");
         writePlayList();
         Amplitude.stop();   // Stop player in order to avoid overlaping songs
 
@@ -178,9 +179,15 @@ function loadPlaylist(again) {
                 Amplitude.pause();
             }
         );
-
-        initPlayer.then(Amplitude.play());
-    } else { // Load playlist initialy
+        if (songIndex != 0) {
+            console.log(songIndex);
+            initPlayer.then(Amplitude.playSongAtIndex(songIndex));
+        } else {
+            console.log(0);
+            initPlayer.then(Amplitude.play());
+        }
+    } else if (again == "no") { // Load playlist initialy
+        console.log("initial playlist load");
         writePlayList();
         Amplitude.init(globalPlaylist);
         Amplitude.pause();
@@ -390,4 +397,4 @@ playbackDialog.addEventListener('hidden.bs.modal', function () {
 });// Make player image container square
 
 // Initial load
-loadPlaylist(1);
+loadPlaylist("no");

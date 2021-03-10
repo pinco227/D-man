@@ -284,10 +284,12 @@ function writeMusicToDoc(album) {
                 `;
             data[album].songs.forEach(function (item, i) {
                 html += `
-                <div class="album-song-container">
+                <div class="album-song-container" onClick="loadPlaylist('yes', ${i}); closeModals();">
                     <span class="album-song-index">${i + 1}</span>
                     <span class="album-song-name">${item.name}</span>
                     <span class="album-song-duration">${item.duration}</span>
+                    <button class="btn btn-sm album-song-play">Play this <i class="fas fa-play"></i></button>
+                    
                 </div>
                 `;
 
