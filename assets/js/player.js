@@ -111,6 +111,12 @@ const globalPlaylist = {
             playPauseButton.classList.add("amplitude-playing");
             songArtDiv.classList.add("rotate-art");
             songArtDiv.style.webkitAnimationPlayState = "running";
+
+            const audioEl = Amplitude.getAudio();
+            audioEl.onerror = function () {
+                console.log("Error " + audioEl.error.code + "; details: " + audioEl.error.message);
+                Amplitude.next();
+            }
         },
         song_change: function () {
             const songIndex = Amplitude.getActiveIndex();
