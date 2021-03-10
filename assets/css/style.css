@@ -44,9 +44,9 @@ body {
     width: 100%;
     height: 100%;
     position: fixed;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    /* IE Fallback */
+    /* overflow-y: auto;
+    -webkit-overflow-scrolling: touch; */
+    overflow: hidden;
     color: rgba(255, 255, 255, .75);
     /* Overwrites if supported */
     color: var(--main-text-color);
@@ -859,11 +859,41 @@ footer div#repeat-container div#repeat.amplitude-repeat-on:hover {
     opacity: 1;
 }
 
-footer div#expand-player {
+#expand-player {
     height: 3.5rem;
     padding: 1rem 0 0 0;
     font-size: 1.5rem;
     text-align: center;
+}
+
+#expand-player i {
+    position: absolute;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    -webkit-animation: MoveUpDown 1s linear infinite;
+    animation: MoveUpDown 1s linear infinite;
+}
+
+/** CREDIT:
+* https://stackoverflow.com/questions/35990445/how-to-move-a-div-up-and-down-infinitely-in-css3
+* for up and down animation */
+
+@-webkit-keyframes MoveUpDown {
+    0%, 100% {
+        bottom: 1.5rem;
+    }
+    50% {
+        bottom: 2rem;
+    }
+}
+
+@keyframes MoveUpDown {
+    0%, 100% {
+        bottom: 1.5rem;
+    }
+    50% {
+        bottom: 2rem;
+    }
 }
 
 footer::after {
