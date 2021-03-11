@@ -363,7 +363,7 @@ function clickHandler(func, param, delay) {
 
 // ----------------------------------------------------------------- APP EVENTS -------------
 // Use Vibrant.js to theme the app based on the music art img
-const playImg = document.getElementById('player-top').firstElementChild;
+const playImg = document.getElementById('player-cover-art');
 playImg.addEventListener('load', function () {
     Vibrant.from(playImg.src).getPalette()
         .then((palette) => {
@@ -381,6 +381,8 @@ playImg.addEventListener('load', function () {
             document.querySelector('meta[name="theme-color"]').setAttribute('content', palette.DarkMuted.getHex());
         });
     document.documentElement.style.backgroundImage = `url('${playImg.src}')`;
+    const nowPlayingCover = document.getElementById('now-playing-cover');
+    nowPlayingCover.style.backgroundImage = `url('${playImg.src}')`;
 });
 
 // Player Expand event listener (mobile)

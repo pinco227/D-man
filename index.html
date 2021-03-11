@@ -14,7 +14,7 @@
     <!-- External local Style -->
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- FavIcon -->
-    <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <link href="https://pinco227.github.io/D-man/favicon.ico" rel="shortcut icon" type="image/x-icon">
     <!-- First scripts to load and execute -->
     <script type="text/javascript" src="assets/js/redirect.js"></script>
     <script type="text/javascript">recieveRedirect()</script>
@@ -57,7 +57,7 @@
                 <aside>
                     <div id="player-screen">
                         <div id="player-top">
-                            <img data-amplitude-song-info="cover_art_url" />
+                            <img id="player-cover-art" data-amplitude-song-info="cover_art_url" />
                         </div>
                         <div class="player-middle">
                             <div id="meta-container">
@@ -71,9 +71,12 @@
                         </div>
                         <div class="d-md-none player-controls-container">
                             <div class="shuffle-container">
-                                <div class="amplitude-shuffle amplitude-shuffle-off"></div>
-                                <span class="shuffle-off">Shuffle OFF</span>
-                                <span class="shuffle-on">Shuffle ON</span>
+                                <div class="amplitude-shuffle amplitude-shuffle-off">
+                                    <span class="shuffle-text">Shuffle</span>
+                                    <i class="fas fa-random"></i>
+                                    <span class="shuffle-off">Off</span>
+                                    <span class="shuffle-on">On</span>
+                                </div>
                             </div>
                             <div class="prev-container">
                                 <div class="amplitude-prev"></div>
@@ -85,9 +88,12 @@
                                 <div class="amplitude-next"></div>
                             </div>
                             <div class="repeat-container">
-                                <div class="amplitude-repeat amplitude-repeat-off"></div>
-                                <span class="repeat-off">Loop OFF</span>
-                                <span class="repeat-on">Loop ON</span>
+                                <div class="amplitude-repeat amplitude-repeat-off">
+                                    <span class="shuffle-text">Loop</span>
+                                    <i class="fas fa-sync-alt"></i>
+                                    <span class="repeat-off">Off</span>
+                                    <span class="repeat-on">On</span>
+                                </div>
                             </div>
                         </div>
                         <div class="d-md-none player-progress-bar-container">
@@ -128,8 +134,10 @@
                     </div>
                 </div>
                 <div class="d-md-none col-9" id="now-playing">
-                    <div class="d-block d-md-none" id="expand-player"><i class="fas fa-chevron-up"></i>
+                    <div class="d-block d-md-none" id="expand-player">
+                        <i class="fas fa-chevron-up"></i>
                     </div>
+                    <div id="now-playing-cover"></div>
                     <div id="meta-container">
                         <span data-amplitude-song-info="name" class="song-name"></span>
 
@@ -141,9 +149,20 @@
                 </div>
                 <div class="col-3 col-md-4" id="controls-container">
                     <div class="d-none d-md-block" id="shuffle-container">
-                        <div class="amplitude-shuffle amplitude-shuffle-off"></div>
-                        <span class="shuffle-off">Shuffle OFF</span>
-                        <span class="shuffle-on">Shuffle ON</span>
+                        <div class="amplitude-shuffle amplitude-shuffle-off">
+                            <span class="shuffle-text">Shuffle</span>
+                            <i class="fas fa-random"></i>
+                            <span class="shuffle-off">Off</span>
+                            <span class="shuffle-on">On</span>
+                        </div>
+                    </div>
+                    <div class="d-none d-md-block" id="repeat-container">
+                        <div class="amplitude-repeat amplitude-repeat-off">
+                            <span class="shuffle-text">Loop</span>
+                            <i class="fas fa-sync-alt"></i>
+                            <span class="repeat-off">Off</span>
+                            <span class="repeat-on">On</span>
+                        </div>
                     </div>
                     <div class="d-none d-md-block" id="prev-container">
                         <div class="amplitude-prev" id="previous"></div>
@@ -153,11 +172,6 @@
                     </div>
                     <div id="next-container">
                         <div class="amplitude-next" id="next"></div>
-                    </div>
-                    <div class="d-none d-md-block" id="repeat-container">
-                        <div class="amplitude-repeat amplitude-repeat-off"></div>
-                        <span class="repeat-off">Loop OFF</span>
-                        <span class="repeat-on">Loop ON</span>
                     </div>
                 </div>
             </div>

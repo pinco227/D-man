@@ -9,8 +9,16 @@ const globalPlaylist = {
     "default_album_art": "https://pinco227.github.io/D-man/media/music/cover.jpg",
     "songs": [
         {
+            "name": "O viata",
+            "artist": "Dahey & DMAN",
+            "album": "Morphine",
+            "url": "https://pinco227.github.io/D-man/media/music/2008%20MORPHINE%20project/01.%20Morphine%20-%20O%20viata.mp3",
+            "cover_art_url": "https://pinco227.github.io/D-man/media/music/2008%20MORPHINE%20project/morphine.jpg",
+            "duration": "03:35"
+        },
+        {
             "name": "Noi",
-            "artist": "DMAN",
+            "artist": "Dahey & DMAN",
             "album": "Morphine",
             "url": "https://pinco227.github.io/D-man/media/music/2008%20MORPHINE%20project/06.%20Morphine%20-%20Noi.mp3",
             "cover_art_url": "https://pinco227.github.io/D-man/media/music/2008%20MORPHINE%20project/morphine.jpg",
