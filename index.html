@@ -69,6 +69,36 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="d-md-none player-controls-container">
+                            <div class="shuffle-container">
+                                <div class="amplitude-shuffle amplitude-shuffle-off"></div>
+                                <span class="shuffle-off">Shuffle OFF</span>
+                                <span class="shuffle-on">Shuffle ON</span>
+                            </div>
+                            <div class="prev-container">
+                                <div class="amplitude-prev"></div>
+                            </div>
+                            <div class="play-pause-container" class="mx-auto">
+                                <div class="amplitude-play-pause"></div>
+                            </div>
+                            <div class="next-container">
+                                <div class="amplitude-next"></div>
+                            </div>
+                            <div class="repeat-container">
+                                <div class="amplitude-repeat amplitude-repeat-off"></div>
+                                <span class="repeat-off">Loop OFF</span>
+                                <span class="repeat-on">Loop ON</span>
+                            </div>
+                        </div>
+                        <div class="d-md-none player-progress-bar-container">
+                            <span class="amplitude-current-time time-container"></span>
+                            <div class="seeker">
+                                <div class="amplitude-wave-form">
+                                </div>
+                                <input type="range" class="amplitude-song-slider" id="global-large-song-slider" />
+                            </div>
+                            <span class="amplitude-duration-time time-container"></span>
+                        </div>
                         <div id="list">
                         </div>
                     </div>
@@ -85,17 +115,21 @@
     </main>
     <footer class="fixed-bottom">
         <div class="container-xxl">
-            <div id="player-progress-bar-container">
-                <input id="seeker" type="range" name="seeker" min="0" step="0.05" value="0">
-                <progress id="song-played-progress" class=""></progress>
-                <progress id="song-buffered-progress" class="" value="0"></progress>
-            </div>
-            <div id="time-container">
-                <span class="amplitude-current-time time-container"></span>
-                <span class="amplitude-duration-time time-container"></span>
-            </div>
             <div class="row">
-                <div class="d-block d-md-none col-md-6 col-lg-7" id="now-playing">
+                <div class="col-12 col-md-8">
+                    <div class="player-progress-bar-container">
+                        <span class="amplitude-current-time time-container"></span>
+                        <div class="seeker">
+                            <div class="amplitude-wave-form">
+                            </div>
+                            <input type="range" class="amplitude-song-slider" id="global-large-song-slider" />
+                        </div>
+                        <span class="amplitude-duration-time time-container"></span>
+                    </div>
+                </div>
+                <div class="d-md-none col-9" id="now-playing">
+                    <div class="d-block d-md-none" id="expand-player"><i class="fas fa-chevron-up"></i>
+                    </div>
                     <div id="meta-container">
                         <span data-amplitude-song-info="name" class="song-name"></span>
 
@@ -105,27 +139,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-12">
-                    <div class="row justify-content-center" id="controls-container">
-                        <div class="col" id="shuffle-container">
-                            <div class="amplitude-shuffle amplitude-shuffle-off" id="shuffle"></div>
-                        </div>
-                        <div class="col" id="prev-container">
-                            <div class="amplitude-prev" id="previous"></div>
-                        </div>
-                        <div class="col">
-                            <div id="play-pause-container" class="mx-auto">
-                                <div class="amplitude-play-pause" id="play-pause"></div>
-                            </div>
-                        </div>
-                        <div class="col" id="next-container">
-                            <div class="amplitude-next" id="next"></div>
-                        </div>
-                        <div class="col" id="repeat-container">
-                            <div class="amplitude-repeat" id="repeat"></div>
-                        </div>
-                        <div class="col d-block d-md-none" id="expand-player"><i class="fas fa-chevron-up"></i>
-                        </div>
+                <div class="col-3 col-md-4" id="controls-container">
+                    <div class="d-none d-md-block" id="prev-container">
+                        <div class="amplitude-prev" id="previous"></div>
+                    </div>
+                    <div id="play-pause-container">
+                        <div class="amplitude-play-pause" id="play-pause"></div>
+                    </div>
+                    <div id="next-container">
+                        <div class="amplitude-next" id="next"></div>
                     </div>
                 </div>
             </div>

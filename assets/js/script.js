@@ -384,10 +384,9 @@ playImg.addEventListener('load', function () {
 });
 
 // Player Expand event listener (mobile)
-document.getElementById('expand-player').addEventListener('click', function () {
+document.getElementById('now-playing').addEventListener('click', function () {
     const player = document.getElementById('player-collapse');
     const collapseButton = document.getElementById('collapse-player');
-    this.style.visibility = 'hidden';
     collapseButton.style.display = 'block';
     player.style.visibility = 'visible';
     player.style.top = '0';
@@ -396,9 +395,7 @@ document.getElementById('expand-player').addEventListener('click', function () {
 // Player Collapse event listener (mobile)
 document.getElementById('collapse-player').addEventListener('click', function () {
     const player = document.getElementById('player-collapse');
-    const expandButton = document.getElementById('expand-player');
     this.style.display = 'none';
-    expandButton.style.visibility = 'visible';
     player.style.visibility = 'hidden';
     player.style.top = '100vh';
 });
@@ -440,7 +437,7 @@ function setDocHeight(x) {
     if (x.matches) { // If media query matches
         document.getElementById("player-screen").style.height = `${docHeight - (navbarHeight + footerHeight)}px`;
     } else {
-        document.getElementById("player-screen").style.height = `${docHeight - footerHeight}px`;
+        document.getElementById("player-screen").style.height = '100vh';
     }
 }
 

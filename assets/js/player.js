@@ -9,6 +9,14 @@ const globalPlaylist = {
     "default_album_art": "https://pinco227.github.io/D-man/media/music/cover.jpg",
     "songs": [
         {
+            "name": "Noi",
+            "artist": "DMAN",
+            "album": "Morphine",
+            "url": "https://pinco227.github.io/D-man/media/music/2008%20MORPHINE%20project/06.%20Morphine%20-%20Noi.mp3",
+            "cover_art_url": "https://pinco227.github.io/D-man/media/music/2008%20MORPHINE%20project/morphine.jpg",
+            "duration": "04:07"
+        },
+        {
             "name": "diliMan",
             "artist": "DMAN ft. SEBA",
             "album": "DOMINO Project",
@@ -63,14 +71,6 @@ const globalPlaylist = {
             "url": "https://pinco227.github.io/D-man/media/music/Singles/2005%20DMAN%20ft%20DAHEY-%20Fak%20Ya%20Yo%20!.mp3",
             "cover_art_url": "https://pinco227.github.io/D-man/media/music/Singles/cover.jpg",
             "duration": "04:15"
-        },
-        {
-            "name": "Noi",
-            "artist": "DMAN",
-            "album": "Morphine",
-            "url": "https://pinco227.github.io/D-man/media/music/2008%20MORPHINE%20project/06.%20Morphine%20-%20Noi.mp3",
-            "cover_art_url": "https://pinco227.github.io/D-man/media/music/2008%20MORPHINE%20project/morphine.jpg",
-            "duration": "04:07"
         },
         {
             "name": "Scrisoare de pe front",
@@ -133,16 +133,15 @@ const globalPlaylist = {
             songArtDiv.style.webkitAnimationPlayState = "paused";
         },
         timeupdate: function () {
-            setSeekerDuration();
-            setSeekerCurrentTime();
-            setSeekerBuffered();
-
             const songPercentage = Amplitude.getSongPlayedPercentage();
             localStorage.setItem('songPercentage', songPercentage);
 
             updatePositionState(); // Media Session API, set the duration.
         }
-    }
+    },
+    waveforms: {
+        sample_rate: 200
+    },
 };
 
 /** 
@@ -313,39 +312,6 @@ try {
 window.onkeydown = function (e) {
     return !(e.keyCode == 32);
 };
-
-// Declare the seeker variables
-const seeker = document.getElementById('seeker');
-const playedProgress = document.getElementById('song-played-progress');
-const bufferedProgress = document.getElementById('song-buffered-progress');
-/*
-  Handles a change on the song seek range input.
-*/
-document.getElementById('seeker').addEventListener('input', function (e) {
-    const setTime = seeker.value;
-    const setPercentage = (parseFloat(setTime) / parseFloat(Amplitude.getSongDuration())) * 100;
-    Amplitude.setSongPlayedPercentage(setPercentage);
-    updatePositionState();
-});
-/**
-* Set the seeker range input 'max' as the song duration
-*/
-function setSeekerDuration() {
-    seeker.max = Amplitude.getSongDuration();
-}
-/**
-* Set the seeker range input 'value' and the played progreess 'value' as the song currentTime
-*/
-function setSeekerCurrentTime() {
-    seeker.value = Amplitude.getSongPlayedSeconds();
-    playedProgress.value = Amplitude.getSongPlayedPercentage() / 100;
-}
-/**
-* Set the buffered progress 'value' 
-*/
-function setSeekerBuffered() {
-    bufferedProgress.value = Amplitude.getBuffered() / 100;
-}
 
 /** 
 * Opens dialog modal
