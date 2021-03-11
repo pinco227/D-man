@@ -480,12 +480,12 @@ div.player-middle div.song-artist-album {
     text-align: center;
     width: 20%;
     height: 3.5rem;
-    padding: 1.2rem 0 0 0;
+    padding: .9rem 0 0 0;
 }
 
 .player-controls-container .shuffle-container .amplitude-shuffle {
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 1rem;
+    height: 1rem;
     cursor: pointer;
     margin: auto;
     opacity: 0.7;
@@ -518,19 +518,9 @@ div.player-middle div.song-artist-album {
     display: block;
 }
 
-.player-controls-container .shuffle-container .amplitude-shuffle.amplitude-shuffle-off:hover {
-    background: url("../images/shuffle.svg") no-repeat center;
-    background-size: cover;
-    opacity: 1;
-}
-
 .player-controls-container .shuffle-container .amplitude-shuffle.amplitude-shuffle-on {
     background: url("../images/shuffle.svg") no-repeat center;
     background-size: cover;
-    opacity: 1;
-}
-
-.player-controls-container .shuffle-container .amplitude-shuffle.amplitude-shuffle-on:hover {
     opacity: 1;
 }
 
@@ -626,7 +616,7 @@ div.player-middle div.song-artist-album {
     width: 20%;
     text-align: center;
     height: 3.5rem;
-    padding: 1.2rem 0 0 0;
+    padding: .9rem 0 0 0;
     filter: invert(1);
 }
 
@@ -647,8 +637,8 @@ div.player-middle div.song-artist-album {
 .player-controls-container .repeat-container .amplitude-repeat {
     background: url("../images/arrow-repeat.svg") no-repeat center;
     background-size: cover;
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 1rem;
+    height: 1rem;
     cursor: pointer;
     margin: auto;
     opacity: 0.5;
@@ -953,6 +943,62 @@ footer div#controls-container {
     padding-top: .5rem;
 }
 
+footer div#shuffle-container {
+    text-align: center;
+    width: 20%;
+    height: 3.5rem;
+    padding: .9rem 0 0 0;
+}
+
+footer div#shuffle-container .amplitude-shuffle {
+    width: 1rem;
+    height: 1rem;
+    cursor: pointer;
+    margin: auto;
+    opacity: 0.7;
+    filter: invert(1);
+}
+
+footer div#shuffle-container .shuffle-on {
+    font-size: .8rem;
+    color: rgb(255, 255, 255);
+    /* Overwrites if supported */
+    color: var(--headings-color);
+}
+
+footer div#shuffle-container .shuffle-off {
+    font-size: .8rem;
+    color: rgba(255, 255, 255, .4);
+}
+
+footer div#shuffle-container .amplitude-shuffle.amplitude-shuffle-off {
+    background: url("../images/shuffle.svg") no-repeat center;
+    background-size: cover;
+    opacity: 0.5;
+}
+
+footer div#shuffle-container .amplitude-shuffle.amplitude-shuffle-off~.shuffle-on {
+    display: none;
+}
+
+footer div#shuffle-container .amplitude-shuffle.amplitude-shuffle-off~.shuffle-off {
+    display: block;
+}
+
+footer div#shuffle-container .amplitude-shuffle.amplitude-shuffle-on {
+    background: url("../images/shuffle.svg") no-repeat center;
+    background-size: cover;
+    opacity: 1;
+}
+
+footer div#shuffle-container .amplitude-shuffle.amplitude-shuffle-on~.shuffle-on {
+    display: block;
+}
+
+footer div#shuffle-container .amplitude-shuffle.amplitude-shuffle-on~.shuffle-off {
+    display: none;
+}
+
 footer div#prev-container {
     height: 3.5rem;
     padding: .6rem 0 0 0;
@@ -1032,35 +1078,57 @@ footer div#next-container div#next:hover {
 }
 
 footer div#repeat-container {
+    width: 20%;
+    text-align: center;
     height: 3.5rem;
-    padding: 1.2rem 0 0 0;
+    padding: .9rem 0 0 0;
     filter: invert(1);
 }
 
-footer div#repeat-container div#repeat {
+footer div#repeat-container .repeat-on {
+    font-size: .8rem;
+    filter: invert(1);
+    color: rgb(255, 255, 255);
+    /* Overwrites if supported */
+    color: var(--headings-color);
+}
+
+footer div#repeat-container .repeat-off {
+    font-size: .8rem;
+    filter: invert(1);
+    color: rgba(255, 255, 255, .4);
+}
+
+footer div#repeat-container .amplitude-repeat {
     background: url("../images/arrow-repeat.svg") no-repeat center;
     background-size: cover;
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 1rem;
+    height: 1rem;
     cursor: pointer;
     margin: auto;
     opacity: 0.5;
 }
 
-footer div#repeat-container div#repeat:hover {
+footer div#repeat-container .amplitude-repeat.amplitude-repeat-off~.repeat-on {
+    display: none;
+}
+
+footer div#repeat-container .amplitude-repeat.amplitude-repeat-off~.repeat-off {
+    display: block;
+}
+
+footer div#repeat-container .amplitude-repeat.amplitude-repeat-on {
     background: url("../images/arrow-repeat.svg") no-repeat center;
     background-size: cover;
     opacity: 1;
 }
 
-footer div#repeat-container div#repeat.amplitude-repeat-on {
-    background: url("../images/arrow-repeat.svg") no-repeat center;
-    background-size: cover;
-    opacity: 1;
+footer div#repeat-container .amplitude-repeat.amplitude-repeat-on~.repeat-on {
+    display: block;
 }
 
-footer div#repeat-container div#repeat.amplitude-repeat-on:hover {
-    opacity: 1;
+footer div#repeat-container .amplitude-repeat.amplitude-repeat-on~.repeat-off {
+    display: none;
 }
 
 #expand-player {
