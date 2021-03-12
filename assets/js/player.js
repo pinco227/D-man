@@ -145,11 +145,14 @@ const globalPlaylist = {
             localStorage.setItem('songPercentage', songPercentage);
 
             updatePositionState(); // Media Session API, set the duration.
+        },
+        initialized: function () {
+            Amplitude.setRepeat(true);
         }
     },
     waveforms: {
         sample_rate: 200
-    },
+    }
 };
 
 /** 

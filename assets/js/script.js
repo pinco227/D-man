@@ -349,6 +349,11 @@ function writeMusicToDoc(album) {
                         <button class="btn btn-dmn btn-album-play" onClick="loadPlaylist(); closeModals();"><i class="fa fa-play" aria-hidden="true"></i> Play all</button>
                     </div>
                 </div>
+                <div class="col-6 col-sm-4 col-md-6 col-lg-3">
+                    <div class="album-card">
+                        <button class="btn btn-shuffle btn-album-play" onClick="loadPlaylist('yes','s'); closeModals();"><i class="fas fa-random" aria-hidden="true"></i> Shuffle All</button>
+                    </div>
+                </div>
             </div>`;
             writeTo.innerHTML += html;
         }
@@ -438,13 +443,20 @@ function setDocHeight(x) {
     const navbarHeight = document.getElementsByTagName('nav')[0].offsetHeight;
     const footerHeight = document.getElementsByTagName('footer')[0].offsetHeight;
     const docHeight = window.innerHeight;
-    document.getElementById("content").style.height = `${docHeight - (navbarHeight + footerHeight)}px`;
-    document.querySelector('#player-top').style.height = document.querySelector('#player-top').offsetWidth + 'px'; // make Player Art square
     if (x.matches) { // If media query matches
         document.getElementById("player-screen").style.height = `${docHeight - (navbarHeight + footerHeight)}px`;
+        document.getElementById('collapse-player').style.display = 'none';
+        const player = document.getElementById('player-collapse');
+        player.style.visibility = 'visible';
+        player.style.top = '0';
     } else {
         document.getElementById("player-screen").style.height = '100vh';
+        const player = document.getElementById('player-collapse');
+        player.style.visibility = 'hidden';
+        player.style.top = '100vh';
     }
+    document.querySelector('#player-top').style.height = document.querySelector('#player-top').offsetWidth + 'px'; // make Player Art square
+    document.getElementById("content").style.height = `${docHeight - (navbarHeight + footerHeight)}px`;
 }
 
 /**
