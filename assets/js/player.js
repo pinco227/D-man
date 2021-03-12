@@ -181,7 +181,6 @@ function writePlayList() {
 */
 function loadPlaylist(again = "yes", songIndex = 0) {
     if (again == "yes") { // Load playlist from library
-        console.log("playlist loaded from library");
         writePlayList();
         Amplitude.stop();   // Stop player in order to avoid overlaping songs
 
@@ -193,14 +192,15 @@ function loadPlaylist(again = "yes", songIndex = 0) {
             }
         );
         if (songIndex != 0) {
-            console.log(songIndex);
-            initPlayer.then(Amplitude.playSongAtIndex(songIndex));
+            if (typeof (songIndex) == "number") {
+                initPlayer.then(Amplitude.playSongAtIndex(songIndex));
+            } else {
+                initPlayer.then(playShuffle());
+            }
         } else {
-            console.log(0);
             initPlayer.then(Amplitude.play());
         }
     } else if (again == "no") { // Load playlist initialy
-        console.log("initial playlist load");
         writePlayList();
         Amplitude.init(globalPlaylist);
         Amplitude.pause();
@@ -232,6 +232,15 @@ function loadPlaylist(again = "yes", songIndex = 0) {
             );
         }
     }
+}
+
+/**
+ * Set player Shuffle and play first song randomly
+ */
+function playShuffle() {
+    Amplitude.setShuffle(true);
+    Amplitude.play();
+    Amplitude.next();
 }
 
 /** 

@@ -202,10 +202,11 @@ body {
 }
 
 .btn-dmn {
-    color: rgba(255, 255, 255, .7);
+    color: rgb(255, 255, 255);
     background-color: rgb(255, 255, 255);
     border-color: rgb(36, 43, 51);
     /* Overwrites if supported */
+    color: var(--main-link-color-hover);
     background-color: var(--headings-color);
     border-color: var(--main-bg-color);
 }
@@ -216,6 +217,24 @@ body {
     /* Overwrites if supported */
     color: var(--main-link-color-hover);
     background-color: var(--main-link-color);
+}
+
+.btn-shuffle {
+    color: rgb(36, 43, 51);
+    background-color: rgba(255, 255, 255, .8);
+    border-color: rgb(36, 43, 51);
+    /* Overwrites if supported */
+    color: var(--main-bg-color);
+    background-color: var(--main-text-color);
+    border-color: var(--main-bg-color);
+    margin-bottom: .5rem;
+}
+
+.btn-shuffle:hover, .btn-shuffle:active, .btn-shuffle:focus {
+    background-color: rgb(255, 255, 255);
+    /* Overwrites if supported */
+    color: var(--headings-color);
+    background-color: var(--main-link-color-hover);
 }
 
 .btn-back {

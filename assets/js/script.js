@@ -280,6 +280,7 @@ function writeMusicToDoc(album) {
                     <div class="album-data">
                         <span class="album-title">${data[album].name}</span>
                         <span class="album-artist">${data[album].artist}</span>
+                        <button class="btn btn-shuffle" onClick="loadPlaylist('yes','s'); closeModals();"><i class="fas fa-random" aria-hidden="true"></i> Shuffle</button>
                         <button class="btn btn-dmn" onClick="loadPlaylist(); closeModals();"><i class="fa fa-play" aria-hidden="true"></i> Play this album</button>
                     </div>
                 </div>
@@ -465,7 +466,6 @@ mediaQ.addListener(setDocHeight); // Attach listener function on state changes
  */
 window.onresize = function (event) {
     setDocHeight(mediaQ);
-    console.log('resize');
 };
 
 setDocHeight(mediaQ); // Call listener function at run time
