@@ -58,6 +58,7 @@ async function loadAllPages() {
 * @param {string} p - Page relative url
 */
 function setPage(p) {
+    p = p in routes ? p : '';
     document.title = titles[p] + ' | ' + mainTitle;
     contentDiv.innerHTML = routes[p];
     if (p === 'videos') {
