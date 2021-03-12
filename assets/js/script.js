@@ -277,9 +277,11 @@ function writeMusicToDoc(album) {
                     <div class="album-art-container">
                         <img class="album-art" src="media/music/${data[album].path}/${data[album].cover}" alt="${data[album].artist} - ${data[album].name}" />
                     </div>
-                    <span class="album-title">${data[album].name}</span>
-                    <span class="album-artist">${data[album].artist}</span>
-                    <button class="btn btn-dmn" onClick="loadPlaylist(); closeModals();"><i class="fa fa-play" aria-hidden="true"></i> Play this album</button>
+                    <div class="album-data">
+                        <span class="album-title">${data[album].name}</span>
+                        <span class="album-artist">${data[album].artist}</span>
+                        <button class="btn btn-dmn" onClick="loadPlaylist(); closeModals();"><i class="fa fa-play" aria-hidden="true"></i> Play this album</button>
+                    </div>
                 </div>
                 <div class="album-songs">
                 `;

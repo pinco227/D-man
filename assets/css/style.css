@@ -771,6 +771,11 @@ div#list div.song span.song-artist-album {
 
 /*--------------------------------- FOOTER / PLAYER CONTROLS */
 
+.player-progress-bar-card {
+    background-color: rgba(255, 255, 255, .07);
+    border-top-left-radius: 1rem;
+}
+
 .player-progress-bar-container {
     display: flex;
     flex-direction: row;
@@ -897,9 +902,12 @@ div#now-playing {
     align-items: center;
     padding: 1rem;
     position: relative;
+    background-color: rgba(255, 255, 255, .07);
+    border-top-left-radius: 1rem;
 }
 
 div#now-playing div#now-playing-cover {
+    min-width: 3.5rem;
     width: 3.5rem;
     height: 3.5rem;
     background-position: center;
@@ -923,15 +931,30 @@ div#now-playing span.song-name {
     letter-spacing: 0.5px;
     line-height: 1.5rem;
     display: block;
+    max-height: 1.5rem;
+    overflow: hidden;
+    overflow-wrap: break-word;
+    word-break: break-all;
 }
 
 div#now-playing div.song-artist-album {
+    display: flex;
+    flex-direction: column;
+    max-height: 2rem;
+    overflow: hidden;
     font-family: 'VT323', monospace;
     opacity: 0.5;
     font-size: 1rem;
     color: rgb(255, 255, 255);
     letter-spacing: 0.5px;
     line-height: 1rem;
+}
+
+div#now-playing div.song-artist-album span {
+    max-height: 1rem;
+    overflow: hidden;
+    overflow-wrap: break-word;
+    word-break: break-all;
 }
 
 footer div#controls-container {
@@ -941,6 +964,8 @@ footer div#controls-container {
     align-items: center;
     padding-bottom: .5rem;
     padding-top: .5rem;
+    background-color: rgba(255, 255, 255, .07);
+    border-top-right-radius: 1rem;
 }
 
 footer div#shuffle-container {
@@ -1456,7 +1481,10 @@ footer::after {
 }
 
 .album-details {
-    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 .album-art-container {
@@ -1465,7 +1493,6 @@ footer::after {
     border-radius: 50%;
     width: 40%;
     padding-top: 40%;
-    margin: 0 auto;
     margin-bottom: 1rem;
     overflow: hidden;
     box-shadow: 0px 0px 2rem rgba(255, 255, 255, .55);
@@ -1482,6 +1509,12 @@ footer::after {
     height: 100%;
     margin-left: 50%;
     transform: translateX(-50%);
+}
+
+.album-data {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
 }
 
 .album-title {
@@ -1548,6 +1581,8 @@ footer::after {
 }
 
 .album-song-play {
+    min-width: 5.5rem;
+    width: 6rem;
     border-radius: 1rem;
     background-color: rgba(255, 255, 255, .75);
     color: rgb(36, 43, 51);
@@ -1628,14 +1663,28 @@ footer::after {
 
 /*------------------------------------------ MEDIA QUERIES */
 
+/* XS screen */
+
+@media(max-width:465px) {
+    .album-title {
+        font-size: 1.2rem;
+    }
+    .album-artist {
+        font-size: .8rem;
+    }
+}
+
 /* Small screen */
 
-@media(max-width:576px) {
+@media(max-width: 576px) {
     .hero {
         flex-direction: column;
     }
     .album-song-name {
         width: 100%;
+        overflow: hidden;
+        line-height: 1.2rem;
+        max-height: 1.2rem;
     }
 }
 
@@ -1692,6 +1741,10 @@ footer::after {
     footer div#play-pause-container div#play-pause {
         width: 2.5rem;
         height: 2.5rem;
+    }
+    .player-progress-bar-card {
+        border-radius: 0;
+        background: none;
     }
     @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
         #player-screen {
