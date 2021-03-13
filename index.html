@@ -191,18 +191,19 @@
         <span class="close-modal" data-bs-dismiss="modal"><i class="fas fa-times"></i></span>
         <div class="modal-dialog modal-xl modal-dialog-centered">
             <div class="modal-content">
-                <div id="galleryCarousel" class="carousel slide" data-bs-interval="false" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-
+                <div id="galleryCarousel">
+                    <div id="gallery-show-item" style="background-image:url('media/photos/2015_DMAN.jpg');">
+                        <div class="carousel-caption">
+                            <h3>DMAN</h3>
+                            <h5>2015</h5>
+                        </div>
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#galleryCarousel"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <button id="carousel-prev">
+                        <i class="fas fa-chevron-left"></i>
                         <span class="visually-hidden">Previous</span>
                     </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#galleryCarousel"
-                        data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <button id="carousel-next">
+                        <i class="fas fa-chevron-right"></i>
                         <span class="visually-hidden">Next</span>
                     </button>
                 </div>

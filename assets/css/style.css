@@ -141,40 +141,63 @@ body {
     height: 100%;
 }
 
-#galleryModal .modal-dialog {
-    max-width: calc(100vw - 3.5rem);
-}
-
 #galleryModal .modal-content {
-    max-width: calc(100vw - 3.5rem);
-    max-height: calc(100vh - 3.5rem);
     display: flex;
     justify-content: center;
     overflow: hidden;
     background: none;
 }
 
-#galleryModal #galleryCarousel .carousel-item {
+#galleryModal #galleryCarousel #gallery-show-item {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     height: calc(100vh - 3.5rem);
 }
 
-#galleryCarousel .carousel-control-next, #galleryCarousel .carousel-control-prev {
+#galleryCarousel #carousel-next, #galleryCarousel #carousel-prev {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+    opacity: .5;
+    transition: opacity .15s ease;
     width: 25%;
     background: none;
     border: none;
 }
 
-#galleryCarousel .carousel-control-next-icon, #galleryCarousel .carousel-control-prev-icon {
+#galleryCarousel #carousel-next {
+    right: 0;
+}
+
+#galleryCarousel #carousel-next:hover, #galleryCarousel #carousel-prev:hover, #galleryCarousel #carousel-next:focus, #galleryCarousel #carousel-prev:focus {
+    color: #fff;
+    text-decoration: none;
+    outline: 0;
+    opacity: .9;
+}
+
+#galleryCarousel #carousel-next i, #galleryCarousel #carousel-prev i {
     width: 5rem;
     height: 5rem;
+    font-size: 4rem;
+    line-height: 5rem;
+    text-shadow: 2px 2px 2px rgb(36 43 51);
+    /* Overwrites if supported */
+    text-shadow: 2px 2px 2px var(--main-bg-color);
 }
 
 #galleryCarousel .carousel-caption {
-    background: rgba(0, 0, 0, .5);
+    background: rgba(0, 0, 0, .7);
     border-radius: 1rem;
+    left: 1rem;
+    right: 1rem;
 }
 
 #galleryCarousel .carousel-caption h3 {

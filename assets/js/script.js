@@ -182,7 +182,6 @@ function writeVideosToDoc() {
         let html = '';
         data = data.items;
         ytModalEl = document.getElementById('yt-modal');
-        // ytModal = new bootstrap.Modal(ytModalEl);
 
         data.forEach(function (item) {
             html += `
@@ -202,14 +201,12 @@ function writeVideosToDoc() {
 
         ytModalEl.addEventListener('hide.bs.modal', function (event) {
             ytPlayer.stopVideo();
-            // Amplitude.play();
         })
 
         // Navigation links event listeners for dynamic page load
         document.querySelectorAll('.video-col').forEach(function (button) {
             button.addEventListener('click', function () {
                 ytPlayer.loadVideoById(this.getAttribute("data-yt-id"));
-                // ytModal.show();
                 Amplitude.pause();
                 ytPlayer.playVideo();
             });
@@ -226,30 +223,61 @@ function writeVideosToDoc() {
 function writePhotosToDoc() {
     getData(galleryApiUrl, function (data) {
         const galleryContent = document.getElementById('gallery-content');
-        const galleryCarouselInner = document.getElementById('galleryCarousel').firstElementChild;
         data = data.files;
-
-        galleryCarouselInner.innerHTML = data.map(function (item, i) {
-            return `
-                <div class="carousel-item ${i == 0 ? 'active' : ''}" style="background-image:url('media/photos/${item.file}');">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h3>${item.title}</h3>
-                        <h5>${item.description}</h5>
-                    </div>
-                </div>
-            `;
-        }).join("");
 
         galleryContent.innerHTML = data.map(function (item, i) {
             return `
-                <div class="col-6 col-sm-4 col-md-6 col-lg-3" data-bs-toggle="modal" data-bs-target="#galleryModal">
+                <div class="col-6 col-sm-4 col-md-6 col-lg-3 gallery-image-container" data-bs-toggle="modal" data-bs-target="#galleryModal" data-bs-img="media/photos/${item.file}" data-bs-title="${item.title}" data-bs-caption="${item.description}" id="gallery-trigger-${i}">
                   <figure>
-                    <img class="gallery-image" src="media/photos/${item.thumbnail}" alt="${item.title} - ${item.description}" data-bs-target="#galleryCarousel" data-bs-slide-to="${i}">
+                    <img class="gallery-image" src="media/photos/${item.thumbnail}" alt="${item.title} - ${item.description}">
                   </figure>
                 </div>
             `;
         }).join("");
+
+        document.querySelectorAll('.gallery-image-container').forEach(function (el) {
+            el.addEventListener('click', function () {
+                galleryShow(this);
+            });
+        });
     });
+}
+/**
+ * Takes data from the source's attributes and insert it into modal to show the selected picture
+ * @param {object} source DOM element source
+ */
+function galleryShow(source) {
+    // Extract info from data-bs-* attributes
+    const img = source.getAttribute('data-bs-img');
+    const title = source.getAttribute('data-bs-title');
+    const caption = source.getAttribute('data-bs-caption');
+    // Selectors
+    const modalImg = document.getElementById('gallery-show-item');
+    const modalTitle = modalImg.querySelector('div.carousel-caption h3');
+    const modalCaption = modalImg.querySelector('div.carousel-caption h5');
+    const prevButton = document.getElementById('carousel-prev');
+    const nextButton = document.getElementById('carousel-next');
+    const prevSibling = source.previousElementSibling;
+    const nextSibling = source.nextElementSibling;
+
+    // Update the modal's content.
+    modalImg.style.backgroundImage = `url("${img}")`;
+    modalTitle.innerHTML = title;
+    modalCaption.innerHTML = caption;
+    if (prevSibling) {
+        prevButton.onclick = function () { galleryShow(prevSibling); };
+        prevButton.classList.remove("visually-hidden");
+    } else {
+        prevButton.onclick = '';
+        prevButton.classList.add("visually-hidden");
+    }
+    if (nextSibling) {
+        nextButton.onclick = function () { galleryShow(nextSibling); };
+        nextButton.classList.remove("visually-hidden");
+    } else {
+        nextButton.onclick = '';
+        nextButton.classList.add("visually-hidden");
+    }
 }
 // ###################################### Photo Gallery Page END
 
