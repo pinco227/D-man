@@ -281,6 +281,23 @@ function galleryShow(source) {
 }
 // ###################################### Photo Gallery Page END
 
+// ###################################### About Me Page
+// CREDIT: Rafamaciel http://bootsnipp.com/rafamaciel
+// Snippet: https://bootsnipp.com/snippets/7B7W
+// const myPosts = document.querySelectorAll("[data-bs-toggle=tooltip]");
+// const size = window.innerHeight;
+// for (i = 0; i < myPosts.length; i++) {
+//     let thePost = myPosts[i];
+//     if (thePost.classList.contains("invert") && size >= 991) {
+//         thePost.setAttribute('data-bs-placement', 'left');
+//         thePost.style.cursor = "pointer";
+//     } else {
+//         thePost.setAttribute('data-bs-placement', 'right');
+//         thePost.css("cursor", "pointer");
+//     }
+// }
+// ###################################### About Me Page END
+
 // ###################################### Music Library Page
 /** 
 * Write the result of the Music API call to the DOM
