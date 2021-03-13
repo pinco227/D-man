@@ -129,6 +129,7 @@ const globalPlaylist = {
         song_change: function () {
             const songIndex = Amplitude.getActiveIndex();
             localStorage.setItem('activeSongIndex', songIndex);
+            scrollAnimation();
         },
         loadedmetadata: function () {
             updateMetadata(); // Media Session API
@@ -387,6 +388,29 @@ playbackDialog.addEventListener('shown.bs.modal', function () {
 playbackDialog.addEventListener('hidden.bs.modal', function () {
     document.querySelectorAll('.modal-backdrop').forEach(function (el) { el.remove(); });
 });// Make player image container square
+
+function scrollAnimation() {
+    document.querySelectorAll('.meta-container span').forEach(function (el) {
+        if (el.scrollWidth > el.clientWidth) {
+            const diff = el.scrollWidth - el.clientWidth;
+            el.animate([
+                // keyframes
+                { transform: 'translatex(0px)' },
+                { transform: 'translatex(-' + diff + 'px)' }
+            ], {
+                // timing options
+                duration: 3000,
+                delay: 800,
+                direction: 'alternate',
+                iterations: Infinity
+            });
+        } else {
+            el.getAnimations().forEach(function (anim) {
+                anim.cancel();
+            });
+        }
+    });
+}
 
 // Initial load
 loadPlaylist("no");

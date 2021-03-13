@@ -965,41 +965,34 @@ div#now-playing div#now-playing-cover {
     box-shadow: 0px 0px .5rem var(--main-bg-color);
 }
 
-div#now-playing #meta-container {
-    margin: 0 0 0 1rem;
-}
-
-div#now-playing span.song-name {
-    font-family: 'VT323', monospace;
-    font-size: 1.2rem;
-    color: rgb(255, 255, 255);
-    letter-spacing: 0.5px;
-    line-height: 1.5rem;
-    display: block;
-    max-height: 1.5rem;
+.meta-container {
     overflow: hidden;
-    overflow-wrap: break-word;
-    word-break: break-all;
-}
-
-div#now-playing div.song-artist-album {
+    margin: 0 0 0 1rem;
     display: flex;
     flex-direction: column;
-    max-height: 2rem;
-    overflow: hidden;
-    font-family: 'VT323', monospace;
-    opacity: 0.5;
-    font-size: 1rem;
-    color: rgb(255, 255, 255);
-    letter-spacing: 0.5px;
-    line-height: 1rem;
 }
 
-div#now-playing div.song-artist-album span {
+div.meta-container span {
+    position: relative;
+    font-family: 'VT323', monospace;
+    color: rgb(255, 255, 255);
+    letter-spacing: 0.5px;
+    display: block;
+    white-space: nowrap;
+    left: 0;
+}
+
+div.meta-container span.song-name {
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+    max-height: 1.5rem;
+}
+
+div.meta-container span[data-amplitude-song-info="artist"], div.meta-container span[data-amplitude-song-info="album"] {
+    opacity: 0.5;
+    font-size: 1rem;
+    line-height: 1rem;
     max-height: 1rem;
-    overflow: hidden;
-    overflow-wrap: break-word;
-    word-break: break-all;
 }
 
 footer div#controls-container {
