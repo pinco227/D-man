@@ -147,6 +147,7 @@ Website's features are presented in an importance order.
 - ### A music player
     - The player's most used controls will always be visible (on footer) as well as current playing song. The playlist and more controls will be collapsed (but expandable) on mobile and small screens and always visible on bigger screens.
     - The website features a ***Media Session API*** which offers user a better control on any device. The media keeps playing while browser is minimized or device is locked. The browser (desktop) or the device has it's own implementation of Media Session API and it effectively communicates with the website to control the player.
+  
       ![media session screenshot](https://github.com/pinco227/D-man/blob/main/docs/media-session-ss.png)
 - ### Music Library
     A library of songs well organised in collections as albums. Each album can be played (normal or shuffled) individually, all albums cand be played (normal or shuffled) at once. Each song has a play button to be selected as starting song while loading the album's playlist.
@@ -170,6 +171,11 @@ Website's features are presented in an importance order.
   * [CSS3](https://en.wikipedia.org/wiki/CSS)
   * [JS](https://en.wikipedia.org/wiki/JavaScript)
 - Frameworks & Libraries
+  * [Bootstrap5](https://getbootstrap.com/) is used for its great responsivness and styling classes and its javascript functionality (modal).
+  * [Font Awesome](https://fontawesome.com/) icons were used for aesthetic and [UX](#ux) improvements.
+  * [Google Fonts](https://fonts.google.com/) is used as the main font resource.
+  * [AmplitudeJS](https://521dimensions.com/open-source/amplitudejs) for audio player capabilities.
+  * [Vibrant.js](https://jariz.github.io/vibrant.js/) to extract colours from the meta image.
 - Version Control
   * [Git](https://git-scm.com/) as Version Control System.
   * [Github](https://www.github.com) for repository hosting.
@@ -177,7 +183,12 @@ Website's features are presented in an importance order.
 - Wireframes
   * [Balsamiq](https://balsamiq.com/) for creating [wireframes](#wireframes).
 - Media
+  * [Inkscape](https://inkscape.org/) for creating the favicon.
+  * [Adobe Photoshop Express](https://photoshop.adobe.com/resize) for quick resizing and cropping images top improve performance.
   * [TinyJPG](https://tinyjpg.com/) for compressing images.
+  * [Convertio](https://convertio.co/) for converting favicon from ```.png``` to ```.ico```.
+  * [CloudConvert](https://cloudconvert.com/webm-to-gif) for converting screen recording from ```.webm``` to ```.gif```.
+  * [EZGif](https://ezgif.com/) for cropping ```.gif``` files used writing this documentation.
 - Other
 
 ## Testing
