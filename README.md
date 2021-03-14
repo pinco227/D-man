@@ -24,6 +24,8 @@ This project represents an artist's page featuring a music player. The main goal
 
 ### [Live website](https://pinco227.github.io/D-man/)
 
+[![Responsive Mockup](https://github.com/pinco227/D-man/blob/main/docs/responsive-mockup.png)](http://ami.responsivedesign.is/?url=https://pinco227.github.io/D-man)
+
 ## UX
 
 - ### Business Goals
@@ -86,6 +88,31 @@ This project represents an artist's page featuring a music player. The main goal
       - [tablet](https://github.com/pinco227/D-man/blob/main/docs/wireframes/contact-tablet.png)
       - [desktop](https://github.com/pinco227/D-man/blob/main/docs/wireframes/contact-desktop.png)
   - ### Improvements
+    - #### **Landing Page**:
+      - There are now 3 hero cards on landing page, inviting users to check out the content of the site, to check out the social networks of the artist and to get in touch if interested.
+        
+        ![Home Screenshot](https://github.com/pinco227/D-man/blob/main/docs/home-ss.jpg)
+    - #### **Music Library**:
+      - The album list is better displayed as each album looks like an actual CD/vinyl coming out of its case/slip.
+        
+        ![Album page Screenshot](https://github.com/pinco227/D-man/blob/main/docs/albums-animation.gif)
+      - There is a dynamic page generated after clicking on any of the albums. This page displays the album's data, the list of songs and "play all", "shuffle all" and "play" (for each song) buttons.
+        
+        ![Album details screenshot](https://github.com/pinco227/D-man/blob/main/docs/album-list-ss.jpg)
+    - #### **About Me**
+      - Due to the nature and format of the "about me" data received from the author, this page is now structured as a timeline in order to be the best presented.
+  
+        ![About me page screenshot](https://github.com/pinco227/D-man/blob/main/docs/about-ss.jpg)
+    - #### **Player**
+      - **Mobile**:
+        - The bottom player controls are simplified to display the "waveform" (seeker), "now playing info", "play/pause button" and "next button" while the rest of controls are only displayed when the player is in expanded state (click/tap on "now playing info").
+  
+          ![Mobile player controls screenshot](https://github.com/pinco227/D-man/blob/main/docs/mobile-player-ctrls.png)
+        - The expanded player is full-screen and contains "now playing info", "waveform", "controls" including "shuffle" and "loop" and a list of songs in current playlist with the one playing marked out.
+          ![Mobile player expanded](https://github.com/pinco227/D-man/blob/main/docs/mobile-player-expanded.png)
+      - **Tablet/Dektop**:
+        - The bottom player controls are always visible, they're are full page width and they contain "waveform" and and "controls".
+          ![Desktop player controls](https://github.com/pinco227/D-man/blob/main/docs/desktop-player-ctrls.png)
 - ### Design Choices
   - #### Colours
   - #### Typography
