@@ -50,15 +50,19 @@
             </div>
         </div>
     </nav>
+    <!-- Main section of the site -->
     <main class="container-xxl my-5">
         <div class="row">
+            <!-- Music player collapsible -->
             <div class="d-md-block col-md-6 col-lg-5" id="player-collapse">
                 <span id="collapse-player"><i class="fas fa-chevron-down"></i></span>
                 <aside>
                     <div id="player-screen">
+                        <!-- Player cover art -->
                         <div id="player-top">
                             <img id="player-cover-art" data-amplitude-song-info="cover_art_url" />
                         </div>
+                        <!-- Now playing information -->
                         <div class="player-middle">
                             <div id="meta-container">
                                 <span data-amplitude-song-info="name" class="song-name"></span>
@@ -69,6 +73,7 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- Player controls (visible mobile) -->
                         <div class="d-md-none player-controls-container">
                             <div class="shuffle-container">
                                 <div class="amplitude-shuffle amplitude-shuffle-off">
@@ -96,6 +101,7 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- Player seeker waveform (visible mobile) -->
                         <div class="d-md-none player-progress-bar-container">
                             <span class="amplitude-current-time time-container"></span>
                             <div class="seeker">
@@ -105,23 +111,28 @@
                             </div>
                             <span class="amplitude-duration-time time-container"></span>
                         </div>
+                        <!-- Playlist -->
                         <div id="list">
+                            <!-- List loaded here dinamically -->
                         </div>
                     </div>
                 </aside>
             </div>
+            <!-- Content section -->
             <div class="col-md-6 col-lg-7">
                 <section>
                     <div id="content">
-
+                        <!-- Dynamic cotent is loaded here -->
                     </div>
                 </section>
             </div>
         </div>
     </main>
+    <!-- Footer / Player controls -->
     <footer class="fixed-bottom">
         <div class="container-xxl">
             <div class="row">
+                <!-- Player seeker -->
                 <div class="col-12 col-md-8 player-progress-bar-card">
                     <div class="player-progress-bar-container">
                         <span class="amplitude-current-time time-container"></span>
@@ -133,6 +144,7 @@
                         <span class="amplitude-duration-time time-container"></span>
                     </div>
                 </div>
+                <!-- Now playing (visible mobile) -->
                 <div class="d-md-none col-9" id="now-playing">
                     <div class="d-block d-md-none" id="expand-player">
                         <i class="fas fa-chevron-up"></i>
@@ -144,6 +156,7 @@
                         <span data-amplitude-song-info="album"></span>
                     </div>
                 </div>
+                <!-- Player controls -->
                 <div class="col-3 col-md-4" id="controls-container">
                     <div class="d-none d-md-block" id="shuffle-container">
                         <div class="amplitude-shuffle amplitude-shuffle-off">
@@ -175,6 +188,7 @@
         </div>
     </footer>
 
+    <!-- Youtube modal -->
     <div class="modal fade" tabindex="-1" id="yt-modal" role="dialog" aria-hidden="true">
         <span class="close-modal" data-bs-dismiss="modal"><i class="fas fa-times"></i></span>
         <div class="modal-dialog modal-xl modal-dialog-centered">
@@ -184,6 +198,7 @@
         </div>
     </div>
 
+    <!-- Gallery modal -->
     <div class="modal fade" id="galleryModal" tabindex="-1" role="dialog" aria-hidden="true">
         <span class="close-modal" data-bs-dismiss="modal"><i class="fas fa-times"></i></span>
         <div class="modal-dialog modal-xl modal-dialog-centered">
@@ -208,6 +223,7 @@
         </div>
     </div>
 
+    <!-- Resume playback dialog -->
     <div class="modal fade" tabindex="-1" id="playback-dialog" role="dialog" aria-hidden="true" data-bs-focus="false">
         <div class="modal-dialog modal-dialog-centered my-0">
             <div class="modal-content">
@@ -220,6 +236,7 @@
             </div>
         </div>
     </div>
+
     <!-- External JS Libraries -->
     <script type="text/javascript"
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
