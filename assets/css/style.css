@@ -1750,7 +1750,7 @@ footer::after {
     width: -webkit-calc(100% - 28px);
     float: left;
     position: relative;
-    box-shadow: 0px 0px 2px rgb(0 0 0 / 80%);
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, .8);
     border: 1px solid rgb(36, 43, 51);
     background-color: rgba(255, 255, 255, .9);
     /* Overwrites if supported */
@@ -1849,6 +1849,49 @@ footer::after {
     left: -1rem;
 }
 
+/*-------------------------------------------- CONTACTPAGE */
+
+.card-contact {
+    border-radius: 1rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, .8);
+    background-color: rgb(36, 43, 51);
+    /* Overwrites if supported */
+    background-color: var(--main-bg-color);
+}
+
+.card-contact .card-title {
+    color: rgb(255, 255, 255);
+}
+
+.card-contact img {
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    max-width: 100%;
+}
+
+.card-form {
+    border-radius: 1rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, .8);
+    background-color: rgba(255, 255, 255, .9);
+    color: rgb(36, 43, 51);
+    /* Overwrites if supported */
+    color: var(--main-bg-color);
+}
+
+.card-form .form-control {
+    border-radius: 1rem;
+}
+
+.card-form .form-control:focus {
+    border-color: rgba(0, 0, 0, .5);
+    box-shadow: 0 0 2px rgb(36, 43, 51);
+    /* Overwrites if supported */
+    border-color: var(--main-link-color);
+    box-shadow: 0 0 2px var(--main-bg-color);
+}
+
 /*------------------------------------------ MEDIA QUERIES */
 
 /* XS screen */
@@ -1936,6 +1979,12 @@ footer::after {
             backdrop-filter: blur(10px) saturate(0.5);
             background: none;
         }
+    }
+}
+
+@media(min-width:768px) {
+    #content {
+        padding-right: 1rem;
     }
 }
 

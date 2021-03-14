@@ -1,3 +1,25 @@
+<div class="card card-contact">
+    <div class="row g-0">
+        <div class="d-none d-sm-block col-sm-4">
+            <img src="/media/photos/thumb_2015_ROSU-si-NEGRU-ft-DMAN_D.jpg" alt="Dman at a concert">
+        </div>
+        <div class="col-sm-8">
+            <div class="card-body">
+                <h5 class="card-title">Contact details</h5>
+                <p class="card-text">
+                <address>
+                    <srtong>Email:</srtong> <br>
+                    <a href="mailto:contact@dman.art">contact@dman.art</a>
+                </address>
+                <address>
+                    <srtong>FB Chat:</srtong> <br>
+                    <a href="https://www.facebook.com/diliManu" target="_blank">https://www.facebook.com/diliManu</a>
+                </address>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="hero" id="hero-social">
     <div class="hero-img"><i class="far fa-thumbs-up"></i></div>
     <div class="hero-data">
@@ -21,5 +43,41 @@
                 <span class="sr-only">Instagram</span>
             </a>
         </div>
+    </div>
+</div>
+<div class="card card-form">
+    <div class="card-body">
+        <h5 class="card-title">Contact details</h5>
+        <form method="POST" action="https://formdump.codeinstitute.net/" id="contact-form">
+            <div class="mb-3">
+                <label for="nameInput" class="form-label">Name</label>
+                <input type="text" class="form-control" name="nameInput" id="nameInput" aria-describedby="nameHelp"
+                    required>
+                <div id="nameHelp" class="form-text">Please write your full name here.</div>
+            </div>
+            <div class="mb-3">
+                <label for="emailInput" class="form-label">Email address</label>
+                <input type="email" class="form-control" name="emailInput" id="emailInput" aria-describedby="emailHelp"
+                    required>
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            <div class="mb-3">
+                <label for="subjectSelect" class="form-label">Subject</label>
+                <select class="form-control form-select" name="subjectSelect" id="subjectSelect"
+                    aria-describedby="subjectHelp">
+                    <option value="event" selected>Event</option>
+                    <option value="collaboration">Collaboration</option>
+                    <option value="ads">Advertising</option>
+                    <option value="other">Other</option>
+                </select>
+                <div id="subjectHelp" class="form-text">What is your enquiry about? Please select one of the options
+                    above.</div>
+            </div>
+            <div class="mb-3">
+                <label for="messageText" class="form-label">Message</label>
+                <textarea class="form-control" name="messageText" id="messageText" rows="3" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-dmn"><i class="fas fa-paper-plane"></i> Send</button>
+        </form>
     </div>
 </div>
