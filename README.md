@@ -135,30 +135,31 @@ This project represents an artist's page featuring a music player. The main goal
       - The player art image is round and it rotates as music plays, it stops rotating when music is paused.
       - The now playing section on mobile's bottom controls is animating left and right when the containing text exceeds the size of it's container.
       - In the same now playing section there is an arrow moving up and down to let user know there will be feedback if it's clicked/tapped.
-    - Transitions are used to ease the user's progress while navigating and using the player.
+    - Transitions are used to ease the user's progress while navigating the site and using the player.
       - Collapsed player is sliding up when expanding and down when collapsing.
-      - Albums (discs) are coming out of theyre "box" when hovered by mouse or tapped.
+      - Albums (discs) are coming out of their "box" when hovered by mouse or tapped.
       - Photo thumbnails in the gallery light up when hovered and the large photos are transitioning between each other when changed.
-      - All buttons transition the background colour, text colour and/or shadow by case.
+      - All buttons transitions their background colour, text colour and/or shadow by case.
 ## Features
 Website's features are presented in an importance order.
 - ### Navigation bar
-    Allows users to navigate through the page. The navigation bar will be fixed to top and always visible.
+    Allows users to navigate through the site. The navigation bar is fixed to top and always visible. The navigation links are grouped by expandable and non-expandable. The main links are non-expandable ("Music library", "Video Library" and "Photo gallery") but their text dissapears when on mobile, leaving only the meaningful icons.
 - ### A music player
-    The player's controls will always be visible as well as current playing song. The playlist and current playing song details will be collapsed (but expandable) on mobile and small screens and always visible on bigger screens.
+    - The player's most used controls will always be visible (on footer) as well as current playing song. The playlist and more controls will be collapsed (but expandable) on mobile and small screens and always visible on bigger screens.
+    - The website features a ***Media Session API*** which offers user a better control on any device. The media keeps playing while browser is minimized or device is locked. The browser (desktop) or the device has it's own implementation of Media Session API and it effectively communicates with the website to control the player.
+      ![media session screenshot](https://github.com/pinco227/D-man/blob/main/docs/media-session-ss.png)
 - ### Music Library
-    A library of song well organised in collections as albums.
+    A library of songs well organised in collections as albums. Each album can be played (normal or shuffled) individually, all albums cand be played (normal or shuffled) at once. Each song has a play button to be selected as starting song while loading the album's playlist.
 - ### Video Library
-    A list of videos from artist's YouTube channel.
+    A list of videos dinamically loaded from artist's YouTube channel. They can be played without leaving the website. When video is played, music is paused automatically.
 - ### A photo gallery
     A gallery of photos from events and behind the scene shots.
 - ### About page
-    A page presenting the artist's biography.
+    A page presenting the artist's history, organised in a timeline manner.
 - ### Contact page
     A page featuring all the contact details, link to social media pages and a contact form.
 - ### Accessibility
     Images are provided with descriptive text. The website is optimised for screen readers and allows users with impaired vision to zoom at any point.
-- ### Features left to implement
 
 ## Technologies used
 - Workspace
