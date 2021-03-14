@@ -1860,6 +1860,13 @@ footer::after {
     background-color: var(--main-bg-color);
 }
 
+.card-contact .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
 .card-contact .card-title {
     color: rgb(255, 255, 255);
 }
@@ -1868,6 +1875,7 @@ footer::after {
     border-top-left-radius: 1rem;
     border-bottom-left-radius: 1rem;
     max-width: 100%;
+    align-self: center;
 }
 
 .card-form {
