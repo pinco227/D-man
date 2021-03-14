@@ -1,6 +1,7 @@
 # D-Man
 
-This project represents an artist's page featuring a music player. The main goal is to get the interested user to follow on social networks or contact regarding a collaboration or event. D-Man is an educational project made to serve as a Milestone Project for the **Software Developer Diploma** programme of **Code Institute**.
+This is a SPA (Single Page App) made to keep player alive while navigating through content. While all the content is being loaded into ```index.html``` dinamically, the app features routing and normal browser history with address url for each page and functional back/forward buttons.
+This project represents an artist's page featuring a music player. The main goal is to get the interested user to follow on social networks or contact regarding a collaboration or event. This is an educational project made to serve as a Milestone Project (*Interactive Front-End*) for the **Software Developer Diploma** programme of **Code Institute**.
 
 ## Table of Contents
   - [Demo](#demo)
@@ -149,6 +150,7 @@ Website's features are presented in an importance order.
     - The website features a ***Media Session API*** which offers user a better control on any device. The media keeps playing while browser is minimized or device is locked. The browser (desktop) or the device has it's own implementation of Media Session API and it effectively communicates with the website to control the player.
   
       ![media session screenshot](https://github.com/pinco227/D-man/blob/main/docs/media-session-ss.png)
+    - It also uses ```localStorage``` to save the player state in order to be able to be resumed when returning.
 - ### Music Library
     A library of songs well organised in collections as albums. Each album can be played (normal or shuffled) individually, all albums cand be played (normal or shuffled) at once. Each song has a play button to be selected as starting song while loading the album's playlist.
 - ### Video Library
@@ -176,6 +178,7 @@ Website's features are presented in an importance order.
   * [Google Fonts](https://fonts.google.com/) is used as the main font resource.
   * [AmplitudeJS](https://521dimensions.com/open-source/amplitudejs) for audio player capabilities.
   * [Vibrant.js](https://jariz.github.io/vibrant.js/) to extract colours from the meta image.
+  * [Youtube API](https://developers.google.com/youtube/v3) to implement dynamic video loading straight from artist's youtube channel into the site.
 - Version Control
   * [Git](https://git-scm.com/) as Version Control System.
   * [Github](https://www.github.com) for repository hosting.
