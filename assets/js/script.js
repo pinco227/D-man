@@ -58,7 +58,7 @@ async function loadAllPages() {
 * @param {string} p - Page relative url
 */
 function setPage(p) {
-    p = p in routes ? p : '';
+    p = p in routes ? p : ''; // Handler for incorrect or inexistent url / sets the page to home
     document.title = titles[p] + ' | ' + mainTitle;
     contentDiv.innerHTML = routes[p];
     if (p === 'videos') {
@@ -102,15 +102,17 @@ async function main() {
         'about': aboutTitle,
         'contact': contactTitle
     }
-    let page = window.location.pathname.split('/').pop().split('#')[0];
+    const page = window.location.pathname.split('/').pop().split('#')[0];
     setPage(page);
 };
 
-function navigate(event, href) {
-    event.preventDefault();
-    let pathName = href;
-    let page = pathName.split('/').pop();
-    window.history.pushState({}, titles[page], pathName);
+/**
+ * Navigates through SPA
+ * @param {string} href relative url path to which to navigate
+ */
+function navigate(href) {
+    const page = href.split('/').pop();
+    window.history.pushState({}, titles[page], href);
     setPage(page);
 }
 
@@ -119,19 +121,15 @@ function navigate(event, href) {
  * The Function is invoked when the window.history changes
  */
 window.onpopstate = () => {
-    let page = window.location.pathname.split('/').pop().split('#')[0];
+    const page = window.location.pathname.split('/').pop().split('#')[0];
     setPage(page);
 };
 
 // Navigation links event listeners for dynamic page load
 document.querySelectorAll('.spa-nav').forEach(function (button) {
     button.addEventListener('click', function (e) {
-        navigate(e, button.href);
-        // e.preventDefault();
-        // let pathName = button.href;
-        // let page = pathName.split('/').pop();
-        // window.history.pushState({}, titles[page], pathName);
-        // setPage(page);
+        e.preventDefault();
+        navigate(button.href);
     });
 });
 // ---------------------------------------------------------------------- SPA END  ----------
@@ -151,7 +149,7 @@ const musicApiUrl = 'https://pinco227.github.io/D-man/media/music/list.json';
 * @param {function} cb - Callback function
 */
 function getData(url, cb) {
-    var xhr = new XMLHttpRequest();
+    const xhr = new XMLHttpRequest();
 
     xhr.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
@@ -164,9 +162,7 @@ function getData(url, cb) {
 
 // ###################################### Video Library Page
 
-// Declare global youtube Modal and Player variables
-// let ytModalEl;
-// let ytModal;
+// Declare global youtube Player variable
 let ytPlayer;
 function onYouTubeIframeAPIReady() {
     ytPlayer = new YT.Player('yt-player');
@@ -178,13 +174,12 @@ function onYouTubeIframeAPIReady() {
 */
 function writeVideosToDoc() {
     getData(youtubePlaylistApiUrl, function (data) {
-        const writeTo = document.getElementById('yt-content');
-        let html = '';
+        const youtubeContent = document.getElementById('yt-content');
+        const ytModalEl = document.getElementById('yt-modal');
         data = data.items;
-        ytModalEl = document.getElementById('yt-modal');
 
-        data.forEach(function (item) {
-            html += `
+        youtubeContent.innerHTML = data.map(function (item) {
+            return `
             <div class="col-6 col-sm-4 col-md-6 col-lg-3 video-col" data-bs-toggle="modal" data-bs-target="#yt-modal" data-yt-id="${item.snippet.resourceId.videoId}">
                 <article>
                 <div class="video-thumb-container">
@@ -195,15 +190,14 @@ function writeVideosToDoc() {
                 </article>
             </div>
             `;
-        });
+        }).join("");
 
-        writeTo.innerHTML = html;
-
-        ytModalEl.addEventListener('hide.bs.modal', function (event) {
+        // Stop youtube video when youtube modal is closed
+        ytModalEl.addEventListener('hide.bs.modal', function () {
             ytPlayer.stopVideo();
         })
 
-        // Navigation links event listeners for dynamic page load
+        // Videos list item container click event listener
         document.querySelectorAll('.video-col').forEach(function (button) {
             button.addEventListener('click', function () {
                 ytPlayer.loadVideoById(this.getAttribute("data-yt-id"));
@@ -235,6 +229,7 @@ function writePhotosToDoc() {
             `;
         }).join("");
 
+        // Photos list item click event listener
         document.querySelectorAll('.gallery-image-container').forEach(function (el) {
             el.addEventListener('click', function () {
                 galleryShow(this);
@@ -288,12 +283,12 @@ function galleryShow(source) {
 */
 function writeMusicToDoc(album) {
     getData(musicApiUrl, function (data) {
-        globalPlaylist.songs = [];
+        globalPlaylist.songs = []; // Empties the global playlist
         const writeTo = document.getElementById('music-library');
         writeTo.innerHTML = '';
         data = data.albums;
 
-        // Write the songs list of album
+        // Album selected / Write the songs list of album
         if (typeof album == "number") {
             let html = `
             <div class="col-12">
@@ -325,6 +320,7 @@ function writeMusicToDoc(album) {
                 </div>
                 `;
 
+                // Push each song from the selected album into the global playlist
                 const song = {
                     "name": item.name,
                     "artist": item.artist,
@@ -356,9 +352,9 @@ function writeMusicToDoc(album) {
                         </div>
                         </article>
                     </div>
-                    
                 `;
 
+                // Pushes all the songs into the global playlist variable
                 item.songs.forEach(function (sg) {
                     var song = {
                         "name": sg.name,
@@ -402,20 +398,19 @@ function clickHandler(func, param, delay) {
 // Use Vibrant.js to theme the app based on the music art img
 const playImg = document.getElementById('player-cover-art');
 playImg.addEventListener('load', function () {
-    Vibrant.from(playImg.src).getPalette()
-        .then((palette) => {
-            let root = document.querySelector(':root');
-            let bgColor = `rgb(${palette.DarkMuted.getRgb()})`;
-            let linkColor = `rgb(${palette.LightVibrant.getRgb()})`;
-            let headingsColor = `rgb(${palette.Vibrant.getRgb()})`;
-            root.style.setProperty('--main-bg-color', bgColor);
-            root.style.setProperty('--main-link-color', linkColor);
-            root.style.setProperty('--headings-color', headingsColor);
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', palette.DarkMuted.getHex());
-        });
-    document.documentElement.style.backgroundImage = `url('${playImg.src}')`;
     const nowPlayingCover = document.getElementById('now-playing-cover');
-    nowPlayingCover.style.backgroundImage = `url('${playImg.src}')`;
+    Vibrant.from(playImg.src).getPalette().then((palette) => {
+        const root = document.querySelector(':root');
+        const bgColor = `rgb(${palette.DarkMuted.getRgb()})`;
+        const linkColor = `rgb(${palette.LightVibrant.getRgb()})`;
+        const headingsColor = `rgb(${palette.Vibrant.getRgb()})`;
+        root.style.setProperty('--main-bg-color', bgColor);
+        root.style.setProperty('--main-link-color', linkColor);
+        root.style.setProperty('--headings-color', headingsColor);
+        document.querySelector('meta[name="theme-color"]').setAttribute('content', palette.DarkMuted.getHex()); // Update the meta theme color (color for mobile browser address bar)
+    });
+    document.documentElement.style.backgroundImage = `url('${playImg.src}')`; // Sets whole document background image same as the current song's cover image
+    nowPlayingCover.style.backgroundImage = `url('${playImg.src}')`; // Sets the song's cover image to now playing section on mobile footer
 });
 
 // Player Expand event listener (mobile)
@@ -439,8 +434,8 @@ document.getElementById('collapse-player').addEventListener('click', function ()
 // CREDIT: https://stackoverflow.com/a/40033565
 document.querySelectorAll('div.modal').forEach(function (el) {
     el.addEventListener('show.bs.modal', function () {
-        let modal = this;
-        let hash = modal.id;
+        const modal = this;
+        const hash = modal.id;
         window.location.hash = hash;
     });
     el.addEventListener('hide.bs.modal', function () {
@@ -450,11 +445,19 @@ document.querySelectorAll('div.modal').forEach(function (el) {
 window.onhashchange = function () {
     if (!window.location.hash) {
         document.querySelectorAll('div.modal').forEach(function (el) {
-            let modal = bootstrap.Modal.getInstance(el);
+            const modal = bootstrap.Modal.getInstance(el);
             modal ? modal.hide() : '';
         });
     }
 }
+
+const mediaQ = window.matchMedia("(min-width: 768px)");
+mediaQ.addListener(setDocHeight); // Attach listener function on state changes
+
+// On window resize/rotate/zoom event
+window.onresize = function (event) {
+    setDocHeight(mediaQ);
+};
 // --------------------------------------------------------------- APP EVENTS END -----------
 
 // ----------------------------------------------------------------- APP FUNCTIONS ----------
@@ -481,7 +484,7 @@ function setDocHeight(x) {
     }
     document.querySelector('#player-top').style.height = document.querySelector('#player-top').offsetWidth + 'px'; // make Player Art square
     document.getElementById("content").style.height = `${docHeight - (navbarHeight + footerHeight)}px`;
-    scrollAnimation();
+    scrollAnimation(); // Update animation items (play now section on mobile)
 }
 
 /**
@@ -494,16 +497,8 @@ function closeModals() {
     });
 }
 
-const mediaQ = window.matchMedia("(min-width: 768px)");
-mediaQ.addListener(setDocHeight); // Attach listener function on state changes
+// ------------------------------------------------------------- APP FUNCTIONS END ----------
 
-/**
- * On window resize/rotate/zoom event
- * @param {*} event 
- */
-window.onresize = function (event) {
-    setDocHeight(mediaQ);
-};
-
+// ---------------------------------------------------------------- INITIAL CALLS ----------
 setDocHeight(mediaQ); // Call listener function at run time
 main(); // Invoke the Main function which loads all pages into variables, create routes and set the current page

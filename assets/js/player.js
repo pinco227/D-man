@@ -108,46 +108,63 @@ const globalPlaylist = {
     callbacks: {
         play: function () {
             const playlist = globalPlaylist.songs;
-            localStorage.setItem('playlist', JSON.stringify(playlist));
-
             const songIndex = Amplitude.getActiveIndex();
+            const playPauseButton = document.getElementById("play-pause");
+            const songArtDiv = document.getElementById("player-top");
+            const audioEl = Amplitude.getAudio();
+
+            // Store playlist and active song to localStorage
+            localStorage.setItem('playlist', JSON.stringify(playlist));
             localStorage.setItem('activeSongIndex', songIndex);
 
-            let playPauseButton = document.getElementById("play-pause");
-            let songArtDiv = document.getElementById("player-top");
+            // Toggle the play/pause button when it started playing
             playPauseButton.classList.remove("amplitude-paused");
             playPauseButton.classList.add("amplitude-playing");
+
+            // Start song cover art animation when it started playing
             songArtDiv.classList.add("rotate-art");
             songArtDiv.style.webkitAnimationPlayState = "running";
+            songArtDiv.style.animationPlayState = "running";
 
-            const audioEl = Amplitude.getAudio();
+            // Set error event listener to handle errors in playback by skipping the active song
             audioEl.onerror = function () {
                 console.log("Error " + audioEl.error.code + "; details: " + audioEl.error.message);
                 Amplitude.next();
             }
         },
         song_change: function () {
+            // Update active song in localStorage
             const songIndex = Amplitude.getActiveIndex();
             localStorage.setItem('activeSongIndex', songIndex);
+            // Update animation items (play now section on mobile)
             scrollAnimation();
         },
         loadedmetadata: function () {
-            updateMetadata(); // Media Session API
+            // Update Media Session API metadata
+            updateMetadata();
         },
         pause: function () {
-            let playPauseButton = document.getElementById("play-pause");
-            let songArtDiv = document.getElementById("player-top");
+            const playPauseButton = document.getElementById("play-pause");
+            const songArtDiv = document.getElementById("player-top");
+
+            // Toggle the play/pause button when it paused playing
             playPauseButton.classList.remove("amplitude-playing");
             playPauseButton.classList.add("amplitude-paused");
+
+            // Pause song cover art animation when it paused playing
             songArtDiv.style.webkitAnimationPlayState = "paused";
+            songArtDiv.style.animationPlayState = "paused";
         },
         timeupdate: function () {
+            // Store played time of the active song into the localStorage
             const songPercentage = Amplitude.getSongPlayedPercentage();
             localStorage.setItem('songPercentage', songPercentage);
 
-            updatePositionState(); // Media Session API, set the duration.
+            // Update time played and duration on Media Session API
+            updatePositionState();
         },
         initialized: function () {
+            // Set playlist loop as default
             Amplitude.setRepeat(true);
         }
     },
@@ -160,7 +177,7 @@ const globalPlaylist = {
 * Updates the dom with playlist from global object
 */
 function writePlayList() {
-    var listDiv = document.getElementById('list');
+    const listDiv = document.getElementById('list');
     listDiv.innerHTML = globalPlaylist.songs.map(function (_, i) {
         return `
         <div class="song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="${i}">
@@ -180,21 +197,20 @@ function writePlayList() {
 }
 /** 
 * Loads the global playlist into player after it has been changed
-* @param {optional} again - Optional parameter to detect if function was called initialy or from the library
+* @param {optional} fromLibrary - Optional parameter to detect if function was called initialy or from the library
+* @param {optional} songIndex - Optional parameter to play the playlist at this index. If this is not a number, then playlist is shuffled
 * @return {ReturnValueDataTypeHere} Brief description of the returning value here.
 */
-function loadPlaylist(again = "yes", songIndex = 0) {
-    if (again == "yes") { // Load playlist from library
+function loadPlaylist(fromLibrary = "yes", songIndex = 0) {
+    if (fromLibrary == "yes") { // Load playlist from library
         writePlayList();
         Amplitude.stop();   // Stop player in order to avoid overlaping songs
 
-        // Promise
-        let initPlayer = new Promise(
-            function () {
-                Amplitude.init(globalPlaylist);
-                Amplitude.pause();
-            }
-        );
+        // Player initialization promise
+        const initPlayer = new Promise(function () {
+            Amplitude.init(globalPlaylist);
+            Amplitude.pause();
+        });
         if (songIndex != 0) {
             if (typeof (songIndex) == "number") {
                 initPlayer.then(Amplitude.playSongAtIndex(songIndex));
@@ -204,26 +220,28 @@ function loadPlaylist(again = "yes", songIndex = 0) {
         } else {
             initPlayer.then(Amplitude.play());
         }
-    } else if (again == "no") { // Load playlist initialy
+    } else if (fromLibrary == "no") { // Load playlist initialy
+        const activeSongIndex = localStorage.getItem("activeSongIndex");
+        const storedPlaylist = localStorage.getItem("playlist");
+        const storedSongPercentage = localStorage.getItem("songPercentage");
         writePlayList();
         Amplitude.init(globalPlaylist);
         Amplitude.pause();
-        if (localStorage.getItem("activeSongIndex")) {  // Check if the play button was ever pressed
+        if (activeSongIndex) {  // Check if the play button was ever pressed
             // Ask for playback to reload from the stored state
             dialog('<i class="far fa-laugh-beam"></i> Welcome back!',
                 function () {   // Yes callback function
-                    if (localStorage.getItem("playlist")) { // Update songs list in the global variable
-                        globalPlaylist.songs = JSON.parse(localStorage.getItem('playlist'));
+                    if (storedPlaylist) { // Update songs list in the global variable
+                        globalPlaylist.songs = JSON.parse(storedPlaylist);
                     }
                     writePlayList();
                     Amplitude.init(globalPlaylist);
                     Amplitude.pause();
-                    Amplitude.playSongAtIndex(parseInt(localStorage.getItem('activeSongIndex')));
+                    Amplitude.playSongAtIndex(parseInt(activeSongIndex));
 
-                    if (localStorage.getItem("songPercentage")) {   // Get song percentage stored from previous session
-                        let songPercentageStored = localStorage.getItem('songPercentage')
+                    if (storedSongPercentage) {   // Get song percentage stored from previous session
                         setTimeout(function () {
-                            Amplitude.setSongPlayedPercentage(parseFloat(songPercentageStored));
+                            Amplitude.setSongPlayedPercentage(parseFloat(storedSongPercentage));
                         }, 700);
                     }
                 }, function () {    // No callback function
@@ -284,7 +302,7 @@ navigator.mediaSession.setActionHandler('previoustrack', function () {
 navigator.mediaSession.setActionHandler('nexttrack', function () {
     Amplitude.next();
 });
-let defaultSkipTime = 10; /* Time to skip in seconds by default */
+const defaultSkipTime = 10; /* Time to skip in seconds by default */
 navigator.mediaSession.setActionHandler('seekbackward', function (event) {
     const skipTime = event.seekOffset || defaultSkipTime;
     const setTime = Math.max(Amplitude.getSongPlayedSeconds() - skipTime, 0);
@@ -302,12 +320,10 @@ navigator.mediaSession.setActionHandler('seekforward', function (event) {
 navigator.mediaSession.setActionHandler('play', async function () {
     await Amplitude.play();
     navigator.mediaSession.playbackState = "playing";
-    // Do something more than just playing audio...
 });
 navigator.mediaSession.setActionHandler('pause', function () {
     Amplitude.pause();
     navigator.mediaSession.playbackState = "paused";
-    // Do something more than just pausing audio...
 });
 try {
     navigator.mediaSession.setActionHandler('stop', function () {
@@ -340,11 +356,11 @@ window.onkeydown = function (e) {
 * @param {function} noCallback - Function to be called when user presses No
 */
 function dialog(message, yesCallback, noCallback) {
-    document.querySelector('#playback-dialog .modal-title').innerHTML = message;
-    let dialogModal = new bootstrap.Modal(document.getElementById('playback-dialog'), {
+    const dialogModal = new bootstrap.Modal(document.getElementById('playback-dialog'), {
         backdrop: 'static',
         keyboard: false
     });
+    document.querySelector('#playback-dialog .modal-title').innerHTML = message;
     dialogModal.show();
 
     document.getElementById('dialog-yes').addEventListener('click', function () {
@@ -357,7 +373,7 @@ function dialog(message, yesCallback, noCallback) {
     });
 }
 
-// Resume playback dialog event listener
+// Resume playback dialog event listener to make it cover only player and player controls in order to allow user to continue navigating through the website without taking action (quick access to library, contact without having to accept or deny resuming playback)
 const playbackDialog = document.getElementById('playback-dialog');
 playbackDialog.addEventListener('show.bs.modal', function () {
     const playerControlsPos = document.getElementsByTagName('footer')[0].getBoundingClientRect();
@@ -371,12 +387,11 @@ playbackDialog.addEventListener('shown.bs.modal', function () {
     const playerControlsPos = document.getElementsByTagName('footer')[0].getBoundingClientRect();
     const dBackDrop = document.getElementsByClassName('modal-backdrop')[0];
     const cloneBackDrop = dBackDrop.cloneNode(true);
-
-    dBackDrop.style.height = playerControlsPos.height + 'px';
-    dBackDrop.style.top = playerControlsPos.top + 'px';
-
     const cloneElement = document.body.appendChild(cloneBackDrop);
 
+    // Make modal backdrop cover all footer area and duplicate it to make it cover the player as well
+    dBackDrop.style.height = playerControlsPos.height + 'px';
+    dBackDrop.style.top = playerControlsPos.top + 'px';
     cloneElement.style.width = playerPos.width + 'px';
     cloneElement.style.height = playerPos.height + 'px';
     cloneElement.style.top = playerPos.top + 'px';
@@ -384,8 +399,11 @@ playbackDialog.addEventListener('shown.bs.modal', function () {
 });
 playbackDialog.addEventListener('hidden.bs.modal', function () {
     document.querySelectorAll('.modal-backdrop').forEach(function (el) { el.remove(); });
-});// Make player image container square
+});
 
+/**
+ * Make the mobile now playing section animate left and write if the text width exceeds the container's
+ */
 function scrollAnimation() {
     document.querySelectorAll('.meta-container span').forEach(function (el) {
         if (el.scrollWidth > el.clientWidth) {
