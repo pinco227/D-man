@@ -2,11 +2,11 @@
 * Google Fonts import:
 * VT323 - monospace font for playing song
 * Big Shoulders Stencil Text - display font for logo, cursive
-* Baloo Da 2 - general font
+* Baloo 2 - general font
 * Goldman - for titles, headings
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Text:wght@700;800&family=Baloo+Da+2:wght@400;500;600;700&family=Goldman:wght@400;700&family=VT323&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Text:wght@700;800&family=Baloo+2:wght@400;500;600;700&family=Goldman:wght@400;700&family=VT323&display=swap');
 /*- Icons Import */
 
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css');
@@ -34,7 +34,7 @@ html {
 
 body {
     scroll-behavior: smooth;
-    font-family: 'Baloo Da 2', cursive;
+    font-family: 'Baloo 2', cursive;
     font-weight: 400;
     padding-top: .5rem;
     background-attachment: scroll;
@@ -101,7 +101,7 @@ body {
 }
 
 #playback-dialog .modal-title {
-    font-family: 'Baloo Da 2', cursive;
+    font-family: 'Baloo 2', cursive;
     color: rgb(255, 255, 255);
     /* Overwrites if supported */
     color: var(--main-link-color-hover);
@@ -342,7 +342,7 @@ h1, h2 {
 }
 
 .nav-link {
-    font-family: 'Baloo Da 2', cursive;
+    font-family: 'Baloo 2', cursive;
     font-weight: 600;
     white-space: nowrap;
     text-shadow: 2px 2px 2px rgb(36, 43, 51);
@@ -498,7 +498,7 @@ div.player-middle {
 }
 
 div.player-middle span.song-name {
-    font-family: 'Baloo Da 2', cursive;
+    font-family: 'Baloo 2', cursive;
     font-size: 1.4rem;
     color: rgb(255, 255, 255);
     letter-spacing: 0.5px;
@@ -507,7 +507,7 @@ div.player-middle span.song-name {
 }
 
 div.player-middle div.song-artist-album {
-    font-family: 'Baloo Da 2', cursive;
+    font-family: 'Baloo 2', cursive;
     opacity: 0.5;
     font-size: 1rem;
     color: rgb(255, 255, 255);
@@ -763,7 +763,7 @@ div#list div.song div.song-meta-container {
 }
 
 div#list div.song div.song-meta-container span.song-name {
-    font-family: 'Baloo Da 2', cursive;
+    font-family: 'Baloo 2', cursive;
     font-weight: 500;
     font-size: .9rem;
     line-height: 1rem;
@@ -775,7 +775,7 @@ div#list div.song div.song-meta-container span.song-name {
 }
 
 div#list div.song div.song-meta-container span.song-artist-album {
-    font-family: 'Baloo Da 2', cursive;
+    font-family: 'Baloo 2', cursive;
     font-size: .75rem;
     line-height: .9rem;
     /* IE Fallback */

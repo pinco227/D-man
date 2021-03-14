@@ -109,16 +109,37 @@ This project represents an artist's page featuring a music player. The main goal
   
           ![Mobile player controls screenshot](https://github.com/pinco227/D-man/blob/main/docs/mobile-player-ctrls.png)
         - The expanded player is full-screen and contains "now playing info", "waveform", "controls" including "shuffle" and "loop" and a list of songs in current playlist with the one playing marked out.
+  
           ![Mobile player expanded](https://github.com/pinco227/D-man/blob/main/docs/mobile-player-expanded.png)
       - **Tablet/Dektop**:
-        - The bottom player controls are always visible, they're are full page width and they contain "waveform" and and "controls".
+        - The bottom player controls are always visible, they are full page width and they contain "waveform" and "controls".
+          
           ![Desktop player controls](https://github.com/pinco227/D-man/blob/main/docs/desktop-player-ctrls.png)
 - ### Design Choices
   - #### Colours
+    For better dynamics and consistency, the colours are automatically generated from the playing song art image and they are consistent throughout the website. They are set to be in good contrast and in relation with the focus of the website (the music). The same art image is set to be displayed in the background with a dark frost effect on top of it to offer dynamic and colourful backgrounds while keeping the contrast. *All colours and effects have fall-backs for unsupported browsers.*
   - #### Typography
+    There are four fonts used throughout the project, two main fonts used for text and headings, one font is used for brand text (logo) and one is used for now playing information on mobile:
+    - [Big Shoulders Stencil Text](https://fonts.google.com/specimen/Big+Shoulders+Stencil+Text) is used for logo and it has a ```cursive``` fallback and ```font-weight``` of ```800```.
+    - [Goldman](https://fonts.google.com/specimen/Goldman) is used for headings and it has a ```cursive``` fallback.
+    - [Baloo 2](https://fonts.google.com/specimen/Baloo+2) is used as a general font for all the text and links with different weights. It has a ```cursive``` fallback.
+    - [VT323](https://fonts.google.com/specimen/VT323) is used for playing now information displayed on mobile footer. It is selected to replicate the classic lcd display found on most of media players. It has a ```monospace``` fallback.
   - #### Media
+    - All the media used in the project is the actual media received from the artist, it is genuine and it has all the copy rights.
+    - All videos in video library are loaded from external source (youtube) and they are approved by the source.
+    - All images are sized and compressed for the best UX flow.
   - #### Iconography
-
+    - Icons are used throughout the project to help user understand more efficiently the meaning of the content. They are a very good asset to improve UX.
+  - #### Animations
+    - Animations are used to better render the idea of music playing.
+      - The player art image is round and it rotates as music plays, it stops rotating when music is paused.
+      - The now playing section on mobile's bottom controls is animating left and right when the containing text exceeds the size of it's container.
+      - In the same now playing section there is an arrow moving up and down to let user know there will be feedback if it's clicked/tapped.
+    - Transitions are used to ease the user's progress while navigating and using the player.
+      - Collapsed player is sliding up when expanding and down when collapsing.
+      - Albums (discs) are coming out of theyre "box" when hovered by mouse or tapped.
+      - Photo thumbnails in the gallery light up when hovered and the large photos are transitioning between each other when changed.
+      - All buttons transition the background colour, text colour and/or shadow by case.
 ## Features
 Website's features are presented in an importance order.
 - ### Navigation bar
