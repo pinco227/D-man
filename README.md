@@ -118,7 +118,7 @@ This project represents an artist's page featuring a music player. The main goal
           ![Desktop player controls](https://github.com/pinco227/D-man/blob/main/docs/desktop-player-ctrls.png)
 - ### Design Choices
   - #### Colours
-    For better dynamics and consistency, the colours are automatically generated from the playing song art image and they are consistent throughout the website. They are set to be in good contrast and in relation with the focus of the website (the music). The same art image is set to be displayed in the background with a dark frost effect on top of it to offer dynamic and colourful backgrounds while keeping the contrast. *All colours and effects have fall-backs for unsupported browsers.*
+    For better dynamics and consistency, the colours are automatically generated from the playing song art image and they are consistent throughout the website. They are set to be in good contrast and in relation with the focus of the website (the music). The same art image is set to be displayed in the background with a dark frost effect on top of it to offer dynamic and colourful backgrounds while keeping the contrast. This has been inspired from browsers/devices own implementations of ```Media Session API```. *All colours and effects have fall-backs for unsupported browsers.*
   - #### Typography
     There are four fonts used throughout the project, two main fonts used for text and headings, one font is used for brand text (logo) and one is used for now playing information on mobile:
     - [Big Shoulders Stencil Text](https://fonts.google.com/specimen/Big+Shoulders+Stencil+Text) is used for logo and it has a ```cursive``` fallback and ```font-weight``` of ```800```.
@@ -248,7 +248,22 @@ Website's features are presented in an importance order.
 
 ## Credits
 - ### Content
-- ### Media
+  - [DMAN](https://www.facebook.com/diliManu) for sharing his content to create this project.
 - ### Code
+  - [GreenSock user: ZackSaucier](https://greensock.com/profile/18404-zachsaucier/) for the *"address bar never dissapear on mobile"*  [snippet](https://greensock.com/forums/topic/24315-prevent-address-bar-from-hiding-on-mobile-scroll-trigger/?do=findComment&comment=115562).
+  - [StackOverflow user: Stickers](https://stackoverflow.com/users/483779/stickers) for up and down arrow animation [SOLUTION](https://stackoverflow.com/questions/35990445/how-to-move-a-div-up-and-down-infinitely-in-css3) used in player now playing section (mobile).
+  - [StackOverflow user: sweets-BlingBling](https://stackoverflow.com/users/427242/sweets-blingbling) for mobile detection [snippet](https://stackoverflow.com/questions/3514784/what-is-the-best-way-to-detect-a-mobile-device/3540295#3540295) used for a better navigation experience.
+  - [StackOverflow user: tvanfosson](https://stackoverflow.com/users/12950/tvanfosson) for his ```clickHandler()``` function from [this post](https://stackoverflow.com/questions/386944/time-delay-on-click/386971#386971) which was adapted to pass a function as parameter and used to open the album details page with a delay on mobile devices (so the user experience the album animation).
+  - [StackOverflow user: Raymond Ativie](https://stackoverflow.com/users/1793688/raymond-ativie) for his *"close modal on browser back button"* [snippet](https://stackoverflow.com/questions/16870007/how-to-close-a-bootstrap-modal-with-the-browser-back-button-instead-of-going-bac/40033565#40033565).
+  - [Bootsnipp user: Rafamaciel](http://bootsnipp.com/rafamaciel) for timeline [snippet](https://bootsnipp.com/snippets/7B7W) used in the **About me** page.
+  - [Rafael Pedicini](https://github.com/rafgraph) for [this trick](https://github.com/rafgraph/spa-github-pages) to make SPA work on GitHub Pages. [See issue](#encountered-issues).
+  - [Skay](https://blog.skay.dev/) for routing implementation as described in [this blog article](https://blog.skay.dev/custom-spa-router-vanillajs).
+  - [W3Schools](https://www.w3schools.com/) for [(How To)JS Media Queries](https://www.w3schools.com/howto/howto_js_media_queries.asp).
 
 ## Aknowledgements
+  - **DMan** for his enthusiasm in collaboration for building this project and his helful feedback and great ideas throughout the proccess.
+  - **My Mentor**: Nishant Kumar for continuous helpful feedback.
+  - **Tutor** support at Code Institute for their support.
+  - **Slack** Code Institute community for feedback.
+  - **Peer student**: [Alexandru Valentin Grapa](https://github.com/alexandruvalentin) for helpful feedback along the coding progress and for help with iPhone device testing.
+  - **Youtube Music App** and **Spotify App** for design inspiration.

@@ -226,7 +226,6 @@ function loadPlaylist(again = "yes", songIndex = 0) {
                             Amplitude.setSongPlayedPercentage(parseFloat(songPercentageStored));
                         }, 700);
                     }
-                    // Amplitude.play();
                 }, function () {    // No callback function
                     localStorage.clear();   //Clear localstorage
                     writePlayList();
@@ -364,10 +363,8 @@ playbackDialog.addEventListener('show.bs.modal', function () {
     const playerControlsPos = document.getElementsByTagName('footer')[0].getBoundingClientRect();
     const pDialog = document.getElementById('playback-dialog');
 
-    // pDialog.style.width = playerPos.width + 'px';
     pDialog.style.height = playerControlsPos.height + 'px';
     pDialog.style.top = playerControlsPos.top + 'px';
-    // pDialog.style.left = playerPos.left + 'px';
 });
 playbackDialog.addEventListener('shown.bs.modal', function () {
     const playerPos = document.getElementById('player-screen').getBoundingClientRect();

@@ -32,6 +32,11 @@ html {
     transition: background-image 0.3s ease-in-out;
 }
 
+/* 
+* Make address bar never dissapear on mobile 
+* CREDIT: https://greensock.com/forums/topic/24315-prevent-address-bar-from-hiding-on-mobile-scroll-trigger/?do=findComment&comment=115562
+*/
+
 body {
     scroll-behavior: smooth;
     font-family: 'Baloo 2', cursive;
@@ -41,13 +46,9 @@ body {
     background-position: center;
     background-size: cover;
     background: none;
-    /* Make address bar never dissapear on mobile */
-    /* CREDIT: https://greensock.com/forums/topic/24315-prevent-address-bar-from-hiding-on-mobile-scroll-trigger/ */
     width: 100%;
     height: 100%;
     position: fixed;
-    /* overflow-y: auto;
-    -webkit-overflow-scrolling: touch; */
     overflow: hidden;
     color: rgba(255, 255, 255, .75);
     /* Overwrites if supported */
@@ -1196,9 +1197,10 @@ footer div#repeat-container .amplitude-repeat.amplitude-repeat-on .repeat-off {
     animation: MoveUpDown 1s linear infinite;
 }
 
-/** CREDIT:
-* https://stackoverflow.com/questions/35990445/how-to-move-a-div-up-and-down-infinitely-in-css3
-* for up and down animation */
+/*
+* CREDIT: https://stackoverflow.com/questions/35990445/how-to-move-a-div-up-and-down-infinitely-in-css3
+* for up and down animation
+*/
 
 @-webkit-keyframes MoveUpDown {
     0%, 100% {

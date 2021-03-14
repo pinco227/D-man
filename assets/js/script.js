@@ -406,14 +406,10 @@ playImg.addEventListener('load', function () {
         .then((palette) => {
             let root = document.querySelector(':root');
             let bgColor = `rgb(${palette.DarkMuted.getRgb()})`;
-            // let textColor = `rgba(${palette.LightVibrant.r},${palette.LightVibrant.g},${palette.LightVibrant.b},.75)`;
             let linkColor = `rgb(${palette.LightVibrant.getRgb()})`;
-            // let linkHover = `rgb(${palette.LightMuted.getRgb()})`;
             let headingsColor = `rgb(${palette.Vibrant.getRgb()})`;
             root.style.setProperty('--main-bg-color', bgColor);
-            // root.style.setProperty('--main-text-color', textColor);
             root.style.setProperty('--main-link-color', linkColor);
-            // root.style.setProperty('--main-link-color-hover', linkHover);
             root.style.setProperty('--headings-color', headingsColor);
             document.querySelector('meta[name="theme-color"]').setAttribute('content', palette.DarkMuted.getHex());
         });
