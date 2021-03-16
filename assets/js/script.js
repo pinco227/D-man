@@ -195,7 +195,7 @@ function writeVideosToDoc() {
         // Stop youtube video when youtube modal is closed
         ytModalEl.addEventListener('hide.bs.modal', function () {
             ytPlayer.stopVideo();
-        })
+        });
 
         // Videos list item container click event listener
         document.querySelectorAll('.video-col').forEach(function (button) {
@@ -356,7 +356,7 @@ function writeMusicToDoc(album) {
 
                 // Pushes all the songs into the global playlist variable
                 item.songs.forEach(function (sg) {
-                    var song = {
+                    const song = {
                         "name": sg.name,
                         "artist": sg.artist,
                         "album": item.name,
@@ -451,12 +451,13 @@ window.onhashchange = function () {
     }
 }
 
-const mediaQ = window.matchMedia("(min-width: 768px)");
-mediaQ.addListener(setDocHeight); // Attach listener function on state changes
+
+// mediaQ.addListener(setDocHeight); // Attach listener function on state changes
 
 // On window resize/rotate/zoom event
 window.onresize = function (event) {
-    setDocHeight(mediaQ);
+    setDocHeight();
+    scrollAnimation(); // Update animation items (play now section on mobile)
 };
 // --------------------------------------------------------------- APP EVENTS END -----------
 
@@ -466,11 +467,12 @@ window.onresize = function (event) {
 * Set the height of the content and player area
 * CREDIT : https://www.w3schools.com/howto/howto_js_media_queries.asp
 */
-function setDocHeight(x) {
+function setDocHeight() {
+    const mediaQ = window.matchMedia("(min-width: 768px)");
     const navbarHeight = document.getElementsByTagName('nav')[0].offsetHeight;
     const footerHeight = document.getElementsByTagName('footer')[0].offsetHeight;
     const docHeight = window.innerHeight;
-    if (x.matches) { // If media query matches
+    if (mediaQ.matches) { // If media query matches
         document.getElementById("player-screen").style.height = `${docHeight - (navbarHeight + footerHeight)}px`;
         document.getElementById('collapse-player').style.display = 'none';
         const player = document.getElementById('player-collapse');
@@ -484,7 +486,6 @@ function setDocHeight(x) {
     }
     document.querySelector('#player-top').style.height = document.querySelector('#player-top').offsetWidth + 'px'; // make Player Art square
     document.getElementById("content").style.height = `${docHeight - (navbarHeight + footerHeight)}px`;
-    scrollAnimation(); // Update animation items (play now section on mobile)
 }
 
 /**
@@ -500,5 +501,5 @@ function closeModals() {
 // ------------------------------------------------------------- APP FUNCTIONS END ----------
 
 // ---------------------------------------------------------------- INITIAL CALLS ----------
-setDocHeight(mediaQ); // Call listener function at run time
+setDocHeight(); // Call listener function at run time
 main(); // Invoke the Main function which loads all pages into variables, create routes and set the current page
