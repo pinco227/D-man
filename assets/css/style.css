@@ -1316,6 +1316,9 @@ footer::after {
 .hero-title {
     text-align: center;
     font-size: 2rem;
+    color: rgb(36, 43, 51);
+    /* Overwrites if supported */
+    color: var(--headings-color);
 }
 
 .hero-text {
@@ -1362,26 +1365,26 @@ footer::after {
 
 #hero-music .btn-hero {
     margin-bottom: 1rem;
-    color: rgba(255, 255, 255, .8);
-    background-color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+    background-color: rgb(36, 43, 51);
     /* Overwrites if supported */
-    color: var(--main-text-color);
+    color: var(--main-link-color-hover);
     background-color: var(--headings-color);
 }
 
 #hero-music .btn-hero-videos {
-    color: rgba(255, 255, 255, .8);
+    color: rgb(255, 255, 255);
     background-color: rgb(36, 43, 51);
     /* Overwrites if supported */
-    color: var(--main-text-color);
+    color: var(--main-link-color-hover);
     background-color: var(--main-bg-color);
 }
 
 #hero-music .btn-hero-gallery {
-    color: rgba(255, 255, 255, .8);
-    background-color: rgba(255, 255, 255, .55);
+    color: rgb(255, 255, 255);
+    background-color: rgb(36, 43, 51);
     /* Overwrites if supported */
-    color: var(--main-text-color);
+    color: var(--main-link-color-hover);
     background-color: var(--main-link-color);
 }
 
@@ -1838,6 +1841,12 @@ footer::after {
     border: 1px solid var(--main-bg-color);
 }
 
+.timeline>li>.timeline-panel>.timeline-heading>h4 {
+    color: rgb(36, 43, 51);
+    /* Overwrites if supported */
+    color: var(--headings-color);
+}
+
 .timeline>li>.timeline-panel>.timeline-heading {
     padding: .5rem;
     text-align: right;
@@ -1875,7 +1884,6 @@ footer::after {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #fff;
     width: 2rem;
     height: 2rem;
     line-height: 1.4rem;
@@ -1885,8 +1893,9 @@ footer::after {
     top: 0;
     right: -1rem;
     z-index: 100;
-    background-color: rgb(255, 255, 255);
     border-radius: 50%;
+    color: rgb(36, 43, 51);
+    background-color: rgb(255, 255, 255);
     /* Overwrites if supported */
     color: var(--headings-color);
     background-color: var(--main-link-color-hover);
@@ -1967,6 +1976,12 @@ footer::after {
     color: rgb(36, 43, 51);
     /* Overwrites if supported */
     color: var(--main-bg-color);
+}
+
+.card-form .card-title {
+    color: rgb(36, 43, 51);
+    /* Overwrites if supported */
+    color: var(--headings-color);
 }
 
 .card-form .form-control {
