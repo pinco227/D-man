@@ -109,6 +109,7 @@ const globalPlaylist = {
         play: function () {
             const playlist = globalPlaylist.songs;
             const songIndex = Amplitude.getActiveIndex();
+            const shuffle = Amplitude.getShuffle();
             const playPauseButton = document.getElementById("play-pause");
             const songArtDiv = document.getElementById("player-top");
             const audioEl = Amplitude.getAudio();
@@ -116,6 +117,7 @@ const globalPlaylist = {
             // Store playlist and active song to localStorage
             localStorage.setItem('playlist', JSON.stringify(playlist));
             localStorage.setItem('activeSongIndex', songIndex);
+            localStorage.setItem('shuffle', shuffle);
 
             // Toggle the play/pause button when it started playing
             playPauseButton.classList.remove("amplitude-paused");
@@ -135,7 +137,9 @@ const globalPlaylist = {
         song_change: function () {
             // Update active song in localStorage
             const songIndex = Amplitude.getActiveIndex();
+            const shuffle = Amplitude.getShuffle();
             localStorage.setItem('activeSongIndex', songIndex);
+            localStorage.setItem('shuffle', shuffle);
             // Update animation items (play now section on mobile)
             scrollAnimation();
         },
@@ -224,6 +228,7 @@ function loadPlaylist(fromLibrary = "yes", songIndex = 0) {
         const activeSongIndex = localStorage.getItem("activeSongIndex");
         const storedPlaylist = localStorage.getItem("playlist");
         const storedSongPercentage = localStorage.getItem("songPercentage");
+        const storedShuffle = localStorage.getItem("shuffle");
         writePlayList();
         Amplitude.init(globalPlaylist);
         Amplitude.pause();
@@ -236,6 +241,7 @@ function loadPlaylist(fromLibrary = "yes", songIndex = 0) {
                     }
                     writePlayList();
                     Amplitude.init(globalPlaylist);
+                    Amplitude.setShuffle(storedShuffle);
                     Amplitude.pause();
                     Amplitude.playSongAtIndex(parseInt(activeSongIndex));
 
