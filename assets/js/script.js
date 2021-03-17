@@ -456,9 +456,9 @@ window.onhashchange = function () {
 // mediaQ.addListener(setDocHeight); // Attach listener function on state changes
 
 // On window resize/rotate/zoom event
-window.onresize = function (event) {
+window.onresize = function () {
     setDocHeight();
-    scrollAnimation(); // Update animation items (play now section on mobile)
+    // scrollAnimation(); // Update animation items (play now section on mobile)
 };
 // --------------------------------------------------------------- APP EVENTS END -----------
 
