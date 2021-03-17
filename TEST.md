@@ -43,3 +43,49 @@ Through the proccess of building this app, testing was made at every step there 
         > Contact information is displayed on the contact page.
     - to research artist's work and previous performances.
         > Every song of the artist can be listened in the website's player. There is also a timeline of events on the "About me" page.
+
+## Testing Functionality
+   - ### Testing links and buttons
+        > #### Landing Page
+        > Starting from top to bottom, left to right, click on every button, link, toggle to check for expected action.
+        > - top navigation fully functional including the brand title.
+        > - Hero panels links are fully functional, they call the navigate function and it runs as expected. The external links are opening in new tabs and links are not broken.
+        > - Player: Clicking on any displayed songs will play that song. Click again on playing song will pause the song. On mobile, the controls are displayed in the player. Every button responds as expected (shuffle,prev,play/pause,next,loop and range seeker).
+        > - Footer: On mobile, click on the now playing metadata ("up" arrow) opens the expandable/collapsible player. The "down" arrow button on the top right corner collapses back the player. The controls are responding as expected on both mobile and desktop.
+        > #### Music Library
+        > - Navbar, player and footer are untouched as navigating througj pages is only changing the content.
+        > - On the music library album list, click on each album opens its album details page.
+        > - Clicking on **Play all** and **Shuffle all** buttons, loads all the songs into the player as expected, the later initializes the player in shuffle state.
+        > - On each album page, clicking on the **Back** button goes back to album list. Clicking on **Shuffle** and **Play this album** loads the album playlist into the player, first one on the shuffle state. Clicking on any song of each album, loads the albums playlist into the player and starts playing from the clicked song.
+        > #### Videos
+        > - Clicking on each video item in the list, opens a modal playing the clicked video and pauses the music.
+        > - The video is a youtube embedded element and is functioning as expected.
+        > - Clicking on the **X** on the top right corner or anywhere outside the video frame closes the modal.
+        > #### Gallery
+        > - Clicking on each photo in the list, opens a modal showing the clicked photo at a bigger resolution/size.
+        > - Clicking on "**<**" and "**>**" navigates through photos. Clicking on the *X* on the top right corner closes the modal. 
+        > #### Contact
+        > - Clicking on the email address in the contact details card opens the platforms default mail software.
+        > - Social links are opening in separate tabs and links are not broken.
+        > - **Send** button submits the form.
+
+   - ### Testing browser back/forward action
+        > - **Navigation**: this SPA is built to memorize the browser history for each openned page, therefore the browser's back and forward buttons and mobile back tap works as expected navigating through pages.
+        > - **Videos** and **Gallery** pages: when video or photo modal is open, browser's back button and mobile back tap will close it without navigating back.
+   - ### Testing form validation
+        > - Contact form: the form was tested for validation by trying to submit first with no data and then by filling the fields one by one. Result as expected, all fields asked for input. The email field asks for email format with ```@```.
+   - ### Testing Player functionality
+        > - Media Session API: Changing song and/or duration is updating the Media Session API. Also on the API controls, buttons are working as expected, each sending the right command to the player, both on mobile and deskop.
+        > - Keyboard: *Left* and *Right* keys navigates through songs in playlist. *Space* plays/pauses the music.
+        > - LocalStorage: After using the player, on refresh on return to the app, *Welcome back* dialog is shown, covering the player. Clicking on **Resume playback** loads all the previous playlist into the player, starts playing the same song it was playing and it seeks the played time to the sored percentage. Clicking on **No thanks** will only close the modal and let user to take control of the player.
+        > - Play/pause: Clicking on songs, pressing **space** key, clicking/tapping on Media Session API play/pause button and any other action that changes the playing state will also toggle the play/pause buton as expected. Playing the music by any of the above means, starts the rotation of the cover art. Pausing stops the rotation.
+        > - Now playing (mobile): on a small screen, if any of the now playing song (footer) metadata text's width is bigger than its container, the left-right animation kicks in. On window resize/rotate and on song change, animation function is called again to recalculate.
+        > - All controls work as expected.
+   - ### Testing for errors
+        > - ```The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page.``` This warning is caused by **AmplitudeJS** waveform. 
+        >
+        > ![AudioContext Warning](https://github.com/pinco227/D-man/blob/main/docs/audiocontext-warning.png)
+        > - ```Uncaught (in promise) DOMException: The play() request was interrupted by a call to pause().``` This error might show some times and it is caused by the *"quick fix"* for the **AmplitudeJS** bug (```Amplitude.pause()``` call after initializing). This is not affecting functionality. [See bug here](#encountered-issues).
+        > - ```No 'Access-Control-Allow-Origin' header is present on the requested resource.``` This error is shown every time a youtube video is loaded on the videos page and it is caused by youtube's api script. This is not affecting functionality.
+        >
+        > ![Youtube errors](https://github.com/pinco227/D-man/blob/main/docs/youtube-error.png)
