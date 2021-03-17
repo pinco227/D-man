@@ -89,3 +89,18 @@ Through the proccess of building this app, testing was made at every step there 
         > - ```No 'Access-Control-Allow-Origin' header is present on the requested resource.``` This error is shown every time a youtube video is loaded on the videos page and it is caused by youtube's api script. This is not affecting functionality.
         >
         > ![Youtube errors](https://github.com/pinco227/D-man/blob/main/docs/youtube-error.png)
+## Testing Compatibility
+   - ### Responsiveness
+        > Using DevTools and different device sizes such as mobile and tablet, the website was tested for any posible screen size combination and orientation. No issues found. Site is size compatible.
+
+   - ### OS test
+        > #### Desktop
+        > The website was tested on Ubuntu 20.04, Windows 7 and Windows 10 systems. Result as expected, desktop system-cross compatible.
+        > #### Mobile
+        > The website was tested on Android 6, Android 9, Android 10 and iOS 14 systems. Result as expected, mobile system-cross compatible.
+
+   - ### Devices test
+        > The website was tested on ASUS 17" notebook, ACER 17" notebook, Huawei P30 PRO, Huawei P20 PRO, Huawei P10, iPhone 11, Samsung Galaxy A7, Lenovo Yoga Tab. The result was consistent, website is platform-cross compatible.
+
+   - ### Browser test
+        > The website was tested on Google Chrome, Firefox, Safari, Edge, Samsung Internet. This website is NOT designed to be compatible with IE. Browsers versions were all up to date. Results were consistent. Conclusion: the website is browser-cross compatible.
