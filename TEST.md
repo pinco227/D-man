@@ -113,3 +113,8 @@
 
    - ### Browser test
         > The website was tested on Google Chrome, Firefox, Safari, Edge, Samsung Internet. This website is NOT designed to be compatible with IE. Browsers versions were all up to date. Results were consistent. Conclusion: the website is browser-cross compatible.
+## Testing Performance
+  > ![LightHouse Results](https://github.com/pinco227/D-man/blob/main/docs/perf-test.png)  
+  > Performance has been tested using Chrome's **Lighthouse** tool for both desktop and mobile. Mobile tests were made using **remote device** connection and an actual mobile phone. The results are slightly different every time due to device performance and value estimation. Tests were made on landing page only as the website is using redirects to handle landing on different pages and redirect tests are not conclusive.  The performance test results are satisfying as the landing page is heavy loaded with content, media and libraries.
+  >
+  > ![LightHouse Performance Result](https://github.com/pinco227/D-man/blob/main/docs/performance-test-data.png)  
