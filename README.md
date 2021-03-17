@@ -1,6 +1,6 @@
 # D-Man
 
-This is a SPA (Single Page App) made to keep player alive while navigating through content. While all the content is being loaded into ```index.html``` dinamically, the app features routing and normal browser history with address url for each page and functional back/forward buttons.
+This is a SPA (Single Page App) made to keep player alive while navigating through content. While all the content is being loaded into `index.html` dinamically, the app features routing and normal browser history with address url for each page and functional back/forward buttons.
 This project represents an artist's page featuring a music player. The main goal is to get the interested user to follow on social networks or contact regarding a collaboration or event. This is an educational project made to serve as a Milestone Project (*Interactive Front-End*) for the **Software Developer Diploma** programme of **Code Institute**.
 
 ## Table of Contents
@@ -118,13 +118,13 @@ This project represents an artist's page featuring a music player. The main goal
           ![Desktop player controls](https://github.com/pinco227/D-man/blob/main/docs/desktop-player-ctrls.png)
 - ### Design Choices
   - #### Colours
-    For better dynamics and consistency, the colours are automatically generated from the playing song art image and they are consistent throughout the website. They are set to be in good contrast and in relation with the focus of the website (the music). The same art image is set to be displayed in the background with a dark frost effect on top of it to offer dynamic and colourful backgrounds while keeping the contrast. This has been inspired from browsers/devices own implementations of ```Media Session API```. *All colours and effects have fall-backs for unsupported browsers.*
+    For better dynamics and consistency, the colours are automatically generated from the playing song art image and they are consistent throughout the website. They are set to be in good contrast and in relation with the focus of the website (the music). The same art image is set to be displayed in the background with a dark frost effect on top of it to offer dynamic and colourful backgrounds while keeping the contrast. This has been inspired from browsers/devices own implementations of `Media Session API`. *All colours and effects have fall-backs for unsupported browsers.*
   - #### Typography
     There are four fonts used throughout the project, two main fonts used for text and headings, one font is used for brand text (logo) and one is used for now playing information on mobile:
-    - [Big Shoulders Stencil Text](https://fonts.google.com/specimen/Big+Shoulders+Stencil+Text) is used for logo and it has a ```cursive``` fallback and ```font-weight``` of ```800```.
-    - [Goldman](https://fonts.google.com/specimen/Goldman) is used for headings and it has a ```cursive``` fallback.
-    - [Baloo 2](https://fonts.google.com/specimen/Baloo+2) is used as a general font for all the text and links with different weights. It has a ```cursive``` fallback.
-    - [VT323](https://fonts.google.com/specimen/VT323) is used for playing now information displayed on mobile footer. It is selected to replicate the classic lcd display found on most of media players. It has a ```monospace``` fallback.
+    - [Big Shoulders Stencil Text](https://fonts.google.com/specimen/Big+Shoulders+Stencil+Text) is used for logo and it has a `cursive` fallback and `font-weight` of `800`.
+    - [Goldman](https://fonts.google.com/specimen/Goldman) is used for headings and it has a `cursive` fallback.
+    - [Baloo 2](https://fonts.google.com/specimen/Baloo+2) is used as a general font for all the text and links with different weights. It has a `cursive` fallback.
+    - [VT323](https://fonts.google.com/specimen/VT323) is used for playing now information displayed on mobile footer. It is selected to replicate the classic lcd display found on most of media players. It has a `monospace` fallback.
   - #### Media
     - All the media used in the project is the actual media received from the artist, it is genuine and it has all the copy rights.
     - All videos in video library are loaded from external source (youtube) and they are approved by the source.
@@ -150,7 +150,7 @@ Website's features are presented in an importance order.
     - The website features a ***Media Session API*** which offers user a better control on any device. The media keeps playing while browser is minimized or device is locked. The browser (desktop) or the device has it's own implementation of Media Session API and it effectively communicates with the website to control the player.
   
       ![media session screenshot](https://github.com/pinco227/D-man/blob/main/docs/media-session-ss.png)
-    - It also uses ```localStorage``` to save the player state in order to be able to be resumed when returning.
+    - It also uses `localStorage` to save the player state in order to be able to be resumed when returning.
 - ### Music Library
     A library of songs well organised in collections as albums. Each album can be played (normal or shuffled) individually, all albums cand be played (normal or shuffled) at once. Each song has a play button to be selected as starting song while loading the album's playlist.
 - ### Video Library
@@ -189,9 +189,9 @@ Website's features are presented in an importance order.
   * [Inkscape](https://inkscape.org/) for creating the favicon.
   * [Adobe Photoshop Express](https://photoshop.adobe.com/resize) for quick resizing and cropping images top improve performance.
   * [TinyJPG](https://tinyjpg.com/) for compressing images.
-  * [Convertio](https://convertio.co/) for converting favicon from ```.png``` to ```.ico```.
-  * [CloudConvert](https://cloudconvert.com/webm-to-gif) for converting screen recording from ```.webm``` to ```.gif```.
-  * [EZGif](https://ezgif.com/) for cropping ```.gif``` files used writing this documentation.
+  * [Convertio](https://convertio.co/) for converting favicon from `.png` to `.ico`.
+  * [CloudConvert](https://cloudconvert.com/webm-to-gif) for converting screen recording from `.webm` to `.gif`.
+  * [EZGif](https://ezgif.com/) for cropping `.gif` files used writing this documentation.
 - Other
 
 ## Testing
@@ -216,7 +216,7 @@ Website's features are presented in an importance order.
   3. To clone the repository using HTTPS, under "**Clone**", make sure "**HTTPS**" is selected and copy the link.
   4. Open Git Bash.
   5. Change the current working directory to the location where you want the cloned directory to be made.
-  6. Type ```git clone```, and then paste the URL you copied in Step 3.
+  6. Type `git clone`, and then paste the URL you copied in Step 3.
     ```
     $ git clone https://github.com/pinco227/D-man.git
     ```
@@ -241,7 +241,7 @@ Website's features are presented in an importance order.
   - [GreenSock user: ZackSaucier](https://greensock.com/profile/18404-zachsaucier/) for the *"address bar never dissapear on mobile"*  [snippet](https://greensock.com/forums/topic/24315-prevent-address-bar-from-hiding-on-mobile-scroll-trigger/?do=findComment&comment=115562).
   - [StackOverflow user: Stickers](https://stackoverflow.com/users/483779/stickers) for up and down arrow animation [SOLUTION](https://stackoverflow.com/questions/35990445/how-to-move-a-div-up-and-down-infinitely-in-css3) used in player now playing section (mobile).
   - [StackOverflow user: sweets-BlingBling](https://stackoverflow.com/users/427242/sweets-blingbling) for mobile detection [snippet](https://stackoverflow.com/questions/3514784/what-is-the-best-way-to-detect-a-mobile-device/3540295#3540295) used for a better navigation experience.
-  - [StackOverflow user: tvanfosson](https://stackoverflow.com/users/12950/tvanfosson) for his ```clickHandler()``` function from [this post](https://stackoverflow.com/questions/386944/time-delay-on-click/386971#386971) which was adapted to pass a function as parameter and used to open the album details page with a delay on mobile devices (so the user experience the album animation).
+  - [StackOverflow user: tvanfosson](https://stackoverflow.com/users/12950/tvanfosson) for his `clickHandler()` function from [this post](https://stackoverflow.com/questions/386944/time-delay-on-click/386971#386971) which was adapted to pass a function as parameter and used to open the album details page with a delay on mobile devices (so the user experience the album animation).
   - [StackOverflow user: Raymond Ativie](https://stackoverflow.com/users/1793688/raymond-ativie) for his *"close modal on browser back button"* [snippet](https://stackoverflow.com/questions/16870007/how-to-close-a-bootstrap-modal-with-the-browser-back-button-instead-of-going-bac/40033565#40033565).
   - [Bootsnipp user: Rafamaciel](http://bootsnipp.com/rafamaciel) for timeline [snippet](https://bootsnipp.com/snippets/7B7W) used in the **About me** page.
   - [Rafael Pedicini](https://github.com/rafgraph) for [this trick](https://github.com/rafgraph/spa-github-pages) to make SPA work on GitHub Pages. [See issue](#encountered-issues).

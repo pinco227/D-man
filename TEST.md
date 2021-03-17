@@ -10,19 +10,28 @@
 - [Code Validation](#code-validation)
 - [Further Testing](#further-testing)
 ## Encountered Issues
-### Issues found during the building process:
-Through the proccess of building this app, testing was made at every step there were many encountered issues and bugs along the way. Any issues that were quickly fixed were not worth mentioning. Therefore these are the issues that has persisted and were a bit more time consuming to fix:
-> - Dynamic content navigation working properly while user lands on index.html but it doesn't work if user access website by passing different page url's on the address bar or if user refreshes the page.
-> - **FIXED**: As this project is deployed to GitHub Pages (which doesn not accept server configuration), the only way to fix this issue was to make a redirect using custom error pages (404.html) as described by **Rafael Pedicini** on **[this repo](https://github.com/rafrex/spa-github-pages)**.
+- ### Issues found during the building process:
+    Through the proccess of building this app, testing was made at every step there were many encountered issues and bugs along the way. Any issues that were quickly fixed were not worth mentioning. Therefore these are the issues that has persisted and were a bit more time consuming to fix:
+    > - Dynamic content navigation working properly while user lands on index.html but it doesn't work if user access website by passing different page url's on the address bar or if user refreshes the page.
+    > - **FIXED**: As this project is deployed to GitHub Pages (which doesn not accept server configuration), the only way to fix this issue was to make a redirect using custom error pages (404.html) as described by **Rafael Pedicini** on **[this repo](https://github.com/rafrex/spa-github-pages)**.
 
-> - This Error when loading the song player percentage from localStorage:
-      `Uncaught TypeError: Failed to set the 'currentTime' property on 'HTMLMediaElement': The provided double value is non-finite.`
-> - **FIXED**: by setting a timeOut function on the call in order to get the song playing before trying to seek the played time.
+    > - This Error when loading the song player percentage from localStorage:
+        `Uncaught TypeError: Failed to set the 'currentTime' property on 'HTMLMediaElement': The provided double value is non-finite.`
+    > - **FIXED**: by setting a timeOut function on the call in order to get the song playing before trying to seek the played time.
 
-> - Some functionality limited on mobile devices (song played/buffered progress position, store data to local storage and other functions related to AmplitudeJS library).
-> - This is an open [ISSUE](https://github.com/serversideup/amplitudejs/issues/433) on AmplitudeJS developer's github.
-> - **FIXED** (temporary): by calling ```Amplitude.pause()``` after initializing the player as described in [this comment](https://github.com/serversideup/amplitudejs/issues/433#issuecomment-674497553).
+    > - Some functionality limited on mobile devices (song played/buffered progress position, store data to local storage and other functions related to AmplitudeJS library).
+    > - This is an open [ISSUE](https://github.com/serversideup/amplitudejs/issues/433) on AmplitudeJS developer's github.
+    > - **FIXED** (temporary): by calling `Amplitude.pause()` after initializing the player as described in [this comment](https://github.com/serversideup/amplitudejs/issues/433#issuecomment-674497553).
+- ### Issues found while testing:
+    > - Resume playback would not work properly if the "**Shuffle**" was **On** before reloading the page.
+    > - **FIXED**: When player is on shuffle, songs indexes are randomised so first song in the list doesn't have the index `0` anymore. The *resume playback* function was extracting the `songIndex` from the `localStorage` but it will load different song if shuffle state is different. Now shuffle state is stored to `localStorage` to fix this issue.
 
+    > - SPA navigation was not working on ***Samsung Internet***.
+    > - Debugging result: `scrollAnimation` declared on `player.js` and called on `script.js` not runing.
+    > - **FIXED**: by moving the call of `scrollAnimation` on `window.onresize` event listener. `scrollAnimation` is initially called within `player.js` on `song_change` callback, therefore the functionality is not affected.
+
+    > - Player not working on ***Safari***. `MediaSession API` not supported.
+    > - **FIXED**: by storing `typeof(navigator.mediaSession)` in a variable. If it is `undefined` then it is not supported by browser. All the depending code is wrapped in an `if(mediaSessionSupported)` condition.
 ## Testing user stories
   - #### As a user I need:
     - to easily navigate throughout the content.
@@ -73,7 +82,7 @@ Through the proccess of building this app, testing was made at every step there 
         > - **Navigation**: this SPA is built to memorize the browser history for each openned page, therefore the browser's back and forward buttons and mobile back tap works as expected navigating through pages.
         > - **Videos** and **Gallery** pages: when video or photo modal is open, browser's back button and mobile back tap will close it without navigating back.
    - ### Testing form validation
-        > - Contact form: the form was tested for validation by trying to submit first with no data and then by filling the fields one by one. Result as expected, all fields asked for input. The email field asks for email format with ```@```.
+        > - Contact form: the form was tested for validation by trying to submit first with no data and then by filling the fields one by one. Result as expected, all fields asked for input. The email field asks for email format with `@`.
    - ### Testing Player functionality
         > - Media Session API: Changing song and/or duration is updating the Media Session API. Also on the API controls, buttons are working as expected, each sending the right command to the player, both on mobile and deskop.
         > - Keyboard: *Left* and *Right* keys navigates through songs in playlist. *Space* plays/pauses the music.
@@ -82,11 +91,11 @@ Through the proccess of building this app, testing was made at every step there 
         > - Now playing (mobile): on a small screen, if any of the now playing song (footer) metadata text's width is bigger than its container, the left-right animation kicks in. On window resize/rotate and on song change, animation function is called again to recalculate.
         > - All controls work as expected.
    - ### Testing for errors
-        > - ```The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page.``` This warning is caused by **AmplitudeJS** waveform. 
+        > - `The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page.` This warning is caused by **AmplitudeJS** waveform. 
         >
         > ![AudioContext Warning](https://github.com/pinco227/D-man/blob/main/docs/audiocontext-warning.png)
-        > - ```Uncaught (in promise) DOMException: The play() request was interrupted by a call to pause().``` This error might show some times and it is caused by the *"quick fix"* for the **AmplitudeJS** bug (```Amplitude.pause()``` call after initializing). This is not affecting functionality. [See bug here](#encountered-issues).
-        > - ```No 'Access-Control-Allow-Origin' header is present on the requested resource.``` This error is shown every time a youtube video is loaded on the videos page and it is caused by youtube's api script. This is not affecting functionality.
+        > - `Uncaught (in promise) DOMException: The play() request was interrupted by a call to pause().` This error might show some times and it is caused by the *"quick fix"* for the **AmplitudeJS** bug (`Amplitude.pause()` call after initializing). This is not affecting functionality. [See bug here](#encountered-issues).
+        > - `No 'Access-Control-Allow-Origin' header is present on the requested resource.` This error is shown every time a youtube video is loaded on the videos page and it is caused by youtube's api script. This is not affecting functionality.
         >
         > ![Youtube errors](https://github.com/pinco227/D-man/blob/main/docs/youtube-error.png)
 ## Testing Compatibility
@@ -100,7 +109,7 @@ Through the proccess of building this app, testing was made at every step there 
         > The website was tested on Android 6, Android 9, Android 10 and iOS 14 systems. Result as expected, mobile system-cross compatible.
 
    - ### Devices test
-        > The website was tested on ASUS 17" notebook, ACER 17" notebook, Huawei P30 PRO, Huawei P20 PRO, Huawei P10, iPhone 11, Samsung Galaxy A7, Lenovo Yoga Tab. The result was consistent, website is platform-cross compatible.
+        > The website was tested on ASUS 17" notebook, ACER 17" notebook, Huawei P30 PRO, Huawei P20 PRO, Huawei P10, iPhone 11, Samsung Galaxy Note10, Samsung Galaxy A7, Samsung Galaxy TabS6, Lenovo Yoga Tab. The result is consistent, website is platform-cross compatible.
 
    - ### Browser test
         > The website was tested on Google Chrome, Firefox, Safari, Edge, Samsung Internet. This website is NOT designed to be compatible with IE. Browsers versions were all up to date. Results were consistent. Conclusion: the website is browser-cross compatible.
