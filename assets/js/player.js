@@ -1,5 +1,5 @@
 let mediaSessionSupported = false;
-if(typeof(navigator.mediaSession)!="undefined"){
+if (typeof (navigator.mediaSession) != "undefined") {
     mediaSessionSupported = true;
 }
 // Global object to store songs for player
@@ -191,7 +191,7 @@ function writePlayList() {
         <div class="song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="${i}">
             <span class="song-number-now-playing">
                 <span class="number">${i + 1}</span>
-                <img class="now-playing" src="assets/images/music-note-beamed.svg" />
+                <img class="now-playing" src="assets/images/music-note-beamed.svg" alt="Now playing song" />
             </span>
 
             <div class="song-meta-container">
@@ -278,7 +278,7 @@ function playShuffle() {
 * Updates the Media Notification with current playing track information
 */
 function updateMetadata() {
-    if(mediaSessionSupported) {
+    if (mediaSessionSupported) {
         const track = Amplitude.getActiveSongMetadata();
         navigator.mediaSession.metadata = new MediaMetadata({
             title: track.name,
@@ -298,7 +298,7 @@ function updateMetadata() {
 * Updates the Media Notification with current playing track position
 */
 function updatePositionState() {
-    if(mediaSessionSupported && 'setPositionState' in navigator.mediaSession) {
+    if (mediaSessionSupported && 'setPositionState' in navigator.mediaSession) {
         navigator.mediaSession.setPositionState({
             duration: Amplitude.getSongDuration(),
             playbackRate: Amplitude.getPlaybackSpeed(),
@@ -307,7 +307,7 @@ function updatePositionState() {
     }
 }
 
-if(mediaSessionSupported) {
+if (mediaSessionSupported) {
     // Action handlers for media notification controls
     navigator.mediaSession.setActionHandler('previoustrack', function () {
         Amplitude.prev();
