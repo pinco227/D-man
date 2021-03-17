@@ -108,9 +108,11 @@ async function main() {
 
 /**
  * Navigates through SPA
+ * @param {object} e click event
  * @param {string} href relative url path to which to navigate
  */
-function navigate(href) {
+function navigate(e, href) {
+    e.preventDefault();
     const page = href.split('/').pop();
     window.history.pushState({}, titles[page], href);
     setPage(page);
@@ -128,8 +130,7 @@ window.onpopstate = () => {
 // Navigation links event listeners for dynamic page load
 document.querySelectorAll('.spa-nav').forEach(function (button) {
     button.addEventListener('click', function (e) {
-        e.preventDefault();
-        navigate(button.href);
+        navigate(e, button.href);
     });
 });
 // ---------------------------------------------------------------------- SPA END  ----------

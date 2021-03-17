@@ -195,19 +195,7 @@ Website's features are presented in an importance order.
 - Other
 
 ## Testing
-  - ## Encountered Issues
-    Through the proccess of building this app, testing was made at every step there were many encountered issues and bugs along the way. Any issues that were quickly fixed were not worth mentioning. Therefore these are the issues that has persisted and were a bit more time consuming to fix:
-    > - Dynamic content navigation working properly while user lands on index.html but it doesn't work if user access website by passing different page url's on the address bar or if user refreshes the page.
-    > - **FIXED**: As this project is deployed to GitHub Pages (which doesn not accept server configuration), the only way to fix this issue was to make a redirect using custom error pages (404.html) as described by **Rafael Pedicini** on **[this repo](https://github.com/rafrex/spa-github-pages)**.
-
-    > - This Error when loading the song player percentage from localStorage:
-      `Uncaught TypeError: Failed to set the 'currentTime' property on 'HTMLMediaElement': The provided double value is non-finite.`
-    > - **FIXED**: by setting a timeOut function on the call in order to get the song playing before trying to seek the played time.
-
-    > - Some functionality limited on mobile devices (song played/buffered progress position, store data to local storage and other functions related to AmplitudeJS library).
-    > - This is an open [ISSUE](https://github.com/serversideup/amplitudejs/issues/433) on AmplitudeJS developer's github.
-    > - **FIXED** (temporary): by calling ```Amplitude.pause()``` after initializing the player as described in [this comment](https://github.com/serversideup/amplitudejs/issues/433#issuecomment-674497553).
-
+  ### [Click Here for Full Testing Process](https://github.com/pinco227/D-man/blob/main/TEST.md)
 ## Deployment
 - ### GitHub Pages
   The project was deployed to GitHub Pages using the following steps:
