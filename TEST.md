@@ -118,3 +118,5 @@
   > Performance has been tested using Chrome's **Lighthouse** tool for both desktop and mobile. Mobile tests were made using **remote device** connection and an actual mobile phone. The results are slightly different every time due to device performance and value estimation. Tests were made on landing page only as the website is using redirects to handle landing on different pages and redirect tests are not conclusive.  The performance test results are satisfying as the landing page is heavy loaded with content, media and libraries.
   >
   > ![LightHouse Performance Result](https://github.com/pinco227/D-man/blob/main/docs/performance-test-data.png)  
+## Testing Accessibility
+  > The accessibility was tested using [a11y Color Contrast Accessibility Validator](https://color.a11y.com/Contrast/). This has tested the fallback colours (before colours are automatically assigned based on the cover art). For the dynamic colours, individual tests were made using [a11y Color-pair Contrast Testing](https://color.a11y.com/ContrastPair/). For both cases, the result are satisfying.

@@ -1399,9 +1399,9 @@ footer::after {
 }
 
 #hero-social .hero-text {
-    color: rgba(255, 255, 255, .75);
+    color: rgb(255, 255, 255);
     /* Overwrites if supported */
-    color: var(--main-text-color);
+    color: var(--main-link-color-hover);
 }
 
 #hero-social .hero-title {
