@@ -16,8 +16,8 @@
     <!-- FavIcon -->
     <link href="https://pinco227.github.io/D-man/favicon.ico" rel="shortcut icon" type="image/x-icon">
     <!-- First scripts to load and execute -->
-    <script type="text/javascript" src="assets/js/redirect.js"></script>
-    <script type="text/javascript">recieveRedirect()</script>
+    <script src="assets/js/redirect.js"></script>
+    <script>recieveRedirect()</script>
 </head>
 
 <body class="backdrop">
@@ -60,7 +60,7 @@
                     <div id="player-screen">
                         <!-- Player cover art -->
                         <div id="player-top">
-                            <img id="player-cover-art" alt="Playing song cover art"
+                            <img id="player-cover-art" alt="Playing song cover art" src="media/music/Singles/cover.jpg"
                                 data-amplitude-song-info="cover_art_url" />
                         </div>
                         <!-- Now playing information -->
@@ -87,7 +87,7 @@
                             <div class="prev-container">
                                 <div class="amplitude-prev"></div>
                             </div>
-                            <div class="play-pause-container" class="mx-auto">
+                            <div class="play-pause-container mx-auto">
                                 <div class="amplitude-play-pause"></div>
                             </div>
                             <div class="next-container">
@@ -140,7 +140,7 @@
                         <div class="seeker">
                             <div class="amplitude-wave-form">
                             </div>
-                            <input type="range" class="amplitude-song-slider" id="global-large-song-slider" />
+                            <input type="range" class="amplitude-song-slider" />
                         </div>
                         <span class="amplitude-duration-time time-container"></span>
                     </div>
@@ -239,16 +239,14 @@
     </div>
 
     <!-- External JS Libraries -->
-    <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
         crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/amplitudejs@5.2.0/dist/amplitude.js"></script>
-    <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/node-vibrant@3.2.1-alpha.1/dist/vibrant.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/amplitudejs@5.2.0/dist/amplitude.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/node-vibrant@3.2.1-alpha.1/dist/vibrant.min.js"></script>
     <!-- Local JS files -->
-    <script type="text/javascript" src="assets/js/player.js"></script>
-    <script type="text/javascript" src="assets/js/script.js"></script>
+    <script src="assets/js/player.js"></script>
+    <script src="assets/js/script.js"></script>
 </body>
 
 </html>

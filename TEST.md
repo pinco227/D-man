@@ -120,3 +120,10 @@
   > ![LightHouse Performance Result](https://github.com/pinco227/D-man/blob/main/docs/performance-test-data.png)  
 ## Testing Accessibility
   > The accessibility was tested using [a11y Color Contrast Accessibility Validator](https://color.a11y.com/Contrast/). This has tested the fallback colours (before colours are automatically assigned based on the cover art). For the dynamic colours, individual tests were made using [a11y Color-pair Contrast Testing](https://color.a11y.com/ContrastPair/). For both cases, the result are satisfying.
+## Code Validation
+  - ### HTML
+    > Html was tested and validated with [W3C Validator](https://validator.w3.org/). **No errors or issues**. The results are satisfying on all pages. 
+  - ### CSS
+    > CSS was validated with [W3C CSS](https://jigsaw.w3.org/css-validator/) by direct input. The results came with no error and only warnings about the vendor prefixes, which can be ignored.
+  - ### JavaScript
+    > 
