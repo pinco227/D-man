@@ -122,8 +122,8 @@
   > The accessibility was tested using [a11y Color Contrast Accessibility Validator](https://color.a11y.com/Contrast/). This has tested the fallback colours (before colours are automatically assigned based on the cover art). For the dynamic colours, individual tests were made using [a11y Color-pair Contrast Testing](https://color.a11y.com/ContrastPair/). For both cases, the result are satisfying.
 ## Code Validation
   - ### HTML
-    > Html was tested and validated with [W3C Validator](https://validator.w3.org/). **No errors or issues**. The results are satisfying on all pages. 
+    > Html was tested and validated with [W3C Validator](https://validator.w3.org/). Code has been adjusted. The only warning is for the lack of heading elements in the `<section>` which is not conclusive since the validator doesn't get the dynamically loaded content (which has headings for each page). The content for each page was separately tested with the same validator. **No errors or issues**
   - ### CSS
-    > CSS was validated with [W3C CSS](https://jigsaw.w3.org/css-validator/) by direct input. The results came with no error and only warnings about the vendor prefixes, which can be ignored.
+    > Custom CSS was validated with [W3C CSS](https://jigsaw.w3.org/css-validator/). Code has been adjusted and the results came with no error and only warnings about the vendor prefixes, which can be ignored.
   - ### JavaScript
-    > 
+    > Javascript has been validated during building proccess by **VSCODE** extension **[ESLint](https://eslint.org/)**. For extra caution **[JSHint](https://jshint.com/)** was used for code validation by direct input. **No errors or issues**

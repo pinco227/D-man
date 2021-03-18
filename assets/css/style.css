@@ -109,7 +109,7 @@ body {
 }
 
 #dialog-yes {
-    color: rgb(255, 255, 255);
+    color: rgb(36, 43, 51);
     background-color: rgb(255, 255, 255);
     /* Overwrites if supported */
     color: var(--main-link-color-hover);
@@ -229,7 +229,7 @@ body {
 }
 
 .btn-dmn {
-    color: rgb(255, 255, 255);
+    color: rgb(36, 43, 51);
     background-color: rgb(255, 255, 255);
     border-color: rgb(36, 43, 51);
     /* Overwrites if supported */

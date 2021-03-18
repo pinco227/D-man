@@ -184,7 +184,7 @@ function writeVideosToDoc() {
             <div class="col-6 col-sm-4 col-md-6 col-lg-3 video-col" data-bs-toggle="modal" data-bs-target="#yt-modal" data-yt-id="${item.snippet.resourceId.videoId}">
                 <article>
                 <div class="video-thumb-container">
-                    <img src="${item.snippet.thumbnails.medium.url}" class="yt-item" />
+                    <img src="${item.snippet.thumbnails.medium.url}" class="yt-item" alt="${item.snippet.title}" />
                     <i class="far fa-play-circle video-play-icon"></i>
                 </div>
                 <span class="video-title">${item.snippet.title}</span>
@@ -299,7 +299,7 @@ function writeMusicToDoc(album) {
             <div class="col-12">
                 <div class="album-details">
                     <div class="album-art-container">
-                        <img class="album-art" src="media/music/${data[album].path}/${data[album].cover}" alt="${data[album].artist} - ${data[album].name}" />
+                        <img class="album-art" src="media/music/${encodeURI(data[album].path)}/${data[album].cover}" alt="${data[album].artist} - ${data[album].name}" />
                     </div>
                     <div class="album-data">
                         <span class="album-title">${data[album].name}</span>
@@ -326,8 +326,8 @@ function writeMusicToDoc(album) {
                     "name": item.name,
                     "artist": item.artist,
                     "album": data[album].name,
-                    "url": "https://pinco227.github.io/D-man/media/music/" + data[album].path + "/" + item.url,
-                    "cover_art_url": "https://pinco227.github.io/D-man/media/music/" + data[album].path + "/" + data[album].cover,
+                    "url": "https://pinco227.github.io/D-man/media/music/" + encodeURI(data[album].path) + "/" + encodeURI(item.url),
+                    "cover_art_url": "https://pinco227.github.io/D-man/media/music/" + encodeURI(data[album].path) + "/" + data[album].cover,
                     "duration": item.duration
                 };
                 globalPlaylist.songs.push(song);
@@ -361,8 +361,8 @@ function writeMusicToDoc(album) {
                         "name": sg.name,
                         "artist": sg.artist,
                         "album": item.name,
-                        "url": "media/music/" + item.path + "/" + sg.url,
-                        "cover_art_url": "media/music/" + item.path + "/" + item.cover,
+                        "url": "media/music/" + encodeURI(item.path) + "/" + encodeURI(sg.url),
+                        "cover_art_url": "media/music/" + encodeURI(item.path) + "/" + item.cover,
                         "duration": sg.duration
                     };
                     globalPlaylist.songs.push(song);
@@ -450,7 +450,7 @@ window.onhashchange = function () {
             modal ? modal.hide() : '';
         });
     }
-}
+};
 
 
 // mediaQ.addListener(setDocHeight); // Attach listener function on state changes
