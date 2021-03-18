@@ -196,6 +196,37 @@ Website's features are presented in an importance order.
 
 ## Testing
   ### [Click Here for Full Testing Process](https://github.com/pinco227/D-man/blob/main/TEST.md)
+  ### Overview
+  - #### Issues
+    | Issue                                                                                                       | Fixed              |
+    | ----------------------------------------------------------------------------------------------------------- | ------------------ |
+    | [Access pages by direct URL](https://github.com/pinco227/D-man/blob/main/TEST.md#encountered-issues)        | :heavy_check_mark: |
+    | [song percentage from localStorage](https://github.com/pinco227/D-man/blob/main/TEST.md#encountered-issues) | :heavy_check_mark: |
+    | [AmplitudeJS issue](https://github.com/pinco227/D-man/blob/main/TEST.md#encountered-issues)                 | :heavy_check_mark: |
+    | [Resume playback on shuffle](https://github.com/pinco227/D-man/blob/main/TEST.md#encountered-issues)        | :heavy_check_mark: |
+    | [Samsung Internet issue](https://github.com/pinco227/D-man/blob/main/TEST.md#encountered-issues)            | :heavy_check_mark: |
+    | [Safari issue](https://github.com/pinco227/D-man/blob/main/TEST.md#encountered-issues)                      | :heavy_check_mark: |
+  - #### Tests
+    | Test                                                                                                                   | Result             |
+    | ---------------------------------------------------------------------------------------------------------------------- | ------------------ |
+    | ***[User Stories](https://github.com/pinco227/D-man/blob/main/TEST.md#testing-user-stories)***                         | :heavy_check_mark: |
+    | ***[Code](https://github.com/pinco227/D-man/blob/main/TEST.md#testing-code)***                                         | :heavy_check_mark: |
+    | ***[Functionality](https://github.com/pinco227/D-man/blob/main/TEST.md#testing-functionality):*** links and buttons    | :heavy_check_mark: |
+    | ***[Functionality](https://github.com/pinco227/D-man/blob/main/TEST.md#testing-functionality):*** browser back/forward | :white_check_mark: |
+    | ***[Functionality](https://github.com/pinco227/D-man/blob/main/TEST.md#testing-functionality):*** form validation      | :heavy_check_mark: |
+    | ***[Functionality](https://github.com/pinco227/D-man/blob/main/TEST.md#testing-functionality):*** music player         | :heavy_check_mark: |
+    | ***[Functionality](https://github.com/pinco227/D-man/blob/main/TEST.md#testing-functionality):*** console errors       | :heavy_check_mark: |
+    | ***[Compatibility](https://github.com/pinco227/D-man/blob/main/TEST.md#testing-compatibility):*** Responsiveness       | :heavy_check_mark: |
+    | ***[Compatibility](https://github.com/pinco227/D-man/blob/main/TEST.md#testing-compatibility):*** System-cross         | :heavy_check_mark: |
+    | ***[Compatibility](https://github.com/pinco227/D-man/blob/main/TEST.md#testing-compatibility):*** Platform-cross       | :heavy_check_mark: |
+    | ***[Compatibility](https://github.com/pinco227/D-man/blob/main/TEST.md#testing-compatibility):*** Browser-cross        | :heavy_check_mark: |
+    | ***[Performance](https://github.com/pinco227/D-man/blob/main/TEST.md#testing-performance)***                           | :heavy_check_mark: |
+    | ***[Accessibility](https://github.com/pinco227/D-man/blob/main/TEST.md#testing-accessibility)***                       | :heavy_check_mark: |
+    | ***[HTML Validation](https://github.com/pinco227/D-man/blob/main/TEST.md#code-validation)***                           | :heavy_check_mark: |
+    | ***[CSS Validation](https://github.com/pinco227/D-man/blob/main/TEST.md#code-validation)***                            | :heavy_check_mark: |
+    | ***[JS Validation](https://github.com/pinco227/D-man/blob/main/TEST.md#code-validation)***                             | :heavy_check_mark: |
+    | ***[Overflow](https://github.com/pinco227/D-man/blob/main/TEST.md#further-testing)***                                  | :heavy_check_mark: |
+    | ***[Spelling](https://github.com/pinco227/D-man/blob/main/TEST.md#further-testing)***                                  | :heavy_check_mark: |
 ## Deployment
 - ### GitHub Pages
   The project was deployed to GitHub Pages using the following steps:
