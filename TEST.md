@@ -25,7 +25,7 @@
     > - :heavy_check_mark: **FIXED** (temporary): by calling `Amplitude.pause()` after initializing the player as described in [this comment](https://github.com/serversideup/amplitudejs/issues/433#issuecomment-674497553).
 - ### Issues found while testing:
     > - Resume playback would not work properly if the "**Shuffle**" was **On** before reloading the page.
-    > - :heavy_check_mark: **FIXED**: When player is on shuffle, songs indexes are randomised so first song in the list doesn't have the index `0` anymore. The *resume playback* function was extracting the `songIndex` from the `localStorage` but it will load different song if shuffle state is different. Now shuffle state is stored to `localStorage` to fix this issue.
+    > - :heavy_check_mark: **FIXED**: When player is on shuffle, songs are randomised and stored into `Amplitude.getSongsState()` object. The *resume playback* function is extracting the `songIndex` and `playlist` from the `localStorage` but the stored playlist was the one not randomised. Now shuffle state is stored to `localStorage.shuffle` and `Amplitude.getSongsState()` is stored to `localStorage.playlist` instead of `globalPlaylist.songs`.
 
     > - SPA navigation was not working on ***Samsung Internet***.
     > - Debugging result: `scrollAnimation` declared on `player.js` and called on `script.js` not runing.

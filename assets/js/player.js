@@ -111,7 +111,7 @@ const globalPlaylist = {
     ],
     callbacks: {
         play: function () {
-            const playlist = globalPlaylist.songs;
+            const playlist = Amplitude.getSongsState();
             const songIndex = Amplitude.getActiveIndex();
             const shuffle = Amplitude.getShuffle();
             const playPauseButton = document.getElementById("play-pause");
@@ -244,9 +244,11 @@ function loadPlaylist(fromLibrary = "yes", songIndex = 0) {
                     }
                     writePlayList();
                     Amplitude.init(globalPlaylist);
-                    Amplitude.setShuffle(storedShuffle);
                     Amplitude.pause();
                     Amplitude.playSongAtIndex(parseInt(activeSongIndex));
+                    setTimeout(function () {
+                        Amplitude.setShuffle(storedShuffle);
+                    }, 1000);
 
                     if (storedSongPercentage) {   // Get song percentage stored from previous session
                         setTimeout(function () {
