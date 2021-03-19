@@ -504,5 +504,3 @@ function closeModals() {
 // ---------------------------------------------------------------- INITIAL CALLS ----------
 setDocHeight(); // Call listener function at run time
 main(); // Invoke the Main function which loads all pages into variables, create routes and set the current page
-
-// export { loadPage };
