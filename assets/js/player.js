@@ -207,7 +207,6 @@ function writePlayList() {
 * Loads the global playlist into player after it has been changed
 * @param {optional} fromLibrary - Optional parameter to detect if function was called initialy or from the library
 * @param {optional} songIndex - Optional parameter to play the playlist at this index. If this is not a number, then playlist is shuffled
-* @return {ReturnValueDataTypeHere} Brief description of the returning value here.
 */
 function loadPlaylist(fromLibrary = "yes", songIndex = 0) {
     if (fromLibrary == "yes") { // Load playlist from library
