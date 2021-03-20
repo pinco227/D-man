@@ -4,6 +4,7 @@
 - [Encountered Issues](#encountered-issues)
 - [Testing User Stories](#testing-user-stories)
 - [Testing Code](#testing-code)
+- [Unit Testing](#unit-testing)
 - [Testing Functionality](#testing-functionality)
 - [Testing Compatibility](#testing-compatibility)
 - [Testing Performance](#testing-performance)
@@ -55,6 +56,12 @@
         > :heavy_check_mark: Every song of the artist can be listened in the website's player. There is also a timeline of events on the "About me" page.
 ## Testing Code
 > :heavy_check_mark: Every javascript method was tested for the expected outcome in console by using `console.log()` or by manually calling the function. 
+## Unit Testing
+> Unit testing has been done with [Jasmine](https://jasmine.github.io/). The most important units of the player and app functionality has been tested.
+>
+>   ![Jasmine screenshot](https://github.com/pinco227/D-man/blob/main/docs/jasmine-test.png)
+>   ### [Click Here for Live Jasmine test](https://pinco227.github.io/D-man/test.html?random=false)
+>   In order to test `play()` functionality, browser needs a DOM interaction from user. To do that press the **RE-RUN** button on top of the page after the failed results are shown.
 ## Testing Functionality
    - ### Testing links and buttons
         > #### Landing Page :heavy_check_mark:
@@ -79,7 +86,6 @@
         > - Clicking on the email address in the contact details card opens the platforms default mail software.
         > - Social links are opening in separate tabs and links are not broken.
         > - **Send** button submits the form.
-
    - ### Testing browser back/forward action
         > - :heavy_check_mark: **Navigation**: this SPA is built to memorize the browser history for each openned page, therefore the browser's back and forward buttons and mobile back tap works as expected navigating through pages.
         > - :heavy_check_mark: **Videos** and **Gallery** pages: when video or photo modal is open, browser's back button and mobile back tap will close it without navigating back.
@@ -103,16 +109,13 @@
 ## Testing Compatibility
    - ### Responsiveness
         > Using DevTools and different device sizes such as mobile and tablet, the website was tested for any posible screen size combination and orientation. No issues found. **Site is size compatible** :heavy_check_mark:.
-
    - ### OS test
         > #### Desktop
         > The website was tested on Ubuntu 20.04, Windows 7 and Windows 10 systems. Result as expected, **desktop system-cross compatible** :heavy_check_mark:.
         > #### Mobile
         > The website was tested on Android 6, Android 9, Android 10 and iOS 14 systems. Result as expected, **mobile system-cross compatible** :heavy_check_mark:.
-
    - ### Devices test
         > The website was tested on ASUS 17" notebook, ACER 17" notebook, Huawei P30 PRO, Huawei P20 PRO, Huawei P10, iPhone 11, Samsung Galaxy Note10, Samsung Galaxy A7, Samsung Galaxy TabS6, Lenovo Yoga Tab. The result is consistent, website is **platform-cross compatible** :heavy_check_mark:.
-
    - ### Browser test
         > The website was tested on Google Chrome, Firefox, Safari, Edge, Samsung Internet. This website is NOT designed to be compatible with IE. Browsers versions were all up to date. Results were consistent. Conclusion: the website is **browser-cross compatible** :heavy_check_mark:.
 ## Testing Performance

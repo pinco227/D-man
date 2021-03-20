@@ -179,6 +179,8 @@ Website's features are presented in an importance order.
   * [AmplitudeJS](https://521dimensions.com/open-source/amplitudejs) for audio player capabilities.
   * [Vibrant.js](https://jariz.github.io/vibrant.js/) to extract colours from the meta image.
   * [Youtube API](https://developers.google.com/youtube/v3) to implement dynamic video loading straight from artist's youtube channel into the site.
+- Tests
+  * [Jasmine](https://jasmine.github.io/) for unit testing.
 - Version Control
   * [Git](https://git-scm.com/) as Version Control System.
   * [Github](https://www.github.com) for repository hosting.
@@ -192,7 +194,6 @@ Website's features are presented in an importance order.
   * [Convertio](https://convertio.co/) for converting favicon from `.png` to `.ico`.
   * [CloudConvert](https://cloudconvert.com/webm-to-gif) for converting screen recording from `.webm` to `.gif`.
   * [EZGif](https://ezgif.com/) for cropping `.gif` files used writing this documentation.
-- Other
 
 ## Testing
   ### [Click Here for Full Testing Process](https://github.com/pinco227/D-man/blob/main/TEST.md)
@@ -211,6 +212,7 @@ Website's features are presented in an importance order.
     | ---------------------------------------------------------------------------------------------------------------------- | ------------------ |
     | ***[User Stories](https://github.com/pinco227/D-man/blob/main/TEST.md#testing-user-stories)***                         | :heavy_check_mark: |
     | ***[Code](https://github.com/pinco227/D-man/blob/main/TEST.md#testing-code)***                                         | :heavy_check_mark: |
+    | ***[Unit](https://github.com/pinco227/D-man/blob/main/TEST.md#unit-testing)***                                         | :heavy_check_mark: |
     | ***[Functionality](https://github.com/pinco227/D-man/blob/main/TEST.md#testing-functionality):*** links and buttons    | :heavy_check_mark: |
     | ***[Functionality](https://github.com/pinco227/D-man/blob/main/TEST.md#testing-functionality):*** browser back/forward | :white_check_mark: |
     | ***[Functionality](https://github.com/pinco227/D-man/blob/main/TEST.md#testing-functionality):*** form validation      | :heavy_check_mark: |

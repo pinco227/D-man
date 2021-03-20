@@ -1,4 +1,4 @@
-describe('Player', () => {
+describe('Player (click RE-RUN button for confirming user action)', () => {
     let audio;
     Amplitude.init(globalPlaylist);
 
@@ -14,7 +14,7 @@ describe('Player', () => {
         expect(Amplitude.getSongs()).toEqual(globalPlaylist.songs);
     });
 
-    it('should be able to play (reload for user action)', () => {
+    it('should be able to play', () => {
         Amplitude.play();
 
         expect(audio.paused).toBeFalse();
