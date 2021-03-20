@@ -5,21 +5,36 @@
     <meta charset="utf-8">
     <title>Jasmine Spec Runner v3.7.0</title>
 
-    <link rel="shortcut icon" type="image/png" href="jasmine/jasmine_favicon.png">
-    <link rel="stylesheet" href="jasmine/jasmine.css">
+    <link rel="shortcut icon" type="image/png" href="assets/js/jasmine/jasmine_favicon.png">
+    <link rel="stylesheet" href="assets/js/jasmine/jasmine.css">
 
     <!-- include source files here... -->
+    <script src="https://cdn.jsdelivr.net/npm/amplitudejs@5.2.0/dist/amplitude.js"></script>
     <script src="assets/js/player.js"></script>
     <script src="assets/js/script.js"></script>
 
-    <script src="jasmine/jasmine.js"></script>
-    <script src="jasmine/jasmine-html.js"></script>
-    <script src="jasmine/boot.js"></script>
+    <script src="assets/js/jasmine/jasmine.js"></script>
+    <script src="assets/js/jasmine/jasmine-html.js"></script>
+    <script src="assets/js/jasmine/boot.js"></script>
 
     <!-- include spec files here... -->
     <script src="spec/player.spec.js"></script>
     <script src="spec/script.spec.js"></script>
 
+    <script>
+        setTimeout(() => {
+            const jasmineContainer = document.querySelectorAll('.jasmine_html-reporter')[0];
+            const newEl = document.createElement('div');
+            newEl.setAttribute('class', 'jasmine-run-options');
+            newEl.setAttribute('style', 'position:absolute; top: 1rem; left: 50%; transform: translateX(-50%); padding:5px; ');
+            newEl.innerHTML = `
+                <a href="test.html?random=false" style="text-align:center;">
+                    <h2>RE-RUN TESTS</h2> (<strong>play()</strong> needs user action. Click here to
+                    re-run the tests.)
+                </a>`;
+            jasmineContainer.appendChild(newEl);
+        }, 1000);
+    </script>
 </head>
 
 <body>
