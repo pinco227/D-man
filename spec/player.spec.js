@@ -2,11 +2,12 @@ describe('Player (click RE-RUN button for confirming user action)', () => {
     let audio;
     Amplitude.init(globalPlaylist);
 
-    beforeEach(function () {
+    beforeAll(() => {
         audio = Amplitude.getAudio();
+        audio.muted = true;
     });
 
-    afterEach(function () {
+    afterEach(() => {
         Amplitude.stop();
     });
 
@@ -68,4 +69,4 @@ describe('Player (click RE-RUN button for confirming user action)', () => {
             expect(Amplitude.getSongPlayedPercentage()).toBe(setPercentage);
         })
     });
-})
+});
