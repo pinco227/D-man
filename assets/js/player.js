@@ -217,7 +217,6 @@ function loadPlaylist(fromLibrary = "yes", songIndex = 0) {
         // Player initialization promise
         const initPlayer = new Promise(function () {
             Amplitude.init(globalPlaylist);
-            Amplitude.pause();
         });
         if (songIndex != 0) {
             if (typeof (songIndex) == "number") {
@@ -235,7 +234,6 @@ function loadPlaylist(fromLibrary = "yes", songIndex = 0) {
         const storedShuffle = localStorage.getItem("shuffle");
         writePlayList();
         Amplitude.init(globalPlaylist);
-        Amplitude.pause();
         if (activeSongIndex) {  // Check if the play button was ever pressed
             // Ask for playback to reload from the stored state
             dialog('<i class="far fa-laugh-beam"></i> Welcome back!',
@@ -245,7 +243,6 @@ function loadPlaylist(fromLibrary = "yes", songIndex = 0) {
                     }
                     writePlayList();
                     Amplitude.init(globalPlaylist);
-                    Amplitude.pause();
                     Amplitude.playSongAtIndex(parseInt(activeSongIndex));
                     setTimeout(function () {
                         Amplitude.setShuffle(storedShuffle);
@@ -260,7 +257,6 @@ function loadPlaylist(fromLibrary = "yes", songIndex = 0) {
                     localStorage.clear();   //Clear localstorage
                     writePlayList();
                     Amplitude.init(globalPlaylist);
-                    Amplitude.pause();
                 }
             );
         }
