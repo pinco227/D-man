@@ -16,7 +16,7 @@
     --main-bg-color: rgb(36, 43, 51);
     --main-text-color: rgba(255, 255, 255, .75);
     --main-link-color: rgba(255, 255, 255, .55);
-    --main-link-color-hover: rgb(255, 255, 255);
+    --main-link-color-hover: rgb(255, 0, 0);
     --headings-color: rgb(255, 255, 255);
 }
 
@@ -32,7 +32,7 @@ html {
     transition: background-image 0.3s ease-in-out;
 }
 
-/* 
+/*
 * Make address bar never dissapear on mobile 
 * CREDIT: https://greensock.com/forums/topic/24315-prevent-address-bar-from-hiding-on-mobile-scroll-trigger/?do=findComment&comment=115562
 */

@@ -1,3 +1,4 @@
+// Check if browser supports mediaSession API (safari)
 let mediaSessionSupported = false;
 if (typeof (navigator.mediaSession) != "undefined") {
     mediaSessionSupported = true;

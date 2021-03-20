@@ -94,10 +94,10 @@ This project represents an artist's page featuring a music player. The main goal
         
         ![Home Screenshot](https://github.com/pinco227/D-man/blob/main/docs/home-ss.jpg)
     - #### **Music Library**:
-      - The album list is better displayed as each album looks like an actual CD/vinyl coming out of its case/slip.
+      - The album list is better displayed as each album looks like an actual CD/vinyl coming out of its case/slip when hovered/tapped.
         
         ![Album page Screenshot](https://github.com/pinco227/D-man/blob/main/docs/albums-animation.gif)
-      - There is a dynamic page generated after clicking on any of the albums. This page displays the album's data, the list of songs and "play all", "shuffle all" and "play" (for each song) buttons.
+      - A dynamically generated page shows after clicking on any of the albums. This page displays the album's data, the list of songs and "play all", "shuffle all" and "play" (for each song) buttons.
         
         ![Album details screenshot](https://github.com/pinco227/D-man/blob/main/docs/album-list-ss.jpg)
     - #### **About Me**
@@ -109,7 +109,7 @@ This project represents an artist's page featuring a music player. The main goal
         - The bottom player controls are simplified to display the "waveform" (seeker), "now playing info", "play/pause button" and "next button" while the rest of controls are only displayed when the player is in expanded state (click/tap on "now playing info").
   
           ![Mobile player controls screenshot](https://github.com/pinco227/D-man/blob/main/docs/mobile-player-ctrls.png)
-        - The expanded player is full-screen and contains "now playing info", "waveform", "controls" including "shuffle" and "loop" and a list of songs in current playlist with the one playing marked out.
+        - The expanded player appears in full-screen and contains "now playing info", "waveform", "controls" including "shuffle" and "loop" and a list of songs in current playlist with the one playing marked out.
   
           ![Mobile player expanded](https://github.com/pinco227/D-man/blob/main/docs/mobile-player-expanded.png)
       - **Tablet/Dektop**:
@@ -144,10 +144,10 @@ This project represents an artist's page featuring a music player. The main goal
 ## Features
 Website's features are presented in an importance order.
 - ### Navigation bar
-    Allows users to navigate through the site. The navigation bar is fixed to top and always visible. The navigation links are grouped by expandable and non-expandable. The main links are non-expandable ("Music library", "Video Library" and "Photo gallery") but their text dissapears when on mobile, leaving only the meaningful icons.
+    Allows users to navigate through the site. The navigation bar is fixed to top and always visible. The navigation links are grouped by expandable and non-expandable. The main links are non-expandable ("Music library", "Video Library" and "Photo gallery") but their text dissapears on mobile, leaving only the meaningful icons.
 - ### A music player
     - The player's most used controls will always be visible (on footer) as well as current playing song. The playlist and more controls will be collapsed (but expandable) on mobile and small screens and always visible on bigger screens.
-    - The website features a ***Media Session API*** which offers user a better control on any device. The media keeps playing while browser is minimized or device is locked. The browser (desktop) or the device has it's own implementation of Media Session API and it effectively communicates with the website to control the player.
+    - The website features a ***Media Session API*** which offers user a better control on any supporting device. The media keeps playing while browser is minimized or device is locked. The browser has it's own implementation of Media Session API and it effectively communicates with the website to control the player.
   
       ![media session screenshot](https://github.com/pinco227/D-man/blob/main/docs/media-session-ss.png)
     - It also uses `localStorage` to save the player state in order to be able to be resumed when returning.
@@ -232,7 +232,7 @@ Website's features are presented in an importance order.
 ## Deployment
 - ### GitHub Pages
   The project was deployed to GitHub Pages using the following steps:
-  1. Log in to GitHub and locate the [Dublin Hills Repository](https://github.com/pinco227/D-man).
+  1. Log in to GitHub and locate the [D-man Repository](https://github.com/pinco227/D-man).
   2. At the top of the Repository, locate and click the "Settings" Button on the menu.
   3. Scroll down the Settings page until you locate the "GitHub Pages" Section.
   4. Under "Source", click the dropdown called "**None**" and select "**main**" branch.
@@ -240,11 +240,11 @@ Website's features are presented in an importance order.
   6. Scroll back down through the page to locate the now published [site link](https://pinco227.github.io/D-man/) in the "GitHub Pages" section.
 - ### Forking the GitHub Repository
   By forking the GitHub Repository we make a copy of the original repository on our GitHub account to view and/or make changes without affecting the original repository by using the following steps:
-  1. Log in to GitHub and locate the [Dublin Hills Repository](https://github.com/pinco227/D-man).
+  1. Log in to GitHub and locate the [D-man Repository](https://github.com/pinco227/D-man).
   2. At the top right of the Repository just above the "Settings" Button on the menu, locate and click the "**Fork**" Button.
   3. You should now have a copy of the original repository in your GitHub account.
 - ### Making a Local Clone
-  1. Log in to GitHub and locate the [Dublin Hills Repository](https://github.com/pinco227/D-man).
+  1. Log in to GitHub and locate the [D-man Repository](https://github.com/pinco227/D-man).
   2. At the top of the Repository just above the list of files, locate and click the "**Code**" dropdown.
   3. To clone the repository using HTTPS, under "**Clone**", make sure "**HTTPS**" is selected and copy the link.
   4. Open Git Bash.
@@ -257,12 +257,13 @@ Website's features are presented in an importance order.
     ```
     $ git clone https://github.com/pinco227/D-man.git
     Cloning into 'D-man'...
-    remote: Enumerating objects: 408, done.
-    remote: Counting objects: 100% (408/408), done.
-    remote: Compressing objects: 100% (258/258), done.
-    remote: Total 408 (delta 156), reused 368 (delta 116), pack-reused 0
-    Receiving objects: 100% (408/408), 24.92 MiB | 15.71 MiB/s, done.
-    Resolving deltas: 100% (156/156), done.
+    remote: Enumerating objects: 642, done.
+    remote: Counting objects: 100% (642/642), done.
+    remote: Compressing objects: 100% (414/414), done.
+    remote: Total 932 (delta 337), reused 479 (delta 183), pack-reused 290
+    Receiving objects: 100% (932/932), 312.10 MiB | 22.81 MiB/s, done.
+    Resolving deltas: 100% (394/394), done.
+    Updating files: 100% (166/166), done.
     ```
   Click [Here](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/cloning-a-repository#cloning-a-repository-to-github-desktop) to retrieve pictures for some of the buttons and more detailed explanations of the above process.
   

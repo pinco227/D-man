@@ -455,6 +455,7 @@ playImg.addEventListener('load', function () {
         const headingsColor = `rgb(${palette.Vibrant.getRgb()})`;
         root.style.setProperty('--main-bg-color', bgColor);
         root.style.setProperty('--main-link-color', linkColor);
+        root.style.setProperty('--main-link-color-hover', 'rgb(255,255,255)');
         root.style.setProperty('--headings-color', headingsColor);
         document.querySelector('meta[name="theme-color"]').setAttribute('content', palette.DarkMuted.getHex()); // Update the meta theme color (color for mobile browser address bar)
     });
