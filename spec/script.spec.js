@@ -47,11 +47,28 @@ describe('SPA navigation', () => {
     });
 });
 
-describe('Data', () => {
-    it('when url is bad, it should not call the callback', () => {
-        const noCall = jasmine.createSpy('callback');
+describe('Data (XMLHttpRequest)', () => {
+    it('should call the callback with obj and 200 status', (done) => {
+        getData(musicApiUrl, (data, status) => {
+            expect(data).toBeDefined();
+            expect(data).not.toEqual({});
+            expect(status).toBe(200);
+            done();
+        });
+    });
+    it('when url is bad, the callback should be called with empty obj and 404 status', (done) => {
+        getData("/some/random/url", (data, status) => {
+            expect(data).toEqual({});
+            expect(status).toBe(404);
+            done();
+        });
+    });
+    it('when error, the callback should be called with empty obj and error status', (done) => {
+        getData("htp://some/random/url", (data, status) => {
+            expect(data).toEqual({});
+            expect(status).not.toBe(200);
+            done();
+        });
+    });
 
-        getData("/some/random/url", noCall);
-        expect(noCall).not.toHaveBeenCalled();
-    })
 })

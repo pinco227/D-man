@@ -66,7 +66,7 @@ describe('Player (click RE-RUN button for confirming user action)', () => {
 
             Amplitude.setSongPlayedPercentage(setPercentage);
 
-            expect(Amplitude.getSongPlayedPercentage()).toBe(setPercentage);
+            expect(Math.round(Amplitude.getSongPlayedPercentage())).toBe(setPercentage);
         })
     });
 });

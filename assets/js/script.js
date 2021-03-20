@@ -153,10 +153,19 @@ function getData(url, cb) {
     const xhr = new XMLHttpRequest();
 
     xhr.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            cb(JSON.parse(this.responseText));
+        if (this.readyState == 4) {
+            if (this.status == 200) {
+                cb(JSON.parse(this.responseText), this.status);
+            } else {
+                cb({}, this.status);
+            }
         }
     };
+
+    xhr.onerror = function () {
+        cb({}, this.status);
+    };
+
     xhr.open("GET", url);
     xhr.send();
 }
@@ -174,13 +183,14 @@ function onYouTubeIframeAPIReady() {
 * @param {string} contentDiv - The id of the element to be written to
 */
 function writeVideosToDoc() {
-    getData(youtubePlaylistApiUrl, function (data) {
-        const youtubeContent = document.getElementById('yt-content');
-        const ytModalEl = document.getElementById('yt-modal');
-        data = data.items;
+    getData(youtubePlaylistApiUrl, function (data, status) {
+        if (status == 200) {
+            const youtubeContent = document.getElementById('yt-content');
+            const ytModalEl = document.getElementById('yt-modal');
+            data = data.items;
 
-        youtubeContent.innerHTML = data.map(function (item) {
-            return `
+            youtubeContent.innerHTML = data.map(function (item) {
+                return `
             <div class="col-6 col-sm-4 col-md-6 col-lg-3 video-col" data-bs-toggle="modal" data-bs-target="#yt-modal" data-yt-id="${item.snippet.resourceId.videoId}">
                 <article>
                 <div class="video-thumb-container">
@@ -191,21 +201,33 @@ function writeVideosToDoc() {
                 </article>
             </div>
             `;
-        }).join("");
+            }).join("");
 
-        // Stop youtube video when youtube modal is closed
-        ytModalEl.addEventListener('hide.bs.modal', function () {
-            ytPlayer.stopVideo();
-        });
-
-        // Videos list item container click event listener
-        document.querySelectorAll('.video-col').forEach(function (button) {
-            button.addEventListener('click', function () {
-                ytPlayer.loadVideoById(this.getAttribute("data-yt-id"));
-                Amplitude.pause();
-                ytPlayer.playVideo();
+            // Stop youtube video when youtube modal is closed
+            ytModalEl.addEventListener('hide.bs.modal', function () {
+                ytPlayer.stopVideo();
             });
-        });
+
+            // Videos list item container click event listener
+            document.querySelectorAll('.video-col').forEach(function (button) {
+                button.addEventListener('click', function () {
+                    ytPlayer.loadVideoById(this.getAttribute("data-yt-id"));
+                    Amplitude.pause();
+                    ytPlayer.playVideo();
+                });
+            });
+        } else {
+            contentDiv.innerHTML = `
+                <div class="hero" id="hero-contact">
+                    <div class="hero-img"><i class="far fa-frown"></i></div>
+                    <div class="hero-data">
+                        <h3 class="hero-title">Upsy...</h3>
+                        <p class="hero-text">Something went wrong. Please try again.</p>
+                        <button class="btn btn-hero" onclick="location.reload();">Refresh page</button>
+                    </div>
+                </div>
+            `;
+        }
     });
 }
 // ###################################### Video Library Page END
@@ -216,26 +238,39 @@ function writeVideosToDoc() {
 * @param {string} contentDiv - The id of the element to be written to
 */
 function writePhotosToDoc() {
-    getData(galleryApiUrl, function (data) {
-        const galleryContent = document.getElementById('gallery-content');
-        data = data.files;
+    getData(galleryApiUrl, function (data, status) {
+        if (status == 200) {
+            const galleryContent = document.getElementById('gallery-content');
+            data = data.files;
 
-        galleryContent.innerHTML = data.map(function (item, i) {
-            return `
+            galleryContent.innerHTML = data.map(function (item, i) {
+                return `
                 <div class="col-6 col-sm-4 col-md-6 col-lg-3 gallery-image-container" data-bs-toggle="modal" data-bs-target="#galleryModal" data-bs-img="media/photos/${item.file}" data-bs-title="${item.title}" data-bs-caption="${item.description}" id="gallery-trigger-${i}">
                   <figure>
                     <img class="gallery-image" src="media/photos/${item.thumbnail}" alt="${item.title} - ${item.description}">
                   </figure>
                 </div>
             `;
-        }).join("");
+            }).join("");
 
-        // Photos list item click event listener
-        document.querySelectorAll('.gallery-image-container').forEach(function (el) {
-            el.addEventListener('click', function () {
-                galleryShow(this);
+            // Photos list item click event listener
+            document.querySelectorAll('.gallery-image-container').forEach(function (el) {
+                el.addEventListener('click', function () {
+                    galleryShow(this);
+                });
             });
-        });
+        } else {
+            contentDiv.innerHTML = `
+                <div class="hero" id="hero-contact">
+                    <div class="hero-img"><i class="far fa-frown"></i></div>
+                    <div class="hero-data">
+                        <h3 class="hero-title">Upsy...</h3>
+                        <p class="hero-text">Something went wrong. Please try again.</p>
+                        <button class="btn btn-hero" onclick="location.reload();">Refresh page</button>
+                    </div>
+                </div>
+            `;
+        }
     });
 }
 /**
@@ -283,15 +318,16 @@ function galleryShow(source) {
 * @param {number} album - album index. If is set the function writes the songs of album. If is not set it writes the album list
 */
 function writeMusicToDoc(album) {
-    getData(musicApiUrl, function (data) {
-        globalPlaylist.songs = []; // Empties the global playlist
-        const writeTo = document.getElementById('music-library');
-        writeTo.innerHTML = '';
-        data = data.albums;
+    getData(musicApiUrl, function (data, status) {
+        if (status == 200) {
+            globalPlaylist.songs = []; // Empties the global playlist
+            const writeTo = document.getElementById('music-library');
+            writeTo.innerHTML = '';
+            data = data.albums;
 
-        // Album selected / Write the songs list of album
-        if (typeof album == "number") {
-            let html = `
+            // Album selected / Write the songs list of album
+            if (typeof album == "number") {
+                let html = `
             <div class="col-12">
                 <button onClick="writeMusicToDoc()" class="btn btn-back"><i class="fas fa-angle-left"></i> Back</button>
             </div>
@@ -310,8 +346,8 @@ function writeMusicToDoc(album) {
                 </div>
                 <div class="album-songs">
                 `;
-            data[album].songs.forEach(function (item, i) {
-                html += `
+                data[album].songs.forEach(function (item, i) {
+                    html += `
                 <div class="album-song-container" onClick="loadPlaylist('yes', ${i}); closeModals();">
                     <span class="album-song-index">${i + 1}</span>
                     <span class="album-song-name">${item.name}</span>
@@ -321,27 +357,27 @@ function writeMusicToDoc(album) {
                 </div>
                 `;
 
-                // Push each song from the selected album into the global playlist
-                const song = {
-                    "name": item.name,
-                    "artist": item.artist,
-                    "album": data[album].name,
-                    "url": "https://pinco227.github.io/D-man/media/music/" + encodeURI(data[album].path) + "/" + encodeURI(item.url),
-                    "cover_art_url": "https://pinco227.github.io/D-man/media/music/" + encodeURI(data[album].path) + "/" + data[album].cover,
-                    "duration": item.duration
-                };
-                globalPlaylist.songs.push(song);
-            });
-            html += `
+                    // Push each song from the selected album into the global playlist
+                    const song = {
+                        "name": item.name,
+                        "artist": item.artist,
+                        "album": data[album].name,
+                        "url": "https://pinco227.github.io/D-man/media/music/" + encodeURI(data[album].path) + "/" + encodeURI(item.url),
+                        "cover_art_url": "https://pinco227.github.io/D-man/media/music/" + encodeURI(data[album].path) + "/" + data[album].cover,
+                        "duration": item.duration
+                    };
+                    globalPlaylist.songs.push(song);
+                });
+                html += `
                 </div>
             </div>
             </article>`;
-            writeTo.innerHTML += html;
+                writeTo.innerHTML += html;
 
-        } else { // writes the album list
-            let html = '<div class="row">';
-            data.forEach(function (item, i) {
-                html += `
+            } else { // writes the album list
+                let html = '<div class="row">';
+                data.forEach(function (item, i) {
+                    html += `
                     <div class="col-6 col-sm-4 col-md-6 col-lg-3" onClick="clickHandler(writeMusicToDoc,${i},${isMobile ? '800' : '0'});">
                         <article>
                         <div class="album-card">
@@ -355,20 +391,20 @@ function writeMusicToDoc(album) {
                     </div>
                 `;
 
-                // Pushes all the songs into the global playlist variable
-                item.songs.forEach(function (sg) {
-                    const song = {
-                        "name": sg.name,
-                        "artist": sg.artist,
-                        "album": item.name,
-                        "url": "media/music/" + encodeURI(item.path) + "/" + encodeURI(sg.url),
-                        "cover_art_url": "media/music/" + encodeURI(item.path) + "/" + item.cover,
-                        "duration": sg.duration
-                    };
-                    globalPlaylist.songs.push(song);
+                    // Pushes all the songs into the global playlist variable
+                    item.songs.forEach(function (sg) {
+                        const song = {
+                            "name": sg.name,
+                            "artist": sg.artist,
+                            "album": item.name,
+                            "url": "media/music/" + encodeURI(item.path) + "/" + encodeURI(sg.url),
+                            "cover_art_url": "media/music/" + encodeURI(item.path) + "/" + item.cover,
+                            "duration": sg.duration
+                        };
+                        globalPlaylist.songs.push(song);
+                    });
                 });
-            });
-            html += `
+                html += `
                 <div class="col-6 col-sm-4 col-md-6 col-lg-3">
                     <div class="album-card">
                         <button class="btn btn-dmn btn-album-play" onClick="loadPlaylist(); closeModals();"><i class="fa fa-play" aria-hidden="true"></i> Play all</button>
@@ -380,7 +416,19 @@ function writeMusicToDoc(album) {
                     </div>
                 </div>
             </div>`;
-            writeTo.innerHTML += html;
+                writeTo.innerHTML += html;
+            }
+        } else {
+            contentDiv.innerHTML = `
+                <div class="hero" id="hero-contact">
+                    <div class="hero-img"><i class="far fa-frown"></i></div>
+                    <div class="hero-data">
+                        <h3 class="hero-title">Upsy...</h3>
+                        <p class="hero-text">Something went wrong. Please try again.</p>
+                        <button class="btn btn-hero" onclick="location.reload();">Refresh page</button>
+                    </div>
+                </div>
+            `;
         }
     });
 }
